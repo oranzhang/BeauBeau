@@ -11,7 +11,7 @@ class Mforum < Sinatra::Base
 	helpers Sinatra::Cookies
 	register Sinatra::ConfigFile
  	config_file './../config/config.yml'
- 	set :views, settings.root + '../ui'
+ 	set :views, settings.root + './../ui'
 	#Load Mongodb
 	Mongoid.load!("./../config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
