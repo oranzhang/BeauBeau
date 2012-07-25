@@ -12,6 +12,7 @@ class Mforum < Sinatra::Base
 	register Sinatra::ConfigFile
  	config_file './../config/config.yml'
  	set :views, settings.root + '/../ui'
+ 	set :public_folder, settings.root + '/../ui/assets'
 	#Load Mongodb
 	Mongoid.load!("./../config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
