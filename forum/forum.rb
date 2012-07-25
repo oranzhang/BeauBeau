@@ -139,12 +139,12 @@ class Mforum < Sinatra::Base
 	end
 
 	get "/?/test" do
-		CreatUser("a","123","x")
-		PostToMongo("dfsd","fsd","dsfwe","fwe","fwe","wqe")
-		CreatUser("ads","1sdas23","xsd")
-		PostToMongo("dfsfghd","fsfghd","dshfgfwe","ffwe","fwfe","wfqe")
-		CreatUser("adas","123","xdas")
-		PostToMongo("dfwqwesd","fseqwd","dsfwewe","fqwewe","fwxcve","wqxcve")
+		User.each do |users|
+			"#{users._id}"
+		end
+		Post.each do |posts|
+			"#{posts._id}"
+		end
 	end
 
 
