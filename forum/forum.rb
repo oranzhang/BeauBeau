@@ -153,3 +153,4 @@ class Mforum < Sinatra::Base
 
 run! if app_file == $0
 end
+end
