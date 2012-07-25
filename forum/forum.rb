@@ -111,7 +111,6 @@ class Mforum < Sinatra::Base
 			end
 		end
 		def GetNewestPost(max,page)
-			Post.each
 		end
 		def GetNewestPostByNode(node,max,page)
 		end
