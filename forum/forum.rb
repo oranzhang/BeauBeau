@@ -53,11 +53,11 @@ class Mforum < Sinatra::Base
 		end
 	helpers do
 		def CreatNode(name,texts)
-			if Node.where(name:name]).exists?
+			if Node.where(name:name).exists?
 				return 0 #exist => 0
 			else
 				Node.create(
-					name: name],
+					name: name,
 					texts: texts
 					)
 				return 1
