@@ -145,6 +145,7 @@ class Mforum < Sinatra::Base
 		PostToMongo("dfsfghd","fsfghd","dshfgfwe","ffwe","fwfe","wfqe")
 		CreatUser("adas","123","xdas")
 		PostToMongo("dfwqwesd","fseqwd","dsfwewe","fqwewe","fwxcve","wqxcve")
+	end
 
 
 
