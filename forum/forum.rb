@@ -11,6 +11,7 @@ class Mforum < Sinatra::Base
 	helpers Sinatra::Cookies
 	register Sinatra::ConfigFile
  	config_file './../config/config.yml'
+ 	set :views, settings.root + '../ui'
 	#Load Mongodb
 	Mongoid.load!("./../config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
@@ -51,7 +52,17 @@ class Mforum < Sinatra::Base
 			shard_key :hash, :title, :texts, :user, :time, :node, :type, :status
 		end
 	helpers do
-
+		def CreatNode(name,texts)
+			if Node.where(name:name]).exists?
+				return 0 #exist => 0
+			else
+				Node.create(
+					name: name],
+					texts: texts
+					)
+				return 1
+		end
+	end
 		def GetPostData(posthash)
 			if Post.where(hash=posthash).exists?
 				return Post.find_by(hash: posthash)
@@ -76,6 +87,7 @@ class Mforum < Sinatra::Base
 				type: itype,
 				status: istatus 
 			)
+			Post.save
 		end
 		def CreatUser(iname,ipass,imail)
 			if User.where(name: iname).exists?
@@ -90,9 +102,10 @@ class Mforum < Sinatra::Base
 					status: "user",
 					more: ""
 					) 
+				User.save
 				msg = 0 #Su => 0
-				return msg
 			end
+			return msg
 		end
 		def Login(iname,ipass)
 			if User.where(name: iname,pass:ipass).exists?
@@ -105,6 +118,7 @@ class Mforum < Sinatra::Base
 		def ResetPass(imail,q,a,pass)
 			if User.where(mail: imail,q: q,a: a).exists?
 				User.where(mail: imail,q: q,a: a).update(pass: pass)
+				User.save
 				return 0 #su
 			else
 				return 1 #err
@@ -116,39 +130,11 @@ class Mforum < Sinatra::Base
 		end
 		def GetReplyHashByTopic(topichash)
 		end
-
-
 	end
 
 	get "/" do
-		"There are nodes <br>"
-		Node.each do |nodes|
-			"#{nodes.name}"
-		end
+		erb :index
 	end
-
-	get '/creatnode/:name/:texts' do
-		if Node.where(name:params[:name]).exists?
-			return 0 #exist => 0
-		else
-			Node.create(
-				name: params[:name],
-				texts: params[:texts]
-				)
-		end
-	end
-
-	get "/?/test" do
-		if CreatUser("a","a","a") == 0
-			"okay!"
-		else 
-			"shit"
-		end
-	end
-
-
-
-
 
 run! if app_file == $0
 end
