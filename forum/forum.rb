@@ -163,8 +163,8 @@ class Mforum < Sinatra::Base
 	end
 
 	get "/" do
-		@name=settings.name
-		@title=settings.title
+		@name=settings.site_name
+		@title=settings.site_title
 		erb :index
 	end
 end
