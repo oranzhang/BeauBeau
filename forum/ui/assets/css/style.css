@@ -19,6 +19,9 @@ html, body {
 	background:#FFF;
 	color:#0CF;
 }
+.backbox:hover {
+	background: ##1C8897;
+}
 
 /* 头部 */
 .navi {	
@@ -33,6 +36,13 @@ html, body {
 .titletext {
 	color:#FFF;
 	font-size:48px;
+	padding-left:45px;
+	line-height:60px;
+}
+.titletext span{
+	background:#FFF;
+	font-size:48px;
+	color:#0CF;
 	padding-left:45px;
 	line-height:60px;
 }
@@ -57,5 +67,10 @@ html, body {
 }
 /*main*/
 .topiclist {
-	background:#FFF;
+	position: relative;
+	background: white;
+	min-height: 100px;
+	min-width: 30px;
+	top: 177px;
+	left: 95px;
 }
