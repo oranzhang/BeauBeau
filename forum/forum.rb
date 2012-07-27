@@ -1,6 +1,5 @@
 require 'sinatra/base'
 require "sinatra/cookies"
-require "sinatra/config_file"
 require "sinatra/authorization"
 require 'digest/sha1'
 require "markdown"
@@ -10,12 +9,12 @@ require 'json'
 class Mforum < Sinatra::Base
 	set :authorization_realm, "Protected zone"
 	helpers Sinatra::Cookies
-	register Sinatra::ConfigFile
- 	config_file "#{File.dirname(__FILE__)}/../config/config.yml"
- 	set :views, settings.root + '/../ui'
- 	set :public_folder, File.dirname(__FILE__) + '/../ui/assets'
+ 	config_file = "#{File.dirname(__FILE__)}/config/config.json"
+ 	set :views, settings.root + '/ui'
+ 	set :public_folder, File.dirname(__FILE__) + '/ui/assets'
+ 	conf = JSON.parse(File.new(config_file,"r").readlines[0])
 	#Load Mongodb
-	Mongoid.load!("#{File.dirname(__FILE__)}/../config/mongoid.yml")
+	Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
 	Moped.logger = Logger.new($stdout)
 		class User 
@@ -163,8 +162,8 @@ class Mforum < Sinatra::Base
 	end
 
 	get "/" do
-		@name=settings.site_name
-		@title=settings.site_title
+		@name = conf["sitename"]
+		@title = conf["sitetitle"]
 		erb :index
 	end
 end
