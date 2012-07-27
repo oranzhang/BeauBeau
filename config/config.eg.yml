@@ -1,0 +1,4 @@
+site_conf:
+	name: 'Meence::Forum'
+	title: 'Meence::Forum'
+	page_item_max: 10
