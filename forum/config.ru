@@ -1,0 +1,2 @@
+require './forum'
+run Mforum
