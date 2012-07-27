@@ -163,9 +163,9 @@ class Mforum < Sinatra::Base
 	end
 
 	get "/" do
+		@name=settings.site_conf.name
+		@title=settings.site_conf.title
 		erb :index
 	end
-
-	run! if app_file == $0
 end
 end

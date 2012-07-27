@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title><% settings.site_conf.title %></title>
+<title><%=@title %></title>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <div id="main">
   <div class="head">
-    <p class="titletext left"><% settings.site_conf.title %>::Index</p>
+    <p class="titletext left"><%=@name %>::Index</p>
     <ul class="navi left">
       <li><a class="backbox">Index</a></li>
       <li><a class="backbox">Nodes</a></li>
