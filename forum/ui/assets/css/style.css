@@ -49,6 +49,23 @@ html, body {
 	top: 0px;
 	position: fixed;
 }
+/*Posty*/
+#CreatTopic {
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	z-index: 500;
+}
+.CTbox {
+	height: 640px;
+	width: 1024px;
+	position: relative;
+	background: white;
+	margin: auto auto auto auto;
+	z-index: 501;
+
+}
 /* 头部 */
 .navi {	
 	list-style:none;
