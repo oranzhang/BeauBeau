@@ -166,7 +166,18 @@ class Mforum < Sinatra::Base
 		@title = conf["sitetitle"]
 		erb :index
 	end
+	get "/empty" do
+	end
 	get "/!!/GetIndexData" do
+		erb :topicbox
+	end
+	get "/!!/Posting/^:node" do
+		if Node.where(name: param[:node].to_s).exists?
+			@node_exists = true
+			@node = param[:node].to_s
+		else
+			@node_exists = false
+		end
 		erb :topicbox
 	end
 end

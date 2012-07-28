@@ -8,15 +8,8 @@
 
 
 </head>
-<div id="CreatTopic">
+<div id="dark" style="display:none;">
 
-  <div class="CTbox">
-    <p class="block_title"><icon>[</icon>请编辑帖子的内容</p>
-    <p><input id="CT_title" type="text" placeholder="请在此处输入标题……"></p>
-    
-    <div id="epiceditor"></div>
-    <p class="CT_btn_helper"><a id="CT_push">确定</a><a href='javascript:$("#CreatTopic").slideToggle();'>关闭</a></p>
-  </div>
 </div>
 <body id="index">
 <div id="main">
@@ -38,7 +31,23 @@
   </div>
 </div>
 </body>
-<body>
+<body id="nodes" style="display:none;">
+  <div class="head">
+    <p class="titletext left"><%=@name %><span>::Nodes</span></p>
+    <ul class="navi left">
+      <li><a id="navi_index" class="backbox">::Index</a></li>
+      <li><a id="navi_node" class="backbox">::Nodes</a></li>
+    </ul>
+  </div>
+  <div class="userbox right">
+  <div class="user_icon" >
+  <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&s=48">
+  <p class="left"><h3>Hello,用户名</h3></p></div>
+  </div>
+  <div class="clear"></div>
+  <div class="topiclist">
+    <p class="block_title">There are all the exists nodes</p>
+  </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="/epiceditor/js/epiceditor.min.js"></script>

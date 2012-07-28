@@ -1,0 +1,13 @@
+<div class="CTbox">
+<% while @node_exists = true do %>
+    <p class="block_title"><icon>[</icon>请编辑帖子的内容</p>
+    <p><input id="CT_title" type="text" placeholder="请在此处输入标题……"></p>
+    <input name="node" type="hidden" value="<%= @node %>">
+    <div id="epiceditor"></div>
+    <p class="CT_btn_helper"><a id="CT_push">确定</a><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+<% end %>
+<% while @node_exists = false do %>
+	<p class="block_title"><icon>[</icon>抱歉，节点<%= @node %>不存在！</p>
+	<p class="CT_btn_helper"><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+<% end %>
+</div>
