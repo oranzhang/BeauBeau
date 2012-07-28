@@ -66,6 +66,19 @@ html, body {
 	z-index: 501;
 
 }
+#CT_title {
+	padding-left: 30px;
+	font-size: 28px;
+	color: white;
+	background: #474747;
+	border: none;
+	margin: 0 0 0 0;
+	width: 994px;
+	height: 48px;
+}
+.CTbox #epiceditor {
+	height: 400px;
+}
 /* 头部 */
 .navi {	
 	list-style:none;
