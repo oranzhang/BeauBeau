@@ -166,5 +166,8 @@ class Mforum < Sinatra::Base
 		@title = conf["sitetitle"]
 		erb :index
 	end
+	get "/!!/GetIndexData" do
+		erb :topicbox
+	end
 end
 end

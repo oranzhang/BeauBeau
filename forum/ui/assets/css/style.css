@@ -1,10 +1,23 @@
 @charset "utf-8";
 /* CSS Document */
 /* 总样式 */
+@font-face {
+  font-family: 'Icon';
+  src: url('/fonts/foundation-icons-general.eot');
+  src: url('/fonts/foundation-icons-general.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/foundation-icons-general.woff') format('woff'),
+       url('/fonts/foundation-icons-general.ttf') format('truetype'),
+       url('/fonts/foundation-icons-general.svg#FoundationIconsGeneral') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+icon {
+	font-family: "Icon" ;
+}
 html, body {
 	margin:0;
 	padding:0;
-	font:12px/1.125 "微软雅黑",Arial, Helvetica, sans-serif;
+	font:12px/1.125 "微软雅黑","Segou UI";
 	color:#333;
 	background:#4CD0FA;
 }
@@ -20,9 +33,22 @@ html, body {
 	color:#0CF;
 }
 .backbox:hover {
-	background: ##1C8897;
+	background: #1C8897;
 }
-
+.clear {
+	clear:both;
+}
+.block_title {
+	font-size: 36px;
+	position: relative;
+	left: 46px;
+	top: 15px;
+}
+.userbox {
+	right: 30px;
+	top: 0px;
+	position: fixed;
+}
 /* 头部 */
 .navi {	
 	list-style:none;
@@ -43,7 +69,6 @@ html, body {
 	background:#FFF;
 	font-size:48px;
 	color:#0CF;
-	padding-left:45px;
 	line-height:60px;
 }
 .user_icon {
@@ -70,7 +95,41 @@ html, body {
 	position: relative;
 	background: white;
 	min-height: 100px;
-	min-width: 30px;
-	top: 177px;
-	left: 95px;
+	left: 6%;
+	top: -37px;
+	width: 70%;
+	padding-bottom: 40px;
 }
+.topiclist .block_title {
+	color:#4CD0FA
+}
+.topicbox {
+	height: 60px;
+	margin: 15px 20px 0 90px;
+	background: white;
+}
+.topic_link {
+	text-decoration: none;
+	font-size: 28px;
+	position: relative;
+	top: -8px;
+	color: #1F1F6B;
+}
+.topic_link span{
+	color: #777;
+}
+.topic_gravatar {
+	height:48px;
+	width:48px;
+}
+.topic_reply_unm {
+	font-size: 66px;
+	text-decoration: none;
+	color: rgba(18, 182, 189, 0.47);
+}
+.topic_time {
+	position: relative;
+	top: 10px;
+	right: -5px;
+}
+
