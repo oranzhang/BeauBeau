@@ -58,6 +58,7 @@ html, body {
 	z-index: 500;
 }
 .CTbox {
+	box-shadow: 0 0 100px white;
 	height: 640px;
 	width: 1024px;
 	position: relative;
@@ -78,6 +79,19 @@ html, body {
 }
 .CTbox #epiceditor {
 	height: 400px;
+}
+.CT_btn_helper {
+	margin-top: 30px;
+	float: right;
+}
+.CT_btn_helper a {
+	margin-right: 20px;
+	font-size: 28px;
+	color: #167575;
+	background: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
 }
 /* 头部 */
 .navi {	
