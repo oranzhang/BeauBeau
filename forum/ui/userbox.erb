@@ -1,7 +1,7 @@
 <% while @msg == 1 do %>
-<% @info = JSON.parse(AES.decrypt(@data, aes_key)) %>
+<% @info = JSON.parse(AES.decrypt(@data, conf["cookies_key"])) %>
 <div class="user_icon">
-  <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&amp;s=48">
+  <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @data["mail"] %>.png?r=G&amp;s=48">
   <p class="left"></p><h3><a id="l_my_info" href="javascript:;"><%= @info["name"] %></a></h3><p></p>
 </div>
 <% end %>

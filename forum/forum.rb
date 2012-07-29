@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require "sinatra/cookies"
 require 'digest/sha1'
+require 'digest/md5'
 require "markdown"
 require 'mongoid'
 require 'json'
@@ -12,7 +13,6 @@ class Mforum < Sinatra::Base
  	set :views, settings.root + '/ui'
  	set :public_folder, File.dirname(__FILE__) + '/ui/assets'
  	conf = JSON.parse(File.new(config_file,"r").readlines[0])
- 	aes_key = conf["cookies_key"]
 	#Load Mongodb
 	Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
@@ -111,9 +111,9 @@ class Mforum < Sinatra::Base
 			if User.where(name: iname,pass:ipass).exists?
 				ck = Array.new()
 				ck["name"] = iname
-				ck["mail"] = User.where(name: iname,pass:ipass).mail
+				ck["mail"] = Digest::SHA1.hexdigest(User.where(name: iname,pass:ipass).mail)
 				ck_json = ck.to_json
-				cookies[:auth] = AES.encrypt(ck_json, aes_key)
+				cookies[:auth] = AES.encrypt(ck_json, conf["cookies_key"])
 				return 1 #succ
 			else
 				return 0 #incorrent
