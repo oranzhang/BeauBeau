@@ -16,7 +16,6 @@
   <div class="head">
     <p class="titletext left"><%=@name %><span>::Index</span></p>
     <ul class="navi left">
-      <li><a id="navi_index" class="backbox">::Index</a></li>
       <li><a id="navi_node" class="backbox">::Nodes</a></li>
     </ul>
   </div>
@@ -26,13 +25,11 @@
     <p class="block_title">Latest Topics</p>
   </div>
 </div>
-</body>
-<body id="nodes" style="display:none;">
+<div id="nodes" style="display:none;">
   <div class="head">
     <p class="titletext left"><%=@name %><span>::Nodes</span></p>
     <ul class="navi left">
       <li><a id="navi_index" class="backbox">::Index</a></li>
-      <li><a id="navi_node" class="backbox">::Nodes</a></li>
     </ul>
   </div>
   <div id="ajaxwait_user" class="userbox right"></div>
@@ -41,7 +38,9 @@
     <p class="block_title">There are all the exists nodes</p>
     <p class="nodelist"><span>节点名</span>介绍神马的</p>
   </div>
+</div>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="/epiceditor/js/epiceditor.min.js"></script>
 <script type="text/javascript" src="/js/sha1.min.js"></script>
