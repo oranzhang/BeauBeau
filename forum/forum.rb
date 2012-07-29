@@ -184,7 +184,7 @@ class Mforum < Sinatra::Base
 		erb :topicbox
 	end
 	get "/!!/Userbox" do
-		if strcmp(cookie[:auth], "")
+		if strcmp(cookies[:auth], "")
 			@msg = 0 # 0 => not logined
 		else
 			@info = JSON.parse(AES.decrypt(cookie[:auth], aes_key))
