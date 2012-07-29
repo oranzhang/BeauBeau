@@ -185,9 +185,10 @@ class Mforum < Sinatra::Base
 	end
 	get "/!!/Userbox" do
 		if cookies[:auth] == ""
+			@data = ""
 			@msg = 0 # 0 => not logined
 		else
-
+			@data = cookies[:auth]
 			@msg = 1 # 1 => already logined
 		end
 		erb :userbox
