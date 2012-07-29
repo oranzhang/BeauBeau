@@ -1,18 +1,18 @@
 require 'sinatra/base'
 require "sinatra/cookies"
-require "sinatra/authorization"
 require 'digest/sha1'
 require "markdown"
 require 'mongoid'
 require 'json'
+require 'aes'
 #App start
 class Mforum < Sinatra::Base
-	set :authorization_realm, "Protected zone"
 	helpers Sinatra::Cookies
  	config_file = "#{File.dirname(__FILE__)}/config/config.json"
  	set :views, settings.root + '/ui'
  	set :public_folder, File.dirname(__FILE__) + '/ui/assets'
  	conf = JSON.parse(File.new(config_file,"r").readlines[0])
+ 	aes_key = conf["cookies_key"]
 	#Load Mongodb
 	Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
@@ -30,7 +30,6 @@ class Mforum < Sinatra::Base
 			field :a
 			shard_key :name, :pass, :mail, :regtime, :status, :more, :q, :a
 			index({ regtime: 1 }, { unique: true, name: "regtime_index" })
-
 		end
 		class Node 
 			include Mongoid::Document
@@ -110,7 +109,11 @@ class Mforum < Sinatra::Base
 		end
 		def Login(iname,ipass)
 			if User.where(name: iname,pass:ipass).exists?
-				authorize(iname,ipass)
+				ck = Array.new()
+				ck["name"] = iname
+				ck["mail"] = User.where(name: iname,pass:ipass).mail
+				ck_json = ck.to_json
+				cookies[:auth] = AES.encrypt(ck_json, aes_key)
 				return 1 #succ
 			else
 				return 0 #incorrent
@@ -180,5 +183,15 @@ class Mforum < Sinatra::Base
 		end
 		erb :topicbox
 	end
+	get "/!!/Userbox" do
+		if strcmp(cookie[:auth], "")
+			@msg = 0 # 0 => not logined
+		else
+			@info = JSON.parse(AES.decrypt(cookie[:auth], aes_key))
+			@msg = 1 # 1 => already logined
+		end
+		erb :userbox
+	end
+
 end
 end

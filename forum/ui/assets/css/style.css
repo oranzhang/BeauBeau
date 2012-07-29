@@ -123,7 +123,7 @@ html, body {
 	position: relative;
 	top: 52px;
 	height: 60px;
-	background:#FFF;
+	background:#C0F0F7;
 	min-width:80px;
 	color:#0CF;
 
@@ -180,5 +180,13 @@ html, body {
 	text-decoration: none;
 	color: #60C5B9;
 }
-
-
+/*node page*/
+.nodelist {
+	font-size: 20px;
+	margin-left: 10%;
+	color: #1DA2B4;
+}
+.nodelist span {
+	font-size: 34px;
+	color: #E25D5D;
+}
