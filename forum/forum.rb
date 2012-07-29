@@ -187,7 +187,7 @@ class Mforum < Sinatra::Base
 		if cookies[:auth] == ""
 			@msg = 0 # 0 => not logined
 		else
-			@info = JSON.parse(AES.decrypt(cookies[:auth], aes_key))
+
 			@msg = 1 # 1 => already logined
 		end
 		erb :userbox
