@@ -192,6 +192,9 @@ class Mforum < Sinatra::Base
 		end
 		erb :userbox
 	end
+	get "/!!/GetCookies" do
+		"#{cookies[:auth]}"
+	end
 
 end
 end
