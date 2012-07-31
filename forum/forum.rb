@@ -184,8 +184,10 @@ class Mforum < Sinatra::Base
 		erb :topicbox
 	end
 	get "/!!/Userbox" do
+		while cookies[:auth] == "" do
+			@data = AES.encrypt('{"name":"","mail":""}', conf["cookies_key"])
+		end
 		if cookies[:auth] == ""
-			@data = ""
 			@msg = 0 # 0 => not logined
 		else
 			@data = cookies[:auth]
