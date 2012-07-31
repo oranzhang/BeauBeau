@@ -1,11 +1,10 @@
-<% while @msg == 1 do %>
-<% @info = JSON.parse(AES.decrypt(@data, conf["cookies_key"])) %>
+<% if @msg == 1 %>
 <div class="user_icon">
   <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @data["mail"] %>.png?r=G&amp;s=48">
   <p class="left"></p><h3><a id="l_my_info" href="javascript:;"><%= @info["name"] %></a></h3><p></p>
 </div>
 <% end %>
-<% while @msg == 0 do %>
+<% if @msg == 0%>
 <div class="user_icon">
   <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&amp;s=48">
   <p class="left"></p><h3><a id="l_loginbox" href="javascript:;">点击此处登录或注册</a></h3><p></p>

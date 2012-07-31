@@ -13,6 +13,7 @@ class Mforum < Sinatra::Base
  	set :views, settings.root + '/ui'
  	set :public_folder, File.dirname(__FILE__) + '/ui/assets'
  	conf = JSON.parse(File.new(config_file,"r").readlines[0])
+ 	aes_key = conf["cookies_key"]
 	#Load Mongodb
 	Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
@@ -109,11 +110,8 @@ class Mforum < Sinatra::Base
 		end
 		def Login(iname,ipass)
 			if User.where(name: iname,pass:ipass).exists?
-				ck = Array.new()
-				ck["name"] = iname
-				ck["mail"] = Digest::SHA1.hexdigest(User.where(name: iname,pass:ipass).mail)
-				ck_json = ck.to_json
-				cookies[:auth] = AES.encrypt(ck_json, conf["cookies_key"])
+				ck_json = '{"name" : ' + "#{iname} , " + '"mail : "' + "#{Digest::SHA1.hexdigest(User.where(name: iname,pass:ipass).mail)}"
+				cookies[:auth] = AES.encrypt(ck_json , aes_key)
 				return 1 #succ
 			else
 				return 0 #incorrent
@@ -184,14 +182,15 @@ class Mforum < Sinatra::Base
 		erb :topicbox
 	end
 	get "/!!/Userbox" do
-		while cookies[:auth] == "" do
-			@data = AES.encrypt('{"name":"","mail":""}', conf["cookies_key"])
+		@x = cookies[:auth]
+		while @x ==  nil do
+			@x = ""
 		end
-		if cookies[:auth] == ""
+		if cookies[:auth] == nil
 			@msg = 0 # 0 => not logined
 		else
-			@data = cookies[:auth]
-			@info = JSON.parse(AES.decrypt(@data, conf["cookies_key"]))
+			@a = AES.decrypt(@x,aes_key)
+			@info = JSON.parse(@a)
 			@msg = 1 # 1 => already logined
 		end
 		erb :userbox
@@ -199,6 +198,6 @@ class Mforum < Sinatra::Base
 	get "/!!/GetCookies" do
 		"#{cookies[:auth]}"
 	end
+end
+end
 
-end
-end
