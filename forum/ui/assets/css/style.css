@@ -126,6 +126,7 @@ html, body {
 	background:#C0F0F7;
 	min-width:80px;
 	color:#0CF;
+	z-index: 505;
 
 }
 .user_gravatar {
@@ -154,9 +155,9 @@ html, body {
 }
 .topicbox ul {
 	list-style: none;
-	top: 65px;
-	position: absolute;
-	left: 110px;
+	top: -63px;
+	position: relative;
+	left: 20px;
 }
 .topic_link {
 	text-decoration: none;

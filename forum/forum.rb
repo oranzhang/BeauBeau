@@ -6,72 +6,36 @@ require "markdown"
 require 'mongoid'
 require 'json'
 require 'aes'
-#App start
+
+
 class Mforum < Sinatra::Base
-	helpers Sinatra::Cookies
- 	config_file = "#{File.dirname(__FILE__)}/config/config.json"
+	config_file = "#{File.dirname(__FILE__)}/config/config.json"
  	set :views, settings.root + '/ui'
  	set :public_folder, File.dirname(__FILE__) + '/ui/assets'
  	conf = JSON.parse(File.new(config_file,"r").readlines[0])
  	aes_key = conf["cookies_key"]
-	#Load Mongodb
 	Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml")
 	Mongoid.logger = Logger.new($stdout)
 	Moped.logger = Logger.new($stdout)
-		class User 
-			include Mongoid::Document
-			store_in collection: "users"
-			field :name, type: String
-			field :pass, type: String
-			field :mail, type: String
-			field :regtime, type: Time
-			field :status # "user" , "admin" , "ban"
-			field :more, type: String
-			field :q
-			field :a
-			shard_key :name, :pass, :mail, :regtime, :status, :more, :q, :a
-			index({ regtime: 1 }, { unique: true, name: "regtime_index" })
-		end
-		class Node 
-			include Mongoid::Document
-			store_in collection: "nodes"
-			field :name, type: String
-			field :texts, type: String
-			shard_key :name, :texts
-		end
-		class Post 
-			include Mongoid::Document
-			store_in collection: "posts"
-			field :hash, type: String
-			field :title, type: String
-			field :texts, type: String
-			field :user, type: String
-			field :time, type: Time
-			field :node, type: String
-			field :type # "topic" &"reply" 
-			field :status # 0 -> basic , 1 -> important , 2 -> HEXIE
-			field :mother
-			shard_key :hash, :title, :texts, :user, :time, :node, :type, :status, :mother
-		end
 	helpers do
 		def CreatNode(name,texts)
 			if Node.where(name:name).exists?
-				return 0 #exist => 0
+				@msg = 0 #exist => 0
 			else
 				Node.create(
 					name: name,
 					texts: texts
 					)
-				return 1
+				@msg = 1
+			end
+			return @msg
 		end
-	end
 		def GetPostData(posthash)
 			if Post.where(hash = posthash).exists?
 				return Post.find_by(hash: posthash)
 			else
 				return 0 # 0 -> Not Exists
 			end
-
 		end
 		def CreatPostHash(title = "" ,texts = "",user = "" )
 			hash = Digest::SHA1.hexdigest("the post #{title}#{texts} by #{user} when #{Time.now} form #{imother}")
@@ -96,7 +60,8 @@ class Mforum < Sinatra::Base
 				msg = 1 #
 			else if User.where(mail:imail).exists?
 				msg = 2 #Email exists => msg = 2
-				else User.create(
+			else 
+				User.create(
 					name: iname,
 					pass: ipass,
 					mail: imail,
@@ -135,16 +100,15 @@ class Mforum < Sinatra::Base
 			page_topic = count_topic/max + plus
 			return [count_all,count_topic,page_topic].to_json
 		end
-		def GetNewestPost(max,page)
+		def GetLatestPost(max,page)
 			data = Array.new
 			for x in 1..10 do
 				num=0-(max*(page-1)+x)
 				data << Post.where(mother: 'self').sort(_id: num).limit(-1)
 			end
 			return data.to_json
-			
 		end
-		def GetNewestPostByNode(node,max,page)
+		def GetLatestPostByNode(node,max,page)
 			data = Array.new
 			for x in 1..10 do
 				num=0-(max*(page-1)+x)
@@ -162,14 +126,19 @@ class Mforum < Sinatra::Base
 		end
 	end
 
+	#helpers Sinatra::Cookies
+
+
+
+
 	get "/" do
 		@name = conf["sitename"]
 		@title = conf["sitetitle"]
 		erb :index
 	end
-	get "/empty" do
-	end
 	get "/!!/GetIndexData" do
+		@at_data = GetLatestPost(conf["maxitemnumber"],1)
+		@data = JSON.parse(GetLatestPost(conf["maxitemnumber"],1))
 		erb :topicbox
 	end
 	get "/!!/Posting/^:node" do
@@ -195,9 +164,16 @@ class Mforum < Sinatra::Base
 		end
 		erb :userbox
 	end
-	get "/!!/GetCookies" do
-		"#{cookies[:auth]}"
+	get "/!!/CTbox/:node" do
+		@node_exists = false
+		if Node.where(name:param[:node]).exists?
+			@node_exists = true
+		end
+		erb :CTbox
 	end
-end
-end
+	get "/!!/Clean" do
+		""
+	end
 
+end
+end
