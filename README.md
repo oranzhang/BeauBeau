@@ -11,11 +11,11 @@ Lively Development & Support by Meence Team (http://meence.com)
 
 Install
 ======
--`gem install sinatra sinatra-contriib markdown mongoid json aes`
--`git clone https://github.com/oranzhang/Mforum.git`
--`cd Mforum`
--`cp forum/config/config.eg.json forum/config/config.json`
--`cp forum/config/mongoid.eg.yml forum/config/mongoid.yml`
--And then you need to edit these two file.
--`cd forum`
--`ruby ./forum.rb`
+- `gem install sinatra sinatra-contriib markdown mongoid json aes`
+- `git clone https://github.com/oranzhang/Mforum.git`
+- `cd Mforum`
+- `cp forum/config/config.eg.json forum/config/config.json`
+- `cp forum/config/mongoid.eg.yml forum/config/mongoid.yml`
+- And then you need to edit these two file.
+- `cd forum`
+- `ruby ./forum.rb`
