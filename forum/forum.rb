@@ -59,7 +59,7 @@ end
 get "/!!/GetIndexData" do
 	@u = User.new
 	@p = Post.new
-	@count = GetPostInfo(conf["maxitemnumber"])
+	@count = GetPostListInfo(conf["maxitemnumber"])
 	@data = GetLatestPost(conf["maxitemnumber"],1)
 	erb :topicbox
 end
