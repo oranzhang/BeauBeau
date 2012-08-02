@@ -126,7 +126,7 @@ html, body {
 	background:#C0F0F7;
 	min-width:80px;
 	color:#0CF;
-	z-index: 505;
+	z-index: 400;
 
 }
 .user_gravatar {

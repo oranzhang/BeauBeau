@@ -58,7 +58,7 @@ helpers do
 	end
 	def Login(iname,ipass)
 		if User.where(name: iname,pass:ipass).exists?
-			ck_json = '{"name" : ' + "#{iname} , " + '"mail : "' + "#{Digest::SHA1.hexdigest(User.where(name: iname,pass:ipass).mail)}"
+			ck_json = '{"name" : ' + "#{iname} , " + '"mail : "' + "#{Digest::MD5.hexdigest(User.where(name: iname,pass:ipass).mail)}"
 			cookies[:auth] = AES.encrypt(ck_json , aes_key)
 			@msg = 1 #succ
 		else
@@ -83,7 +83,7 @@ helpers do
 			@plus = 1
 		end
 		@page_topic = @count_topic/max + @plus
-		return [@count_all,@count_topic,@page_topic].to_json
+		return [@count_all,@count_topic,@page_topic]
 	end
 	def GetLatestPost(max,page)
 		@data = Array.new
@@ -93,7 +93,7 @@ helpers do
 				@data << Post.where(mother: 'self').sort(_id: @num).limit(-1)
 			end
 		end
-		return @data.to_json
+		return @data
 	end
 	def GetLatestPostByNode(node,max,page)
 		@data = Array.new
@@ -103,7 +103,7 @@ helpers do
 				@data << Post.where(node: node,mother: 'self').sort(_id: @num).limit(-1)
 			end
 		end
-		return @data.to_json
+		return @data
 	end
 	def GetReplyByTopic(topichash)
 		@data = Array.new()
@@ -113,6 +113,6 @@ helpers do
 				@data << Post.where(nade: node ,mother: topichash).sort(_id: @num).limit(-1)
 			end
 		end
-		return @data.to_json
+		return @data
 	end
 end

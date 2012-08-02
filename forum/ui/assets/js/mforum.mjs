@@ -1,11 +1,14 @@
+function new_ct(node){
+    $("#dark").load("/!!/CTbox/" + node);
+
+    setTimeout('var editor = new EpicEditor().load();',1)
+    $("#dark").slideToggle();
+  }
+
 $(document).ready(function(){
+
+
 $(".topiclist").load('/!!/GetIndexData');
 $("#ajaxwait_user").load('/!!/Userbox');
 
 });
-function new_ct(node){
-    $("#dark").load("/!!/Clean");
-    $("#dark").load("/!!/CTbox/" + node);
-    var editor = new EpicEditor().load();
-    $("#dark").slideToggle();
-  }

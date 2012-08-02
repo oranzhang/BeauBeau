@@ -57,12 +57,14 @@ get "/" do
 	erb :index
 end
 get "/!!/GetIndexData" do
-	@at_data = GetLatestPost(conf["maxitemnumber"],1)
-	@data = JSON.parse(GetLatestPost(conf["maxitemnumber"],1))
+	@u = User.new
+	@p = Post.new
+	@count = GetPostInfo(conf["maxitemnumber"])
+	@data = GetLatestPost(conf["maxitemnumber"],1)
 	erb :topicbox
 end
 get "/!!/Posting/^:node" do
-	if Node.where(name: param[:node].to_s).exists?
+	if Node.where(name: params[:node].to_s).exists?
 		@node_exists = true
 		@node = param[:node].to_s
 	else
@@ -85,8 +87,9 @@ get "/!!/Userbox" do
 	erb :userbox
 end
 get "/!!/CTbox/:node" do
+	@node = params[:node]
 	@node_exists = false
-	if Node.where(name:param[:node]).exists?
+	if Node.where(name: @node).exists?
 		@node_exists = true
 	end
 		erb :CTbox
