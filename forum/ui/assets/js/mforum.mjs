@@ -1,7 +1,7 @@
 function new_ct(node){
     $("#dark").load("/!!/CTbox/" + node);
 
-    setTimeout('var editor = new EpicEditor().load();',1)
+    setTimeout('var editor = new EpicEditor().load();',1000)
     $("#dark").slideToggle();
   }
 
