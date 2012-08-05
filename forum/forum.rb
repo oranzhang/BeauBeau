@@ -97,7 +97,19 @@ get "/!!/CTbox/:node" do
 end
 get "/!!/LRbox" do
 	@cookies = cookies[:auth]
+	unless @cookies == nil
+		@ck = JSON.parse(AES.decrypt(@cookies , cookies_key))
+	end
+	@reg = params[:reg]
 	erb :LRbox
+end
+get "/!!/LRbox_reg" do
+	@reg = 'yes'
+	erb :LRbox
+end
+get "/!!/Login/:name&:pass" do
+	@su = Login(params[:name],params[:pass])
+	"#{@su}"
 end
 get "/!!/Clean" do
 	""

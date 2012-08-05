@@ -210,5 +210,8 @@ html, body {
 	height: 48px;
 }
 .LR_re_login {
-	height: 290px !important;
+	height: 320px !important;
+}
+.LR_re_reg {
+	height: 442px !important;
 }

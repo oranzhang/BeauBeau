@@ -60,9 +60,9 @@ helpers do
 		if User.where(name: iname,pass:ipass).exists?
 			ck_json = '{"name" : ' + "#{iname} , " + '"mail : "' + "#{Digest::MD5.hexdigest(User.where(name: iname,pass:ipass).mail)}"
 			cookies[:auth] = AES.encrypt(ck_json , aes_key)
-			@msg = 1 #succ
+			@msg = '{"msg":1}' #succ
 		else
-			@msg = 0 #incorrent
+			@msg = '{"msg":2}' #incorrent
 		end
 		return @msg
 	end
