@@ -5,33 +5,14 @@
 <title><%=@title %></title>
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
-<div id="dark" style="display:none;">
-
-</div>
+<div id="dark" style="display:none;"></div>
 <body id="index">
-<div id="main">
-  <div class="head">
-    <p class="titletext left"><%=@name %><span>::Index</span></p>
-    <ul class="navi left">
-      <li><a id="navi_node" class="backbox">::Nodes</a></li>
-    </ul>
-  </div>
-  <div id="ajaxwait_user" class="userbox right"></div>
+    <div id="ajaxwait_user" class="userbox right"></div>
   <div class="clear"></div>
-  <div id="ajaxwait_latest_topic" class="topiclist">
-
-
-  </div>
+<div id="main">
+  <div id="ajaxwait_latest_topic" class="topiclist"></div>
 </div>
 <div id="nodes" style="display:none;">
-  <div class="head">
-    <p class="titletext left"><%=@name %><span>::Nodes</span></p>
-    <ul class="navi left">
-      <li><a id="navi_index" class="backbox">::Index</a></li>
-    </ul>
-  </div>
-  <div id="ajaxwait_user" class="userbox right"></div>
-  <div class="clear"></div>
   <div class="topiclist">
     <p class="block_title">There are all the exists nodes</p>
     <p class="nodelist"><span>节点名</span>介绍神马的</p>

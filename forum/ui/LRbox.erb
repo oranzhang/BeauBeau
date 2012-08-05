@@ -1,0 +1,13 @@
+<div class="CTbox<% if @cookies == nil%> LR_re_login<% end %>">
+<% if @cookies == nil %>
+    <p class="block_title"><icon>o</icon>用户中心</p>
+    <p style="margin-left:50px"></p>
+    <p><input class="LR_input" type="text" placeholder="用户名">还没有注册?</p>
+    <p><input class="LR_input" type="text" placeholder="密码">忘记密码了？</p>
+    <p class="CT_btn_helper"><a id="CT_push">登入</a><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+<% else %>
+	<p class="block_title"><icon>o</icon>你好，<%= @cookies.to_json["name"] %>！</p>
+	<div style="height:60px"><p style="margin-left:50px">如果你是在正常使用时弹出此错误提示框，请联系管理员反映问题:)。</p></div>
+	<p class="CT_btn_helper"><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+<% end %>
+</div>

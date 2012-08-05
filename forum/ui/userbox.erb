@@ -1,12 +1,22 @@
 <% if @msg == 1 %>
 <div class="user_icon">
-  <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @data["mail"] %>.png?r=G&amp;s=48">
-  <p class="left"></p><h3><a id="l_my_info" href="javascript:;"><%= @info["name"] %></a></h3><p></p>
+  <p class="titletext left">Meence<span>::Forum</span></p>
+      <ul class="navi left">
+      <li><a id="navi_index" class="backbox">::Topics</a></li>
+      <li><a id="navi_node" class="backbox">::Nodes</a></li>
+    </ul>
+  <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @data["mail"] %>.png?r=G&amp;s=32">
+  <h3><a id="l_my_info" href="javascript:new_LRbox();"><%= @info["name"] %></a></h3>
 </div>
 <% end %>
 <% if @msg == 0%>
 <div class="user_icon">
-  <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&amp;s=48">
-  <p class="left"></p><h3><a id="l_loginbox" href="javascript:;">点击此处登录或注册</a></h3><p></p>
+  <p class="titletext left">Meence<span>::Forum</span></p>
+      <ul class="navi left">
+      <li><a id="navi_index" class="backbox">::Topics</a></li>
+      <li><a id="navi_node" class="backbox">::Nodes</a></li>
+    </ul>
+  <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&amp;s=32">
+  <h3><a id="l_loginbox" href="javascript:new_LRbox();">点击此处登录或注册</a></h3>
 </div>
 <% end %>

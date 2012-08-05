@@ -86,6 +86,7 @@ get "/!!/Userbox" do
 	end
 	erb :userbox
 end
+
 get "/!!/CTbox/:node" do
 	@node = params[:node]
 	@node_exists = false
@@ -93,7 +94,11 @@ get "/!!/CTbox/:node" do
 		@node_exists = true
 	end
 		erb :CTbox
-	end
+end
+get "/!!/LRbox" do
+	@cookies = cookies[:auth]
+	erb :LRbox
+end
 get "/!!/Clean" do
 	""
 end

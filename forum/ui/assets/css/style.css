@@ -19,7 +19,7 @@ html, body {
 	padding:0;
 	font:12px/1.125 "微软雅黑","Segou UI";
 	color:#333;
-	background:#4CD0FA;
+	background:#FFF;
 }
 .left {
 	float:left;
@@ -29,11 +29,9 @@ html, body {
 }
 .backbox {
 	padding:3px;
-	background:#FFF;
-	color:#0CF;
 }
 .backbox:hover {
-	background: #1C8897;
+	background: #FF0000;
 }
 .clear {
 	clear:both;
@@ -45,7 +43,6 @@ html, body {
 	top: 15px;
 }
 .userbox {
-	right: 30px;
 	top: 0px;
 	position: fixed;
 }
@@ -95,54 +92,62 @@ html, body {
 }
 /* 头部 */
 .navi {	
-	list-style:none;
-	margin-top:78px;
-	font-size:18px
+	position: relative;
+	list-style: none;
+	font-size: 18px;
+	top: -10px;
+	left: -18px;
 }
 .navi li {
 	margin-right:15px;
 	float:left
 }
 .titletext {
+	position: relative;
+	top: -23px;
 	color:#FFF;
-	font-size:48px;
-	padding-left:45px;
-	line-height:60px;
+	font-size: 26px;
+	line-height:26px;
 }
 .titletext span{
-	background:#FFF;
-	font-size:48px;
-	color:#0CF;
-	line-height:60px;
+	font-size:26px;
+	color:#F3FC8B;
+	line-height:26px;
 }
 .user_icon {
-	padding:5px;
-	padding-left:20px;
-	padding-right:88px;
-	right: 30px;
-	position: relative;
-	top: 52px;
-	height: 60px;
-	background:#C0F0F7;
-	min-width:80px;
-	color:#0CF;
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 88px;
+	position: fixed;
+	height: 33px;
+	background: #BE0000;
+	width: 100%;
+	color: #FFF;
 	z-index: 400;
-
 }
 .user_gravatar {
-	position: absolute;
-	float:right;
-	right:12px;
-	top:10px;
+	position: relative;
+	box-shadow: 9px 0 65px whiteSmoke;
+	float: right;
+	right: 26px;
+}
+.userbox h3 {
+	position: relative;
+	float: right;
+	top: -6px;
+	right: 30px;
+}
+.userbox a {
+	color:#FFF;
 }
 /*main*/
 .topiclist {
+	padding-top: 20px;
 	position: relative;
 	background: white;
 	min-height: 100px;
 	left: 6%;
-	top: -37px;
-	width: 70%;
+	width: 88%;
 	padding-bottom: 40px;
 }
 .topiclist .block_title {
@@ -190,4 +195,20 @@ html, body {
 .nodelist span {
 	font-size: 34px;
 	color: #E25D5D;
+}
+ /*LR*/
+ .LR_input {
+	margin-right: 13px;
+	box-shadow: 0 0 10px #004B03;
+	padding-left: 30px;
+	margin-left: 30px;
+	font-size: 28px;
+	color: white;
+	background: #474747;
+	border: none;
+	width: 556px;
+	height: 48px;
+}
+.LR_re_login {
+	height: 290px !important;
 }
