@@ -99,7 +99,7 @@ end
 get "/!!/LRbox" do
 	@cookies = cookies[:auth]
 	unless @cookies == nil
-		@ck = JSON.parse(AES.decrypt(@cookies , cookies_key))
+		@ck = JSON.parse(AES.decrypt(@cookies , aes_key))
 	end
 	@reg = params[:reg]
 	erb :LRbox
