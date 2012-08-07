@@ -39,10 +39,10 @@ helpers do
 	end
 	def CreatUser(iname,ipass,imail)
 		if User.where(name: iname).exists?
-			@msg = 1 #
+			@msg = '{"msg":1}' #name exists
 		end
 		if User.where(mail:imail).exists?
-			@msg = 2 #Email exists => msg = 2
+			@msg = '{"msg":2}'  #Email exists => msg = 2
 		else 
 			User.create(
 				name: iname,
@@ -52,14 +52,14 @@ helpers do
 				status: "user",
 				more: ""
 				) 
-			@msg = 0 #Su => 0
+			@msg = '{"msg":0}'  #Su => 0
 		end
 		return @msg
 	end
-	def Login(iname,ipass)
+	def Login(iname,ipass,ikey)
 		if User.where(name: iname,pass:ipass).exists?
-			ck_json = '{"name" : ' + "#{iname} , " + '"mail : "' + "#{Digest::MD5.hexdigest(User.where(name: iname,pass:ipass).mail)}"
-			cookies[:auth] = AES.encrypt(ck_json , aes_key)
+			@ck_json = '{"name" : ' + "#{iname} , " + '"mail : "' + "#{Digest::MD5.hexdigest(User.where(name: iname,pass:ipass)[0].mail)}" + '}'
+			cookies[:auth] = AES.encrypt(@ck_json)
 			@msg = '{"msg":1}' #succ
 		else
 			@msg = '{"msg":2}' #incorrent

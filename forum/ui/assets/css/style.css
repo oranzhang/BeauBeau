@@ -15,6 +15,7 @@ icon {
 	font-family: "Icon" ;
 }
 html, body {
+	min-width: 1024px;
 	margin:0;
 	padding:0;
 	font:12px/1.125 "微软雅黑","Segou UI";
@@ -84,11 +85,15 @@ html, body {
 .CT_btn_helper a {
 	margin-right: 20px;
 	font-size: 28px;
-	color: #167575;
+	color: #167575 !important;
 	background: white;
 	padding-left: 10px;
 	padding-right: 10px;
 	text-decoration: none;
+}
+.CTbox a {
+	text-decoration: none;
+	color: #005FC5;
 }
 /* 头部 */
 .navi {	
@@ -115,6 +120,7 @@ html, body {
 	line-height:26px;
 }
 .user_icon {
+	box-shadow: 0 0 14px #FF5200;
 	padding: 5px;
 	padding-left: 20px;
 	padding-right: 88px;

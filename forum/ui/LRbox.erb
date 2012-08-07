@@ -1,7 +1,7 @@
 <% if @reg != 'yes' %>
 <div class="CTbox<% if @cookies == nil%> LR_re_login<% end %>">
 <% if @cookies == nil %>
-    <p class="block_title"><icon>o</icon>用户中心</p>
+    <p class="block_title"><icon>o</icon>用户中心::登录</p>
     <p><input id="L_user" class="LR_input" type="text" placeholder="用户名"><a href='javascript:reguser()'>没有注册？</a></p>
     <p><input id="L_pass" class="LR_input" type="password" placeholder="密码">忘记密码了？</p>
     <p style="margin-left:50px" id="ajax_loginstatus"><a style="color:grey;">请输入用户名和密码。</a></p>
@@ -14,12 +14,13 @@
 <% end %>
 <% if @reg == 'yes' %>
 <div class="CTbox<% if @cookies == nil%> LR_re_reg<% end %>">
-	    <p class="block_title"><icon>o</icon>用户中心</p>
-	    <p><input id="L_user" class="LR_input" type="text" placeholder="用户名">用户名由3-16个字符组成，且只能是数字或字母。</p>
-	    <p><input id="L_pass" class="LR_input" type="password" placeholder="密码">密码由6-16个字符组成</p>
-	    <p><input id="L_repass" class="LR_input" type="password" placeholder="确认"></p>
-	    <p><input id="L_mail" class="LR_input" type="text" placeholder="电子邮箱"></p>
+	    <p class="block_title"><icon>o</icon>用户中心::注册</p>
+	    <p><input id="R_user" class="LR_input" type="text" placeholder="用户名">用户名只能由字母和数字组成</p>
+	    <p><input id="R_pass" class="LR_input" type="password" placeholder="密码">密码由6-16个字符组成</p>
+	    <p><input id="R_repass" class="LR_input" type="password" placeholder="确认"></p>
+	    <p><input id="R_mail" class="LR_input" type="text" placeholder="电子邮箱"><a href='javascript:luser()'>拥有帐号？点这里登录</a></p>
 	    <p style="margin-left:50px" id="ajax_loginstatus"><a style="color:grey;">请填写注册信息。</a></p>
+
 	    <p class="CT_btn_helper"><a id="L_push" href="javascript:CreatUser()">注册</a><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
 <% end %>
 </div>

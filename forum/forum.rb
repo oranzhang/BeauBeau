@@ -6,6 +6,7 @@ require "markdown"
 require 'mongoid'
 require 'json'
 require 'aes'
+require 'base64' 
 
 config_file = "#{File.dirname(__FILE__)}/config/config.json"
 set :views, settings.root + '/ui'
@@ -110,6 +111,11 @@ end
 get "/!!/Login/:name&:pass" do
 	@su = Login(params[:name],params[:pass])
 	"#{@su}"
+end
+get "/!!/Register/:b64" do
+	@b64 = JSON.parse(Base64.decode64(params[:b64]))
+	@msg = CreatUser(@b64["user"],@b64["pass"],@b64["mail"])
+	"#{@msg}"
 end
 get "/!!/Clean" do
 	""
