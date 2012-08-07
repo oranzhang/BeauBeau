@@ -59,7 +59,7 @@ helpers do
 	def Login(iname,ipass,ikey)
 		if User.where(name: iname,pass:ipass).exists?
 			@ck_json = '{"name" : ' + "#{iname} , " + '"mail : "' + "#{Digest::MD5.hexdigest(User.where(name: iname,pass:ipass)[0].mail)}" + '}'
-			cookies[:auth] = AES.encrypt(@ck_json)
+			cookies[:auth] = AES.encrypt(@ck_json , ikey)
 			@msg = '{"msg":1}' #succ
 		else
 			@msg = '{"msg":2}' #incorrent

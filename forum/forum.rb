@@ -109,7 +109,7 @@ get "/!!/LRbox_reg" do
 	erb :LRbox
 end
 get "/!!/Login/:name&:pass" do
-	@su = Login(params[:name],params[:pass])
+	@su = Login(params[:name],params[:pass],aes_key)
 	"#{@su}"
 end
 get "/!!/Register/:b64" do
