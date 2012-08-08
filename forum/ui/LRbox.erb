@@ -1,12 +1,13 @@
 <% if @reg != 'yes' %>
-<div class="CTbox<% if @cookies == nil%> LR_re_login<% end %>">
-<% if @cookies == nil %>
+<div class="CTbox<% if @my == 0 %> LR_re_login<% end %>">
+<% if @my == 0 %>
     <p class="block_title"><icon>o</icon>用户中心::登录</p>
     <p><input id="L_user" class="LR_input" type="text" placeholder="用户名"><a href='javascript:reguser()'>没有注册？</a></p>
     <p><input id="L_pass" class="LR_input" type="password" placeholder="密码">忘记密码了？</p>
     <p style="margin-left:50px" id="ajax_loginstatus"><a style="color:grey;">请输入用户名和密码。</a></p>
     <p class="CT_btn_helper"><a id="L_push" href="javascript:Login()">登入</a><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
- <% else %>
+ <% end  %>
+ <% if @my == 1 %>
 	<p class="block_title"><icon>o</icon>你好，<%= @ck["name"] %>！</p>
 	<p style="margin-left:50px">欢迎来到DashBoard。</p>
 	<p class="CT_btn_helper"><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>

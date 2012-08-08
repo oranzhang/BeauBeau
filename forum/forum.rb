@@ -74,13 +74,11 @@ get "/!!/Posting/^:node" do
 	erb :topicbox
 end
 get "/!!/Userbox" do
-	@x = cookies[:auth]
-	while @x ==  nil do
-		@x = ""
-	end
-	if cookies[:auth] == nil
-		@msg = 0 # 0 => not logined
-	else
+	CheckCookie()
+	@x = ''
+	@msg = 0 # 0 => not logined
+	unless cookies[:auth] == ""
+		@x = cookies[:auth]
 		@a = AES.decrypt(@x,aes_key)
 		@info = JSON.parse(@a)
 		@msg = 1 # 1 => already logined
@@ -97,11 +95,24 @@ get "/!!/CTbox/:node" do
 		erb :CTbox
 end
 get "/!!/LRbox" do
+	CheckCookie()
 	@cookies = cookies[:auth]
-	unless @cookies == nil
+#	if @cookies == nil
+#		@cookies = AES.encrypt('{"login":"false"}' , aes_key)
+#		@my = 0
+#	end
+#	if @cookies == ''
+#		@cookies = AES.encrypt('{"login":"false"}' , aes_key)
+#		@my = 0
+#	end
+	@my = 0
+	unless @cookies == ''
 		@ck = JSON.parse(AES.decrypt(@cookies , aes_key))
+		@my = 1
+#	unless @cookies == ''
+#		@ck = JSON.parse(AES.decrypt(@cookies , aes_key))
+#		@my = 1
 	end
-	@reg = params[:reg]
 	erb :LRbox
 end
 get "/!!/LRbox_reg" do
@@ -116,6 +127,10 @@ get "/!!/Register/:b64" do
 	@b64 = JSON.parse(Base64.decode64(params[:b64]))
 	@msg = CreatUser(@b64["user"],@b64["pass"],@b64["mail"])
 	"#{@msg}"
+end
+get "/!!/CookieClean" do
+	cookies[:auth] = ""
+	"#{cookies[:auth]}"
 end
 get "/!!/Clean" do
 	""
