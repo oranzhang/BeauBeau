@@ -132,6 +132,10 @@ get "/!!/CookieClean" do
 	cookies[:auth] = ""
 	'{ "logout" : true }'
 end
+get "/!!!!/CreatNode/:name/:texts" do
+	@a = CreatNode(params[:name],params[:texts])
+	"#{@a}"
+end
 get "/!!/Clean" do
 	""
 end

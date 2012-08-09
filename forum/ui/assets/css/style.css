@@ -32,7 +32,7 @@ html, body {
 	padding:3px;
 }
 .backbox:hover {
-	background: #FF0000;
+	background: #00D6FF;
 }
 .clear {
 	clear:both;
@@ -92,7 +92,7 @@ html, body {
 	text-decoration: none;
 }
 .CT_btn_helper a:hover {
-background: #4EA2E4;
+	background: #4EA2E4;
 }
 .CTbox a {
 	text-decoration: none;
@@ -123,15 +123,15 @@ background: #4EA2E4;
 	line-height:26px;
 }
 .user_icon {
-	box-shadow: 0 0 14px #FF5200;
+	box-shadow: 0 0 14px #008FFF;
 	padding: 5px;
 	padding-left: 20px;
 	padding-right: 88px;
 	position: fixed;
 	height: 33px;
-	background: #BE0000;
+	background: #0089BE;
 	width: 100%;
-	color: #FFF;
+	color: white;
 	z-index: 400;
 }
 .user_gravatar {

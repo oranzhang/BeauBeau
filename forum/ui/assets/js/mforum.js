@@ -1,6 +1,7 @@
 function new_ct(node){
-    $("#dark").load("/!!/CTbox/" + node);
-    setTimeout('var editor = new EpicEditor().load();',1000)
+    $("#dark").load("/!!/CTbox/" + node,'',function(){
+      var editor = new EpicEditor().load();
+    });
     $("#dark").slideToggle();
   }
   function new_LRbox(){
@@ -93,7 +94,9 @@ function logout() {
   });
 }
 $(document).ready(function(){
+  var t = document.title;
   $("#index").load('/index_s.html','',function(){
+    document.title = t + '::Topics';
     $(".topiclist").load('/!!/GetIndexData');
     $("#ajaxwait_user").load('/!!/Userbox');
   })

@@ -1,13 +1,13 @@
 helpers do
 	def CreatNode(name,texts)
 		if Node.where(name:name).exists?
-			@msg = 0 #exist => 0
+			@msg = '{"msg", "exists" }' #exist => 0
 		else
 			Node.create(
 				name: name,
 				texts: texts
 				)
-			@msg = 1
+			@msg = '{"msg", true }'
 		end
 		return @msg
 	end
