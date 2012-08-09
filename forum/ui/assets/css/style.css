@@ -83,13 +83,16 @@ html, body {
 	float: right;
 }
 .CT_btn_helper a {
+	box-shadow: 0 0 7px #04527E;
 	margin-right: 20px;
 	font-size: 28px;
-	color: #167575 !important;
-	background: white;
-	padding-left: 10px;
-	padding-right: 10px;
+	color: #ECFFFF !important;
+	background: #66ADAD;
+	padding: 3px 10px 3px 10px;
 	text-decoration: none;
+}
+.CT_btn_helper a:hover {
+background: #4EA2E4;
 }
 .CTbox a {
 	text-decoration: none;
@@ -145,6 +148,42 @@ html, body {
 }
 .userbox a {
 	color:#FFF;
+}
+#l_my_info {
+	margin-right: 2px;
+	text-decoration: none;
+	padding: 15px 20px 15px 20px;
+}
+#l_my_info:hover {
+	background: #A0D613;
+}
+.user_act {
+	box-shadow: 0 0 10px #A0D613;
+	padding-top: 4px;
+	padding-bottom: 13px;
+	border-radius: 0 0 5px 5px;
+	float: right;
+	width: 90px;
+	background: #A0D613;
+	position: fixed;
+	top: 31px;
+	right: 44px;
+}
+.user_act li {
+	padding-left: 82px;
+	width: 48px;
+	font-size: 15px;
+	line-height: 24px;
+	list-style: none;
+	float: right;
+}
+.user_act li  a {
+	color: white;
+	text-decoration: none;
+
+}
+.user_act li:hover {
+	background: #123456;
 }
 /*main*/
 .topiclist {

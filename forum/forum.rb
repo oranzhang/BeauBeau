@@ -130,7 +130,7 @@ get "/!!/Register/:b64" do
 end
 get "/!!/CookieClean" do
 	cookies[:auth] = ""
-	"#{cookies[:auth]}"
+	'{ "logout" : true }'
 end
 get "/!!/Clean" do
 	""

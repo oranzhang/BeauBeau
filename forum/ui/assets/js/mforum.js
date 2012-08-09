@@ -23,32 +23,18 @@ if (re.test(user)){
     if(status == 1) {
     $("#ajax_loginstatus").html('<a id="temp_st" style="color:green">登入成功，若无反应请刷新。</a>');
     $("#ajaxwait_user").load('/!!/Userbox');
-    setTimeout('$("#dark").slideToggle()',3000);
+    setTimeout('$("#dark").slideToggle()',800);
     }
     else
     {
-    $("#ajax_loginstatus").html('<a id="temp_st" style="color:red">用户名或密码错误。</a>');
+    $("#ajax_loginstatus").html('<a id="temp_st" style="color:red">用户名或密码错误或用户名不存在。</a>');
     }
     });
     }
     else{$("#ajax_loginstatus").html('<a id="temp_st" style="color:red">用户名只能由字母和数字组成</a>');}
 }
-
-function getCookie(name)   
-{
-    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
-     if(arr != null) return unescape(arr[2]); return null;
-
-}
-function delCookie(name)
-{
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-}
 function CreatUser(){
-    var email_p = /^([a-z0-9A-Z]+[-|\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-zA-Z]{2,}$/;
+    var email_p = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
     var user_p =/^[A-Za-z0-9]+$/;
     var count = 0;
     var user = $("#R_user")[0].value;
@@ -90,7 +76,8 @@ function CreatUser(){
         }
         if (status == 0) {
           $("#ajax_loginstatus").html('<a id="temp_st" style="color:green">恭喜，注册成功，若页面长时间无相应请刷新页面！</a>');
-          setTimeout('location.reload()',1500);
+          $("#ajaxwait_user").load('/!!/Userbox');
+          setTimeout(function(){$("#dark").load('/!!/LRbox')},100);
         }
       });
     }
@@ -98,8 +85,64 @@ function CreatUser(){
       $("#ajax_loginstatus").html('<a id="temp_st" style="color:red">' + err1 + err2 + err3 + '</a>');
     }
 }
+function logout() {
+  $.getJSON("/!!/CookieClean",function(a){
+    if (a.logout == true) {
+      location.reload();
+    }
+  });
+}
 $(document).ready(function(){
-$(".topiclist").load('/!!/GetIndexData');
-$("#ajaxwait_user").load('/!!/Userbox');
+  $("#index").load('/index_s.html','',function(){
+    $(".topiclist").load('/!!/GetIndexData');
+    $("#ajaxwait_user").load('/!!/Userbox');
+  })
+var url =  window.location.href;
+var sharp1 = $.url(url).fsegment(1);
+var sharp2
+switch (sharp1)
+   {
+   case "node":
+     sharp2 = $.url(url).fsegment(2);
+     if (sharp2 == undefined) {
+     
+     }
+     else {
 
+     }
+     break
+   case "topic":
+     sharp2 = $.url(url).fsegment(2);
+     case "node":
+     sharp2 = $.url(url).fsegment(2);
+     if (sharp2 == undefined) {
+     
+     }
+     else {
+
+     }
+     break
+   case "user":
+     case "node":
+     sharp2 = $.url(url).fsegment(2);
+     if (sharp2 == undefined) {
+     
+     }
+     else {
+
+     }
+     break
+   default:
+     
+}
 });
+function u_act_open() {
+  $("#l_my_info").css("background","#A0D613");
+  $("#l_my_info")[0].href = 'javascript:u_act_close();';
+  $(".user_act").toggle(500);
+}
+function u_act_close() {
+  $("#l_my_info").css("background","");
+  $("#l_my_info")[0].href = 'javascript:u_act_open();';
+  $(".user_act").toggle(500);
+}
