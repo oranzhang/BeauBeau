@@ -1,0 +1,11 @@
+	<p class="block_title"><icon>m</icon>选择一个节点</p>
+<% @node.each do |n| %>
+<p class="nodebox_list">
+	<% ct = 'new_ct("' + n.name + '");' %>
+	<% nd = '"node("' + n.name  + '");"' %>
+	<a><%=n.name %><span>
+	<%=n.texts %></span></a>
+	<span class="node_act"><a onclick='<%=ct %>'><icon>[</icon></a> <a onclick='<%=nd %>'><icon>u</icon></a><span>
+	
+</p>
+<% end %>

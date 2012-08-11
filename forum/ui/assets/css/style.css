@@ -261,3 +261,39 @@ html, body {
 .LR_re_reg {
 	height: 442px !important;
 }
+
+/*NODE*/
+.nodebox_list {
+	margin-right: 78px;
+	margin-left: 90px;
+	border-bottom: 3px solid #E4E4E4;
+	color: #1AB8C5;
+	font-size: 64px;
+	line-height: 18px;
+	padding-right: 14px;
+}
+.nodebox_list a {
+	color: #1AB8C5;
+	text-decoration: none;
+}
+.nodebox_list span {
+	font-size: 25px;
+	color: #68B84F;
+}
+.node_act {
+	line-height: 24px;
+	font-size: 24px !important;
+	float: right;
+	background: #165281;
+	position: relative;
+	top: 0px;
+	padding-bottom: 6px;
+	padding-left: 3px;
+	padding-right: 3px;
+	}
+.node_act a {
+	color: white; 
+}
+.node_act a:hover {
+	color: #D7E256; 
+}

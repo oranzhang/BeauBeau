@@ -19,14 +19,14 @@ helpers do
 		end
 		return @data
 	end
-	def CreatPostHash(title = "" ,texts = "",user = "" )
-		@hash = Digest::SHA1.hexdigest("the post #{title}#{texts} by #{user} when #{Time.now} form #{imother}")
-		return hash
+	def CreatPostHash(title = "" ,texts = "",user = "" ,node = "",mother = "")
+		@hash = Digest::SHA1.hexdigest("the post #{title}#{texts} to #{node} by #{user} when #{Time.now} form #{mother} #{rand(9999).to_s}")
+		return @hash
 	end
 	def PostToMongo(ititle,itexts,iuser,inode,itype,istatus,imother)
-		@hash = CreatPostHash(ititle,itexts,iuser,imother)
-		Post.create!(
-			hash: @hash,
+		@hash = CreatPostHash(ititle,itexts,iuser,inode,imother)
+		if Post.create!(
+			posthash: @hash,
 			title: ititle,
 			texts: itexts,
 			user: iuser,
@@ -36,6 +36,11 @@ helpers do
 			status: istatus, 
 			mother: imother
 			)
+			@a = Hash["hasH", @hash.to_s, "status",1]
+		else
+			@a = Hash["hasH" , '',"status",0]
+		end
+		return @a.to_json
 	end
 	def CreatUser(iname,ipass,imail)
 		if User.where(name: iname).exists?
@@ -89,10 +94,10 @@ helpers do
 	end
 	def GetLatestPost(max,page)
 		@data = Array.new
-		for x in 1..10 do
-			@num=0-(max*(page-1)+x)
-			if Post.where(mother: 'self').sort(_id: @num).limit(-1) == nil
-				@data << Post.where(mother: 'self').sort(_id: @num).limit(-1)
+		@num=0-(max*(page-1))
+		Post.where(type:"topic",status:"basic").sort(_id: -1).limit(@num).each  do |post|
+			if post != nil
+				@data << post.posthash
 			end
 		end
 		return @data
@@ -112,7 +117,7 @@ helpers do
 		for x in 1..10 do
 			@num=0-(max*(page-1)+x)
 			if Post.where(nade: node ,mother: topichash).sort(_id: @num).limit(-1) == nil
-				@data << Post.where(nade: node ,mother: topichash).sort(_id: @num).limit(-1)
+				@data << Post.where(mother: topichash).sort(_id: @num).limit(-1)
 			end
 		end
 		return @data

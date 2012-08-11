@@ -41,7 +41,7 @@ require './MUtils'
 		class Post 
 			include Mongoid::Document
 			store_in collection: "posts"
-			field :hash, type: String
+			field :posthash, type: String
 			field :title, type: String
 			field :texts, type: String
 			field :user, type: String
@@ -51,6 +51,7 @@ require './MUtils'
 			field :status # 0 -> basic , 1 -> important , 2 -> HEXIE
 			field :mother
 			shard_key :hash, :title, :texts, :user, :time, :node, :type, :status, :mother
+			index({ time: 1 }, { unique: true, name: "time_index" })
 		end
 get "/" do
 	@name = conf["sitename"]
@@ -138,4 +139,20 @@ get "/!!!!/CreatNode/:name/:texts" do
 end
 get "/!!/Clean" do
 	""
+end
+get "/!!/GetNodeList" do
+	@node  = Node
+	erb :nodelist
+end
+post '/!!/post/*' do |c|
+	@data = JSON.parse(Base64.decode64(c))
+	@json = PostToMongo(
+		@data["title"],
+		@data["data"],
+		JSON.parse(AES.decrypt(cookies[:auth] , aes_key))["name"],
+		@data["node"],
+		"topic",
+		"basic",
+		"")
+	"#{@json}"
 end

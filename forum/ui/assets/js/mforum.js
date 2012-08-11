@@ -1,6 +1,36 @@
+  var t = document.title;
 function new_ct(node){
     $("#dark").load("/!!/CTbox/" + node,'',function(){
-      var editor = new EpicEditor().load();
+      var editor = new EpicEditor().load(
+          function(){
+                $("#CT_push").click(function () {
+                  editor.preview();
+                  var data = (editor.getElement('previewer').body.innerHTML); 
+                  var title = $("#CT_title")[0].value;
+                  var node = $("#CT_node")[0].value;
+                  var json = JSON.stringify({
+                    "title":title,
+                    "data":data,
+                    "node":node
+                  });
+                  var b64data = BASE64.encode(json);
+                  $.post('/!!/post/' + b64data,"",function(x) {
+                    var st = x.status;
+                    var ha = x.hasH;
+                    if(st == 1) {
+                      alert(ha);
+                      $(".topiclist").load('/!!/GetIndexData');
+                      editor.unload();
+                      $("#dark").slideToggle();
+                    }
+                    else {
+                      alert("发表失败，请重试。");
+                    }
+                  },"json");
+
+                });
+          }
+        );
     });
     $("#dark").slideToggle();
   }
@@ -94,12 +124,12 @@ function logout() {
   });
 }
 $(document).ready(function(){
-  var t = document.title;
+
   $("#index").load('/index_s.html','',function(){
     document.title = t + '::Topics';
     $(".topiclist").load('/!!/GetIndexData');
     $("#ajaxwait_user").load('/!!/Userbox');
-  })
+  });
 var url =  window.location.href;
 var sharp1 = $.url(url).fsegment(1);
 var sharp2
@@ -148,4 +178,10 @@ function u_act_close() {
   $("#l_my_info").css("background","");
   $("#l_my_info")[0].href = 'javascript:u_act_open();';
   $(".user_act").toggle(500);
+}
+function node_set_post() {
+  $("#index").load('/index_s.html','',function(){
+    document.title = t + '::Topics';
+    $(".topiclist").load("/!!/GetNodeList");
+  });
 }
