@@ -1,7 +1,7 @@
 <div class="CTbox">
 <% if @node_exists == true %>
     <p class="block_title"><icon>[</icon>请编辑帖子的内容</p>
-    <p><input id="CT_title" type="text" placeholder="请在此处输入标题……"></p>
+    <p><input id="CT_title" type="text" maxlength= "30"placeholder="请在此处输入标题……"></p>
     <input id="CT_node" name="node" type="hidden" value="<%= @node %>">
     <div id="epiceditor"></div>
     <p class="CT_btn_helper"><a id="CT_push">确定</a><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
