@@ -21,6 +21,7 @@ html, body {
 	font:12px/1.125 "微软雅黑","Segou UI";
 	color:#333;
 	background:#FFF;
+	margin-bottom: 0;
 }
 .left {
 	float:left;
@@ -144,11 +145,12 @@ html, body {
 .userbox h3 {
 	position: relative;
 	float: right;
-	top: -6px;
+	top: -20px;
 	right: 30px;
 }
 .userbox a {
 	color:#FFF;
+	text-decoration: none;
 }
 #l_my_info {
 	margin-right: 2px;
@@ -296,4 +298,18 @@ html, body {
 }
 .node_act a:hover {
 	color: #D7E256; 
+}
+
+/*footer*/
+.footer {
+	text-align: right;
+	width: 95%;
+	padding-right: 5%;
+	border-top: 2px #5AA8D5 solid;
+	padding-top: 8px;
+	color: #095B8A;
+	padding-bottom: 38px;
+}
+.footer a {
+	color: #095B8A;
 }

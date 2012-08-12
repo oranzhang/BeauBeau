@@ -6,12 +6,13 @@
       <li><a id="navi_node" class="backbox">::Nodes</a></li>
     </ul>
   <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @info["mail"] %>?r=G&amp;s=32">
-  <h3><a id="l_my_info" href="javascript:u_act_open();"><%= @info["name"] %></a></h3>
-  <ul class="user_act" style="display:none;">
-    <li onclick="node_set_post()">发帖</li>
-    <li onclick="new_LRbox()">设置</li>
-    <li onclick="logout()">退出</li>
+  <h3 id="l_my_info"><a  href="javascript:;"><%= @info["name"] %></a>
+    <ul class="user_act" style="display:none;">
+    <li href="javascript:;" onclick="index_node()">发帖</li>
+    <li href="javascript:;" onclick="new_LRbox()">设置</li>
+    <li href="javascript:;" onclick="logout()">退出</li>
   </ul>
+  </h3>
 </div>
 <% end %>
 <% if @msg == 0%>

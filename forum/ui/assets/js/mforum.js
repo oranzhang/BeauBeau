@@ -1,4 +1,5 @@
   var t = document.title;
+  var last_page
 function new_ct(node){
     $("#dark").load("/!!/CTbox/" + node,'',function(){
       var editor = new EpicEditor().load(
@@ -127,8 +128,13 @@ $(document).ready(function(){
 
   $("#index").load('/index_s.html','',function(){
     document.title = t + '::Topics';
-    $(".topiclist").load('/!!/GetIndexData');
-    $("#ajaxwait_user").load('/!!/Userbox');
+    index_topic();
+    $("#ajaxwait_user").load('/!!/Userbox',"",function (){
+      $("#navi_index").click(function(){index_topic();});
+      $("#navi_node").click(function(){index_node();});
+      $('#l_my_info').mouseenter(function(){u_act_toggle();});
+      $('#l_my_info').mouseleave(function(){u_act_toggle();});
+    });
   });
 var url =  window.location.href;
 var sharp1 = $.url(url).fsegment(1);
@@ -169,19 +175,14 @@ switch (sharp1)
      
 }
 });
-function u_act_open() {
-  $("#l_my_info").css("background","#A0D613");
-  $("#l_my_info")[0].href = 'javascript:u_act_close();';
+function u_act_toggle() {
+  /*$("#l_my_info").css("background","#A0D613");*/
   $(".user_act").toggle(500);
 }
-function u_act_close() {
-  $("#l_my_info").css("background","");
-  $("#l_my_info")[0].href = 'javascript:u_act_open();';
-  $(".user_act").toggle(500);
+function index_topic() {
+  $(".topiclist").slideToggle(function(){$(".topiclist").load('/!!/GetIndexData','',function(){$.getScript('/!!/GetIndexData_js');document.title = t + '::Topics';$(".topiclist").slideToggle();});});
 }
-function node_set_post() {
-  $("#index").load('/index_s.html','',function(){
-    document.title = t + '::Topics';
-    $(".topiclist").load("/!!/GetNodeList");
-  });
+
+function index_node() {
+  $(".topiclist").slideToggle(function(){$(".topiclist").load("/!!/GetNodeList",'',function(){document.title = t + '::Nodes';$(".topiclist").slideToggle();});});
 }

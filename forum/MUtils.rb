@@ -115,11 +115,11 @@ helpers do
 		return @data_opt
 	end
 	def GetReplyByTopic(topichash)
-		@data = Array.new()
-		for x in 1..10 do
-			@num=0-(max*(page-1)+x)
-			if Post.where(nade: node ,mother: topichash).sort(_id: @num).limit(-1) == nil
-				@data << Post.where(mother: topichash).sort(_id: @num).limit(-1)
+		@data = Array.new
+		@num = Post.where(mother: topichash).count
+		Post.where(mother: topichash).sort(_id: -1).limit(@num).each  do |post|
+			if post != nil
+				@data << post.posthash
 			end
 		end
 		return @data

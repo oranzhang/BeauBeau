@@ -59,11 +59,14 @@ get "/" do
 	erb :index
 end
 get "/!!/GetIndexData" do
-	@u = User.new
-	@p = Post.new
 	@count = GetPostListInfo(conf["maxitemnumber"])
 	@data = GetLatestPost(conf["maxitemnumber"],1)
 	erb :topicbox
+end
+get "/!!/GetIndexData_js" do
+	@count = GetPostListInfo(conf["maxitemnumber"])
+	@data = GetLatestPost(conf["maxitemnumber"],1)
+	erb :topicbox_js
 end
 get "/!!/Posting/^:node" do
 	if Node.where(name: params[:node].to_s).exists?
