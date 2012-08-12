@@ -94,23 +94,25 @@ helpers do
 	end
 	def GetLatestPost(max,page)
 		@data = Array.new
-		@num=0-(max*(page-1))
+		@num=0-(max*page)
 		Post.where(type:"topic",status:"basic").sort(_id: -1).limit(@num).each  do |post|
 			if post != nil
 				@data << post.posthash
 			end
 		end
-		return @data
+		@data_opt = @data[max*(page-1),max]
+		return @data_opt
 	end
 	def GetLatestPostByNode(node,max,page)
 		@data = Array.new
-		for x in 1..10 do
-			@num=0-(max*(page-1)+x)
-			if Post.where(node: node,mother: 'self').sort(_id: @num).limit(-1) == nil
-				@data << Post.where(node: node,mother: 'self').sort(_id: @num).limit(-1)
+		@num=0-(max*page)
+		Post.where(node: node, type:"topic",status:"basic").sort(_id: -1).limit(@num).each  do |post|
+			if post != nil
+				@data << post.posthash
 			end
 		end
-		return @data
+		@data_opt = @data[max*(page-1),max]
+		return @data_opt
 	end
 	def GetReplyByTopic(topichash)
 		@data = Array.new()
