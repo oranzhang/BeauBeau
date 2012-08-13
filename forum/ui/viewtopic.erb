@@ -13,9 +13,16 @@
 			<p>本帖独立访问地址为 <a href="http://<%=request.host%><% if request.port != 80%>:<%=request.port %><%end%>/#post/<%=@data[0].posthash%>">http://<%=request.host%><% if request.port != 80%>:<%=request.port %><%end%>/#post/<%=@data[0].posthash%></a>。</p>
 		</div>
 	</div>
+	<div class="v_box view_topic replybox">
+	</div>
 <%end%>
-<% if @type == "repliy" %>
-
+<% if @type == "reply" %>
+	<a class="t_span">回复</a>
+	<div id="epiceditor"></div>
+	<a id="reply_to">不要吐槽我的存在！<a>
+	<% @data.each do |hash| %>
+		<%=hash%><br>
+	<%end%>
 <%end%>
 <% if @type == "notfound" %>
 	<div class="v_box">

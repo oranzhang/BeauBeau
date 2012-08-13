@@ -332,6 +332,10 @@ html, body {
 	line-height: 14px;
 	font-size: 40px;
 }
+.t_span {
+	color: #1B5B96;
+	font-size: 40px;
+}
 .view_user_text a {
 	color: #1B5B96;
 }
@@ -344,7 +348,12 @@ html, body {
 .viewtopic .block_title a:hover {
 	color: #FC0;
 }
-
+.replybox #epiceditor{
+	box-shadow: 0 0 10px black;
+	height: 200px;
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
 
 /*viewing_topic*/
 #epiceditor-preview{

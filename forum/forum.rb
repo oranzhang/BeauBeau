@@ -158,12 +158,26 @@ post '/!!/viewpost/*' do |hash|
 	end
 	erb :viewtopic
 end
-post '/!!/getreplies/*' do |hash|
-	@replies = GetReplyByTopic(hash)
-	if @replies.exists?
-		@type = "reply"
-	else
-		@type = "notfound"
+get '/!!/getreplies/*' do |hash|
+	@data = Array.new
+	@num = Post.where(mother: hash).count
+	Post.where(mother: hash).sort(_id: 1).limit(@num).each  do |post|
+		if post != nil
+			@data << post.posthash
+		end
 	end
+	@type = "reply"
 	erb :viewtopic
+end
+post '/!!/reply/*' do |c|
+	@data = JSON.parse(Base64.decode64(c))
+	@json = PostToMongo(
+		'reply',
+		@data["data"],
+		JSON.parse(AES.decrypt(cookies[:auth] , aes_key))["name"],
+		'reply',
+		"reply",
+		"basic",
+		@data["mother"])
+	"#{@json}"
 end

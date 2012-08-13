@@ -114,16 +114,6 @@ helpers do
 		@data_opt = @data[max*(page-1),max]
 		return @data_opt
 	end
-	def GetReplyByTopic(topichash)
-		@data = Array.new
-		@num = Post.where(mother: topichash).count
-		Post.where(mother: topichash).sort(_id: 1).limit(@num).each  do |post|
-			if post != nil
-				@data << post.posthash
-			end
-		end
-		return @data
-	end
 	def CheckCookie()
 		if cookies[:auth] == nil
 			cookies[:auth] = ''
