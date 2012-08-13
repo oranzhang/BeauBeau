@@ -48,14 +48,14 @@ function luser(){
 function Login(){
     var user = $("#L_user")[0].value;
     var re =/^[A-Za-z0-9]+$/;
+    $("#ajax_loginstatus").html('<a id="temp_st">登录中，请稍候，若长时间无响应请刷新页面。</a>');
 if (re.test(user)){
     var pass = SHA1($("#L_pass")[0].value);
     $.getJSON('/!!/Login/' + user + '&' + pass,function(d){
     var status = d.msg;
     if(status == 1) {
     $("#ajax_loginstatus").html('<a id="temp_st" style="color:green">登入成功，若无反应请刷新。</a>');
-    $("#ajaxwait_user").load('/!!/Userbox');
-    setTimeout('$("#dark").slideToggle()',800);
+    $("#ajaxwait_user").load('/!!/Userbox',"",function(){setTimeout('$("#dark").slideToggle()',800);regNavitoggle();});
     }
     else
     {
@@ -130,10 +130,7 @@ $(document).ready(function(){
     document.title = t + '::Topics';
     index_topic();
     $("#ajaxwait_user").load('/!!/Userbox',"",function (){
-      $("#navi_index").click(function(){index_topic();});
-      $("#navi_node").click(function(){index_node();});
-      $('#l_my_info').mouseenter(function(){u_act_toggle();});
-      $('#l_my_info').mouseleave(function(){u_act_toggle();});
+      regNavitoggle();
     });
   });
 var url =  window.location.href;
@@ -185,4 +182,10 @@ function index_topic() {
 
 function index_node() {
   $(".topiclist").slideToggle(function(){$(".topiclist").load("/!!/GetNodeList",'',function(){document.title = t + '::Nodes';$(".topiclist").slideToggle();});});
+}
+function regNavitoggle() {
+      $("#navi_index").click(function(){index_topic();});
+      $("#navi_node").click(function(){index_node();});
+      $('#l_my_info').mouseenter(function(){u_act_toggle();});
+      $('#l_my_info').mouseleave(function(){u_act_toggle();});
 }
