@@ -18,7 +18,7 @@ html, body {
 	min-width: 1024px;
 	margin:0;
 	padding:0;
-	font:12px/1.125 "WenQuanYi ZenHei","宋体";
+	font:12px/1.125 "WenQuanYi ZenHei","Microsoft YaHei","Simsun";
 	color:#333;
 	background:#FFF;
 	margin-bottom: 0;
@@ -271,7 +271,6 @@ html, body {
 	border-bottom: 3px solid #E4E4E4;
 	color: #1AB8C5;
 	font-size: 64px;
-	line-height: 18px;
 	padding-right: 14px;
 }
 .nodebox_list a {
@@ -317,9 +316,9 @@ html, body {
 .v_box {
 	box-shadow: 0 0 10px #88BFF5 , 0 0 2px #5DA7D1 inset;
 	width: 87%;
-	background: #E8ECF1;
+	background: #F2FEFF;
 	border-radius: 5px;
-	border: 1px solid #5DA7D1;
+	border: 1px solid white;
 	position: relative;
 	left: 50px;
 	padding: 15px;
