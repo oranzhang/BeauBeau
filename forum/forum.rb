@@ -101,21 +101,11 @@ end
 get "/!!/LRbox" do
 	CheckCookie()
 	@cookies = cookies[:auth]
-#	if @cookies == nil
-#		@cookies = AES.encrypt('{"login":"false"}' , aes_key)
-#		@my = 0
-#	end
-#	if @cookies == ''
-#		@cookies = AES.encrypt('{"login":"false"}' , aes_key)
-#		@my = 0
-#	end
 	@my = 0
 	unless @cookies == ''
 		@ck = JSON.parse(AES.decrypt(@cookies , aes_key))
 		@my = 1
-#	unless @cookies == ''
-#		@ck = JSON.parse(AES.decrypt(@cookies , aes_key))
-#		@my = 1
+
 	end
 	erb :LRbox
 end
@@ -158,4 +148,22 @@ post '/!!/post/*' do |c|
 		"basic",
 		"")
 	"#{@json}"
+end
+post '/!!/viewpost/*' do |hash|
+	@data = Post.where(posthash: hash)
+	if @data.exists?
+		@type = "topic"
+	else
+		@type = "notfound"
+	end
+	erb :viewtopic
+end
+post '/!!/getreplies/*' do |hash|
+	@replies = GetReplyByTopic(hash)
+	if @replies.exists?
+		@type = "reply"
+	else
+		@type = "notfound"
+	end
+	erb :viewtopic
 end

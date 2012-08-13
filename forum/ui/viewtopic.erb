@@ -1,0 +1,27 @@
+<% if @type == "topic" %>
+<p class="block_title">
+	<icon>j</icon>	<%=@data[0].title%>
+</p>
+	<div class="v_box view_texts">
+		<%=@data[0].texts %>
+	</div>
+	<div class="v_box view_user">
+		<div class="view_gravatar" style="background:url(http://gravatar.com/avatar/<%=Digest::MD5.hexdigest(User.where(name: @data[0].user)[0].mail) %>?r=G&amp;s=64)  no-repeat"></div>
+		<div class="view_user_text">
+			<p><span>作者 <%=@data[0].user %></span></p>
+			<p>发表该贴到 <%=@data[0].node %> 节点于 <%=@data[0].time %>。</p>
+			<p>本帖独立访问地址为 <a href="http://<%=request.host%><% if request.port != 80%>:<%=request.port %><%end%>/#post/<%=@data[0].posthash%>">http://<%=request.host%><% if request.port != 80%>:<%=request.port %><%end%>/#post/<%=@data[0].posthash%></a>。</p>
+		</div>
+	</div>
+<%end%>
+<% if @type == "repliy" %>
+
+<%end%>
+<% if @type == "notfound" %>
+	<div class="v_box">
+		<div class="view_user_text">
+			<p><span>抱歉</span></p>
+			<p>您所请求的帖子不存在。</p>
+		</div>
+	</div>
+<%end%>

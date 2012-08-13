@@ -117,7 +117,7 @@ helpers do
 	def GetReplyByTopic(topichash)
 		@data = Array.new
 		@num = Post.where(mother: topichash).count
-		Post.where(mother: topichash).sort(_id: -1).limit(@num).each  do |post|
+		Post.where(mother: topichash).sort(_id: 1).limit(@num).each  do |post|
 			if post != nil
 				@data << post.posthash
 			end
@@ -128,5 +128,15 @@ helpers do
 		if cookies[:auth] == nil
 			cookies[:auth] = ''
 		end
+	end
+	def Logined?()
+		@msg = true
+		if cookies[:auth] == nil
+			@msg = false
+		end
+		if cookies[:auth] == ""
+			@msg = false
+		end
+		return @msg
 	end
 end

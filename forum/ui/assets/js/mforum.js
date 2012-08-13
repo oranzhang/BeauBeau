@@ -1,5 +1,5 @@
   var t = document.title;
-  var last_page
+  var last_page;
 function new_ct(node){
     $("#dark").load("/!!/CTbox/" + node,'',function(){
       var editor = new EpicEditor().load(
@@ -177,15 +177,40 @@ function u_act_toggle() {
   $(".user_act").toggle(500);
 }
 function index_topic() {
-  $(".topiclist").slideToggle(function(){$(".topiclist").load('/!!/GetIndexData','',function(){$.getScript('/!!/GetIndexData_js');document.title = t + '::Topics';$(".topiclist").slideToggle();});});
+  $("#ajaxwait_view_topic").hide();
+  $(".topiclist").slideUp(function(){
+    $(".topiclist").load('/!!/GetIndexData','',function(){
+      $.getScript('/!!/GetIndexData_js');
+      document.title = t + '::Topics';$(".topiclist").slideDown();
+    });
+  });
 }
 
 function index_node() {
-  $(".topiclist").slideToggle(function(){$(".topiclist").load("/!!/GetNodeList",'',function(){document.title = t + '::Nodes';$(".topiclist").slideToggle();});});
+  $("#ajaxwait_view_topic").hide();
+  $(".topiclist").slideUp(
+    function(){$(".topiclist").load("/!!/GetNodeList",'',function(){
+      document.title = t + '::Nodes';
+      $(".topiclist").slideDown();
+    });
+  });
 }
 function regNavitoggle() {
       $("#navi_index").click(function(){index_topic();});
       $("#navi_node").click(function(){index_node();});
       $('#l_my_info').mouseenter(function(){u_act_toggle();});
       $('#l_my_info').mouseleave(function(){u_act_toggle();});
+}
+function view_topic(hash) {
+  var topic_add = "/!!/viewpost/" + hash;
+  var reply_add = "/!!/getreplies/" + hash;
+  var list = $("#ajaxwait_latest_topic");
+  var view = $("#ajaxwait_view_topic");
+  $("#ajax_loading").slideToggle();
+  var html = $.post(topic_add,'',function(d){
+    view.html(d);
+    list.slideToggle();
+    view.slideToggle();
+    $("#ajax_loading").slideToggle();
+  },"html");
 }

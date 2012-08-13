@@ -5,7 +5,7 @@
 	<% nd = '"node("' + n.name  + '");"' %>
 	<a><%=n.name %><span>
 	<%=n.texts %></span></a>
-	<span class="node_act"><a onclick='<%=ct %>'><icon>[</icon></a> <a onclick='<%=nd %>'><icon>u</icon></a><span>
+	<span class="node_act"><% if Logined? %><a onclick='<%=ct %>'><icon>[</icon></a> <%end%><a onclick='<%=nd %>'><icon>u</icon></a><span>
 	
 </p>
 <% end %>
