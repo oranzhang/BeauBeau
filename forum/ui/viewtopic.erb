@@ -1,6 +1,6 @@
 <% if @type == "topic" %>
 <p class="block_title">
-	<icon>j</icon>	<%=@data[0].title%>
+	<icon><a onclick="javascript:back();">v</a></icon>	<%=@data[0].title%>
 </p>
 	<div class="v_box view_texts">
 		<%=@data[0].texts %>

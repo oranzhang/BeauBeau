@@ -214,3 +214,9 @@ function view_topic(hash) {
     $("#ajax_loading").slideToggle();
   },"html");
 }
+function back(){
+  var list = $("#ajaxwait_latest_topic");
+  var view = $("#ajaxwait_view_topic");
+  list.slideToggle();
+  view.slideToggle();
+}
