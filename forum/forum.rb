@@ -11,7 +11,7 @@ require 'base64'
 config_file = "#{File.dirname(__FILE__)}/config/config.json"
 set :views, settings.root + '/ui'
 set :public_folder, File.dirname(__FILE__) + '/ui/assets'
-conf = JSON.parse(File.new(config_file,"r").readlines[0])
+conf = JSON.parse(File.new(config_file,"r").read)
 aes_key = conf["cookies_key"]
 Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml")
 Mongoid.logger = Logger.new($stdout)
