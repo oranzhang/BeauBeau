@@ -7,14 +7,14 @@
     <p style="margin-left:50px" id="ajax_loginstatus"><a style="color:grey;">请输入用户名和密码。</a></p>
     <p class="CT_btn_helper">
     	<a id="L_push" href="javascript:Login()">登入</a>
-    	<a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+    	<a onclick='$("#dark").slideToggle();'>关闭</a></p>
  <% end  %>
  <% if @my == 1 %>
 	<p class="block_title"><icon>o</icon>你好，<%= @ck["name"] %>！</p>
 	<p style="margin-left:50px">欢迎来到DashBoard。</p>
 	<p class="CT_btn_helper">
 		<a href='javascript:logout();'>退出</a>
-		<a href='javascript:$("#dark").slideToggle();'>关闭</a>
+		<a onclick='$("#dark").slideToggle();'>关闭</a>
 	</p>
 <% end %>
 <% end %>
@@ -27,6 +27,6 @@
 	    <p><input id="R_mail" class="LR_input" type="text" placeholder="电子邮箱"  onkeydown='if(event.keyCode==13){CreatUser();}'><a href='javascript:luser()'>拥有帐号？点这里登录</a></p>
 	    <p style="margin-left:50px" id="ajax_loginstatus"><a style="color:grey;">请填写注册信息。</a></p>
 
-	    <p class="CT_btn_helper"><a id="L_push" href="javascript:CreatUser()">注册</a><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+	    <p class="CT_btn_helper"><a id="L_push" href="javascript:CreatUser()">注册</a><a onclick='$("#dark").slideToggle();'>关闭</a></p>
 <% end %>
 </div>

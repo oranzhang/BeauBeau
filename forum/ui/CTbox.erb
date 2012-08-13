@@ -4,11 +4,11 @@
     <p><input id="CT_title" type="text" maxlength= "30"placeholder="请在此处输入标题……"></p>
     <input id="CT_node" name="node" type="hidden" value="<%= @node %>">
     <div id="epiceditor"></div>
-    <p class="CT_btn_helper"><a id="CT_push">确定</a><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+    <p class="CT_btn_helper"><a id="CT_push">确定</a><a onclick='$("#dark").slideToggle();'>关闭</a></p>
 <% end %>
 <% if @node_exists == false %>
 	<p class="block_title"><icon>[</icon>抱歉，节点<%= @node %>不存在！</p>
 	<div style="height:60px"><p style="margin-left:50px">如果你是在正常使用时弹出此错误提示框，请联系管理员反映问题:)。</p></div>
-	<p class="CT_btn_helper"><a href='javascript:$("#dark").slideToggle();'>关闭</a></p>
+	<p class="CT_btn_helper"><a onclick='$("#dark").slideToggle();'>关闭</a></p>
 <% end %>
 </div>
