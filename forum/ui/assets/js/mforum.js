@@ -263,8 +263,7 @@ function rep_to(hash) {
 					var st = x.status;
 					if(st == 1) {
 						$(".replybox").load("/!!/getreplies/" + hash,'',function(){
-							editor1.open('/!!/Clean');
-							rep_to(hash);
+							editor1.unload(rep_to(hash));
 						});
 						}
 					else {
