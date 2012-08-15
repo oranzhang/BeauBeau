@@ -348,7 +348,7 @@ html, body {
 .viewtopic .block_title a:hover {
 	color: #FC0;
 }
-.replybox #epiceditor{
+.replybox #epic_rep{
 	box-shadow: 0 0 10px black;
 	height: 200px;
 	margin-bottom: 30px;

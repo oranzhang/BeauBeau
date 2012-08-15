@@ -18,7 +18,17 @@
 <%end%>
 <% if @type == "reply" %>
 	<a class="t_span">回复</a>
-	<div id="epiceditor"></div>
+	<%if Logined? %>
+	<div id="epic_rep"></div>
+	<a id="reply_to">不要吐槽我的存在！<a>
+	<% end%>
+	<% @data.each do |hash| %>
+		<%=hash%><br>
+	<%end%>
+<%end%>
+<% if @type == "reply_list" %>
+	<a class="t_span">回复</a>
+	<div id="epic_rep"></div>
 	<a id="reply_to">不要吐槽我的存在！<a>
 	<% @data.each do |hash| %>
 		<%=hash%><br>

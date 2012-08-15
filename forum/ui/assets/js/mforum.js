@@ -43,7 +43,7 @@ function new_ct(node){
 							var st = x.status;
 							var ha = x.hasH;
 							if(st == 1) {
-								$(".topiclist").load('/!!/GetIndexData');
+								index_topic();
 								editor.unload();
 								$("#dark").slideToggle();
 							}
@@ -78,6 +78,7 @@ if (re.test(user)){
 		var status = d.msg;
 		if(status == 1) {
 		$("#ajax_loginstatus").html('<a id="temp_st" style="color:green">登入成功，若无反应请刷新。</a>');
+		index_topic();
 		$("#ajaxwait_user").load('/!!/Userbox',"",function(){setTimeout('$("#dark").slideToggle()',800);regNavitoggle();});
 		}
 		else
@@ -235,32 +236,7 @@ function view_topic(hash) {
 		list.slideToggle();
 		view.slideToggle();
 		$(".replybox").load("/!!/getreplies/" + hash ,'',function(){
-		var editor1 = new EpicEditor().load(
-			function(){
-				$("#reply_to").click(function () {
-					editor1.preview();
-					var data = (editor1.getElement('previewer').body.innerHTML); 
-					if (check_reply(data) == true) {
-						var json = JSON.stringify({
-							"mother":hash,
-							"data":data
-						});
-						 var b64data = BASE64.encode(json);
-						$.post('/!!/reply/' + b64data,"",function(x) {
-							var st = x.status;
-							if(st == 1) {
-								$(".replybox").load("/!!/getreplies/" + hash);
-								editor1.getElement('editor').body.innerHTML = '';
-								editor1.edit();
-								}
-							else {
-								alert("发表失败，请重试。");
-							}
-						},"json");
-				}
-
-			});
-		});	
+			rep_to(hash);
 		});
 		$("#ajax_loading").slideToggle();
 	},"html");
@@ -270,4 +246,32 @@ function back(){
 	var view = $("#ajaxwait_view_topic");
 	list.slideToggle();
 	view.slideToggle();
+}
+function rep_to(hash) {
+	var editor1 = new EpicEditor({container: 'epic_rep'}).load(
+	function(){
+		$("#reply_to").click(function () {
+			editor1.preview();
+			var data = (editor1.getElement('previewer').body.innerHTML); 
+			if (check_reply(data) == true) {
+				var json = JSON.stringify({
+					"mother":hash,
+					"data":data
+				});
+				 var b64data = BASE64.encode(json);
+				$.post('/!!/reply/' + b64data,"",function(x) {
+					var st = x.status;
+					if(st == 1) {
+						$(".replybox").load("/!!/getreplies/" + hash,'',function(){
+							editor1.open('/!!/Clean');
+							rep_to(hash);
+						});
+						}
+					else {
+						alert("发表失败，请重试。");
+					}
+				},"json");
+			}
+		});
+	});
 }
