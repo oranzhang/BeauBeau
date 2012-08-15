@@ -61,6 +61,6 @@ production:
 development:
   sessions:
     default:
-      database: base-dev
+      database: base-dev1
       hosts:
         - localhost:27017
