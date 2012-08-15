@@ -115,23 +115,23 @@ html, body {
 .titletext {
 	position: relative;
 	top: -23px;
-	color:#FFF;
+	color:#0E405C;
 	font-size: 26px;
 	line-height:26px;
 }
 .titletext span{
 	font-size:26px;
-	color:#F3FC8B;
+	color:#28A318;
 	line-height:26px;
 }
 .user_icon {
-	box-shadow: 0 0 14px #008FFF;
+	box-shadow: 0 0 55px #C8E7EC;
 	padding: 5px;
 	padding-left: 20px;
 	padding-right: 88px;
 	position: fixed;
 	height: 33px;
-	background: #0089BE;
+	background: #C8E7EC;
 	width: 100%;
 	color: white;
 	z-index: 400;
@@ -149,7 +149,7 @@ html, body {
 	right: 30px;
 }
 .userbox a {
-	color:#FFF;
+	color:#07113A;
 	text-decoration: none;
 }
 #l_my_info {
@@ -159,6 +159,7 @@ html, body {
 }
 #l_my_info:hover {
 	background: #A0D613;
+	color: #FFF;
 }
 .user_act {
 	box-shadow: 0 0 10px #A0D613;
@@ -169,7 +170,7 @@ html, body {
 	width: 90px;
 	background: #A0D613;
 	position: fixed;
-	top: 31px;
+	top: 29px;
 	right: 44px;
 }
 .user_act li {
@@ -312,6 +313,7 @@ html, body {
 	float: right;
 	height: 64px;
 	width: 64px;
+	box-shadow: 0 0 10px #85A8DB;
 }
 .v_box {
 	box-shadow: 0 0 10px #88BFF5 , 0 0 2px #5DA7D1 inset;
@@ -348,13 +350,55 @@ html, body {
 .viewtopic .block_title a:hover {
 	color: #FC0;
 }
+.replybox #epiceditor-preview {
+	margin-right: 85px;
+}
 .replybox #epic_rep{
+	position: relative;
 	box-shadow: 0 0 10px black;
 	height: 200px;
 	margin-bottom: 30px;
 	margin-top: 10px;
 }
-
+.reply_show {
+	border: 1px solid white;
+	background: white;
+	margin-top: 7px;
+	margin-bottom: 16px;
+	padding: 22px;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #CEE7F0 , inset 0 0 5px #86AFBD;
+}
+.reply_info {
+	margin-bottom: 0;
+	text-align: right;
+	font-size: 13px;
+	border-top: 1px dashed #AAA;
+	color: #AAA;
+	line-height: 24px;
+}
+#reply_btn_helper {
+	position: relative;
+	text-align: right;
+	margin: 0;
+	padding-right: 18px;
+	font-size: 21px;
+	top: -10px;
+}
+#reply_to {
+	background: #AAA;
+	color: white;
+	text-decoration: none;
+	padding: 6px;
+	border-radius: 9px;
+	border: 1px solid #54AAA3;
+	box-shadow: 0 0 4px #08705F;
+}
+#reply_to:hover {
+	background: #36BDAD;
+	border: 1px solid #27C6DB;
+	box-shadow: 0 0 15px #25C7AD;
+}
 /*viewing_topic*/
 #epiceditor-preview{
 	padding-top:10px;

@@ -18,21 +18,19 @@
 <%end%>
 <% if @type == "reply" %>
 	<a class="t_span">回复</a>
+	<% @data.each do |hash| %>
+	<% p = Post.where(posthash: hash)[0]%>
+	<div class="reply_show">
+		<div class="view_gravatar" style="background:url(http://gravatar.com/avatar/<%=Digest::MD5.hexdigest(User.where(name: p.user)[0].mail) %>?r=G&amp;s=64)  no-repeat"></div>
+		<%=p.texts%>
+		<p class="reply_info">作者 <%=p.user%> 回复于 <%=p.time%></p>
+	</div>
+	<%end%>
+	<a class="t_span">留下您的看法</a>
 	<%if Logined? %>
 	<div id="epic_rep"></div>
-	<a id="reply_to">不要吐槽我的存在！<a>
+	<p id="reply_btn_helper"><a id="reply_to" href>发表</a></p>
 	<% end%>
-	<% @data.each do |hash| %>
-		<%=hash%><br>
-	<%end%>
-<%end%>
-<% if @type == "reply_list" %>
-	<a class="t_span">回复</a>
-	<div id="epic_rep"></div>
-	<a id="reply_to">不要吐槽我的存在！<a>
-	<% @data.each do |hash| %>
-		<%=hash%><br>
-	<%end%>
 <%end%>
 <% if @type == "notfound" %>
 	<div class="v_box">
