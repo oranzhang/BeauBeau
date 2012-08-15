@@ -352,6 +352,7 @@ html, body {
 }
 .replybox #epiceditor-preview {
 	margin-right: 85px;
+	min-height: 50px;
 }
 .replybox #epic_rep{
 	position: relative;
