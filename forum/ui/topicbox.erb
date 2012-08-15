@@ -3,13 +3,15 @@
 <% @post =  Post.where(posthash: y)[0]%>
 <% @username = Post.where(posthash: y)[0].user%>
 <% @user = User.where(name: @username)[0]%>
+<% @num = Post.where(mother: y).count() %>
+<% @numm = @num - 1%>
 <div class="topicbox">
 	<img class="topic_gravatar" src="http://gravatar.com/avatar/<%=Digest::MD5.hexdigest(@user.mail) %>?r=G&amp;s=48">
 	<ul>
 		<li><a class="topic_time"><icon>m</icon><%=@post.node %> <icon>7</icon><%=@post.time %></a></li>
 		<li>
 			<a class="topic_link view-<%=y%>"><span><%=@username %>:</span><%=@post.title %></a>
-			<a  class="topic_reply_unm view-<%=y%>"><%=Post.where(mother: y).count().to_s %></a>
+			<a  class="topic_reply_unm view-<%=y%>"><%=@numm.to_s %></a>
 		</li>
 	</ul>
 	<div class="clear"></div>

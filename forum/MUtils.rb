@@ -95,12 +95,13 @@ helpers do
 	def GetLatestPost(max,page)
 		@data = Array.new
 		@num=0-(max*page)
-		Post.where(type:"topic",status:"basic").sort(_id: -1).limit(@num).each  do |post|
+		Post.where(type:"reply").sort(_id: -1).limit(@num).each  do |post|
 			if post != nil
-				@data << post.posthash
+				@data << post.mother
 			end
 		end
-		@data_opt = @data[max*(page-1),max]
+		@data_uniq = @data.uniq
+		@data_opt = @data_uniq[max*(page-1),max]
 		return @data_opt
 	end
 	def GetLatestPostByNode(node,max,page)

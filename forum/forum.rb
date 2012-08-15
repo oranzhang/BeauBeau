@@ -147,6 +147,14 @@ post '/!!/post/*' do |c|
 		"topic",
 		"basic",
 		"")
+	PostToMongo(
+		'init',
+		'',
+		'',
+		@data["node"],
+		"reply",
+		"basic",
+		JSON.parse(@json)["hasH"])
 	"#{@json}"
 end
 post '/!!/viewpost/*' do |hash|
@@ -161,7 +169,7 @@ end
 get '/!!/getreplies/*' do |hash|
 	@data = Array.new
 	@num = Post.where(mother: hash).count
-	Post.where(mother: hash).sort(_id: 1).limit(@num).each  do |post|
+	Post.where(title:"reply",mother: hash).sort(_id: 1).limit(@num).each  do |post|
 		if post != nil
 			@data << post.posthash
 		end
@@ -175,7 +183,7 @@ post '/!!/reply/*' do |c|
 		'reply',
 		@data["data"],
 		JSON.parse(AES.decrypt(cookies[:auth] , aes_key))["name"],
-		'reply',
+		Post.where(posthash:@data["mother"])[0].node,
 		"reply",
 		"basic",
 		@data["mother"])
