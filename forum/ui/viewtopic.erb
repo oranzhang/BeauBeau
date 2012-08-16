@@ -17,6 +17,7 @@
 	</div>
 <%end%>
 <% if @type == "reply" %>
+	<% if @data != [] %>
 	<a class="t_span">回复</a>
 	<% @data.each do |hash| %>
 	<% p = Post.where(posthash: hash)[0]%>
@@ -26,9 +27,14 @@
 		<p class="reply_info">作者 <%=p.user%> 回复于 <%=p.time%></p>
 	</div>
 	<%end%>
+	<%end%>
 	<%if Logined? %>
 	<a class="t_span">留下您的看法</a>
-	<div id="epic_rep"></div>
+	<div class="wmd-panel">
+		<div id="wmd-button-bar"></div>
+		<textarea class="wmd-input" id="wmd-input"></textarea>
+	</div>
+	<div id="wmd-preview" class="wmd-panel preview"></div>
 	<p id="reply_btn_helper"><a id="reply_to" href="javascript:;">发表</a></p>
 	<% end%>
 <%end%>

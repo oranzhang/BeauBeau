@@ -3,8 +3,14 @@
     <p class="block_title"><icon>[</icon>请编辑帖子的内容</p>
     <p><input id="CT_title" type="text" maxlength= "30"placeholder="请在此处输入标题……"></p>
     <input id="CT_node" name="node" type="hidden" value="<%= @node %>">
-    <div id="epiceditor"></div>
-    <p class="CT_btn_helper"><a id="CT_push">确定</a><a onclick='$("#dark").slideToggle();'>关闭</a></p>
+    	<%if Logined? %>
+	<div class="wmd-panel">
+		<div id="wmd-button-bar"></div>
+		<textarea class="wmd-input" id="wmd-input"></textarea>
+	</div>
+	<div id="wmd-preview" class="wmd-panel preview"></div>
+	<p class="CT_btn_helper"><a id="CT_push">确定</a><a onclick='back();'>返回</a></p>
+	<% end%>
 <% end %>
 <% if @node_exists == false %>
 	<p class="block_title"><icon>[</icon>抱歉，节点<%= @node %>不存在！</p>

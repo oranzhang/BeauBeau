@@ -5,16 +5,17 @@ function check_post(title,data) {
 	if (title == ''){
 		ok++;
 	}
-	if (data == '<div id="epiceditor-preview"></div>'){
+	if (data == '<div class="preview"></div>'){
 		ok++;
 	}
 	if (ok == 0) {
 		var ok2 = true;
 	}
 	return ok2;
-}function check_reply(data) {
+}
+function check_reply(data) {
 	var ok = 0
-	if (data == '<div id="epiceditor-preview"></div>'){
+	if (data == '<div class="preview"></div>'){
 		ok++;
 	}
 	if (ok == 0) {
@@ -23,42 +24,17 @@ function check_post(title,data) {
 	return ok2;
 }
 function new_ct(node){
-	$("#dark").load("/!!/CTbox/" + node,'',function(){
-		var editor = new EpicEditor().load(
-			function(){
-				$("#CT_push").click(function () {
-					editor.preview();
-					var data = (editor.getElement('previewer').body.innerHTML); 
-					var title = $("#CT_title")[0].value;
-					var node = $("#CT_node")[0].value;
-
-					if (check_post(title,data) == true) {
-						var json = JSON.stringify({
-							"title":title,
-							"data":data,
-							"node":node
-						});
-						 var b64data = BASE64.encode(json);
-						$.post('/!!/post/' + b64data,"",function(x) {
-							var st = x.status;
-							var ha = x.hasH;
-							if(st == 1) {
-								index_topic();
-								editor.unload();
-								$("#dark").slideToggle();
-							}
-							else {
-								alert("发表失败，请重试。");
-							}
-						},"json");
-				}
-
-			});
-		});
+	var list = $("#ajaxwait_latest_topic");
+	var view = $("#ajaxwait_view_topic");
+	$("#ajax_loading").show();
+	view.load("/!!/CTbox/" + node,'',function(){
+		post_to();
+		list.slideUp();
+		view.slideDown();
+		$("#ajax_loading").hide();
 	});
-	$("#dark").slideToggle();
 }
-	function new_LRbox(){
+function new_LRbox(){
 		$("#dark").load("/!!/LRbox");
 		$("#dark").slideToggle();
 	}
@@ -69,25 +45,25 @@ function luser(){
 	$("#dark").load('/!!/LRbox');
 }
 function Login(){
-		var user = $("#L_user")[0].value;
-		var re =/^[A-Za-z0-9]+$/;
-		$("#ajax_loginstatus").html('<a id="temp_st">登录中，请稍候，若长时间无响应请刷新页面。</a>');
-if (re.test(user)){
+	var user = $("#L_user")[0].value;
+	var re =/^[A-Za-z0-9]+$/;
+	$("#ajax_loginstatus").html('<a id="temp_st">登录中，请稍候，若长时间无响应请刷新页面。</a>');
+	if (re.test(user)){
 		var pass = SHA1($("#L_pass")[0].value);
 		$.getJSON('/!!/Login/' + user + '&' + pass,function(d){
-		var status = d.msg;
-		if(status == 1) {
-		$("#ajax_loginstatus").html('<a id="temp_st" style="color:green">登入成功，若无反应请刷新。</a>');
-		index_topic();
-		$("#ajaxwait_user").load('/!!/Userbox',"",function(){setTimeout('$("#dark").slideToggle()',800);regNavitoggle();});
-		}
-		else
-		{
-		$("#ajax_loginstatus").html('<a id="temp_st" style="color:red">用户名或密码错误或用户名不存在。</a>');
-		}
+			var status = d.msg;
+			if(status == 1) {
+				$("#ajax_loginstatus").html('<a id="temp_st" style="color:green">登入成功，若无反应请刷新。</a>');
+				index_topic();
+				$("#ajaxwait_user").load('/!!/Userbox',"",function(){setTimeout('$("#dark").slideToggle()',800);regNavitoggle();});
+			}
+			else
+			{
+				$("#ajax_loginstatus").html('<a id="temp_st" style="color:red">用户名或密码错误或用户名不存在。</a>');
+			}
 		});
-		}
-		else{$("#ajax_loginstatus").html('<a id="temp_st" style="color:red">用户名只能由字母和数字组成</a>');}
+	}
+	else{$("#ajax_loginstatus").html('<a id="temp_st" style="color:red">用户名只能由字母和数字组成</a>');}
 }
 function CreatUser(){
 		var email_p = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -205,7 +181,8 @@ function index_topic() {
 	$(".topiclist").slideUp(function(){
 		$(".topiclist").load('/!!/GetIndexData','',function(){
 			$.getScript('/!!/GetIndexData_js');
-			document.title = t + '::Topics';$(".topiclist").slideDown();
+			document.title = t + '::Topics';
+			$(".topiclist").slideDown();
 		});
 	});
 }
@@ -230,47 +207,74 @@ function view_topic(hash) {
 	var reply_add = "/!!/getreplies/" + hash;
 	var list = $("#ajaxwait_latest_topic");
 	var view = $("#ajaxwait_view_topic");
-	$("#ajax_loading").slideToggle();
+	$("#ajax_loading").slideDown();
 	var html = $.post(topic_add,'',function(d){
 		view.html(d);
-		list.slideToggle();
-		view.slideToggle();
+		list.slideUp();
+		view.slideDown();
 		$(".replybox").load("/!!/getreplies/" + hash ,'',function(){
 			rep_to(hash);
 		});
-		$("#ajax_loading").slideToggle();
+		$("#ajax_loading").slideUp();
 	},"html");
 }
 function back(){
 	var list = $("#ajaxwait_latest_topic");
 	var view = $("#ajaxwait_view_topic");
-	list.slideToggle();
-	view.slideToggle();
+	list.slideDown();
+	view.slideUp();
 }
 function rep_to(hash) {
-	var editor1 = new EpicEditor({container: 'epic_rep'}).load(
-	function(){
-		$("#reply_to").click(function () {
-			editor1.preview();
-			var data = (editor1.getElement('previewer').body.innerHTML); 
-			if (check_reply(data) == true) {
-				var json = JSON.stringify({
-					"mother":hash,
-					"data":data
-				});
+	var converter1 = Markdown.getSanitizingConverter();
+	var editor1 = new Markdown.Editor(converter1);
+	editor1.run();
+	$("#reply_to").click(function () {
+		var data = '<div class="preview">' + converter1.makeHtml($("#wmd-input")[0].value) + '</div>';
+		if (check_reply(data) == true) {
+			var json = JSON.stringify({
+				"mother":hash,
+				"data":data
+			});
 				 var b64data = BASE64.encode(json);
-				$.post('/!!/reply/' + b64data,"",function(x) {
-					var st = x.status;
-					if(st == 1) {
-						$(".replybox").load("/!!/getreplies/" + hash,'',function(){
-							editor1.unload(rep_to(hash));
-						});
-						}
+			$.post('/!!/reply/' + b64data,"",function(x) {
+				var st = x.status;
+				if(st == 1) {
+					$(".replybox").load("/!!/getreplies/" + hash,'',function(){
+						rep_to(hash);
+					});
+				}
 					else {
-						alert("发表失败，请重试。");
-					}
-				},"json");
-			}
-		});
+				alert("发表失败，请重试。");
+				}
+			},"json");
+		}
+	});
+}
+function post_to() {
+	var converter2 = Markdown.getSanitizingConverter();
+	var editor2 = new Markdown.Editor(converter2);
+	editor2.run();
+	$("#CT_push").click(function () {
+		var data = '<div class="preview">' + converter2.makeHtml($("#wmd-input")[0].value) + '</div>';
+		var title = $("#CT_title")[0].value;
+		var node = $("#CT_node")[0].value;
+		if (check_post(title,data) == true) {
+			var json = JSON.stringify({
+				"title":title,
+				"data":data,
+				"node":node
+			});
+			 var b64data = BASE64.encode(json);
+			$.post('/!!/post/' + b64data,"",function(x) {
+				var st = x.status;
+				var ha = x.hasH;
+				if(st == 1) {
+					view_topic(ha);
+				}
+				else {
+					alert("发表失败，请重试。");
+				}
+			},"json");
+		}
 	});
 }
