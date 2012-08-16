@@ -58,14 +58,14 @@ get "/" do
 	@title = conf["sitetitle"]
 	erb :index
 end
-get "/!!/GetIndexData" do
+get "/!!/GetIndexData/page/:page" do
 	@count = GetPostListInfo(conf["maxitemnumber"])
-	@data = GetLatestPost(conf["maxitemnumber"],1)
+	@data = GetLatestPost(conf["maxitemnumber"],params[:page].to_f)
 	erb :topicbox
 end
-get "/!!/GetIndexData_js" do
+get "/!!/GetIndexData_js/page/:page" do
 	@count = GetPostListInfo(conf["maxitemnumber"])
-	@data = GetLatestPost(conf["maxitemnumber"],1)
+	@data = GetLatestPost(conf["maxitemnumber"],params[:page].to_f)
 	erb :topicbox_js
 end
 get "/!!/Posting/^:node" do

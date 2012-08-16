@@ -179,8 +179,8 @@ function u_act_toggle() {
 function index_topic() {
 	$("#ajaxwait_view_topic").hide();
 	$(".topiclist").slideUp(function(){
-		$(".topiclist").load('/!!/GetIndexData','',function(){
-			$.getScript('/!!/GetIndexData_js');
+		$(".topiclist").load('/!!/GetIndexData/page/1','',function(){
+			$.getScript('/!!/GetIndexData_js/page/1');
 			document.title = t + '::Topics';
 			$(".topiclist").slideDown();
 		});

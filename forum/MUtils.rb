@@ -83,8 +83,8 @@ helpers do
 		return @msg
 	end
 	def GetPostListInfo(max)
-		@count_all = Post.count
 		@count_topic = Post.where(type: 'topic').count
+		@count_all = (Post.count) - @count_topic
 		@plus = 0
 		if @count_topic%max > 0
 			@plus = 1
