@@ -17,4 +17,15 @@
 	<div class="clear"></div>
 </div>
 <% end %>
-<p>包括回帖共有 <%=@count[0]%> 个回帖 ， 拥有 <%=@count[1]%> 个话题 ， 共有 <%=@count[2]%> 页。</p>
+
+<p class="count_p">There are <%=@count[0]%> post(s)(including replies) and <%=@count[1]%> topic(s)</p>
+<p class="count_p">You are in Page <%=params[:page]%> , These are(is)<%=@count[2]%> pages.</p>
+<p class="count_p">
+<% @pg.each do |p|%>
+	<%if p == '...' %>
+		<a>......</a>
+	<%else %>
+		<a onclick="index_topic(<%=p%>)"></a>
+	<%end%>
+<%end%>
+</p>

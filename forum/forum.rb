@@ -61,6 +61,11 @@ end
 get "/!!/GetIndexData/page/:page" do
 	@count = GetPostListInfo(conf["maxitemnumber"])
 	@data = GetLatestPost(conf["maxitemnumber"],params[:page].to_f)
+	@pg = Array.new
+	m = @count[2]
+	for i in 1..m do
+		@pg << i
+	end
 	erb :topicbox
 end
 get "/!!/GetIndexData_js/page/:page" do

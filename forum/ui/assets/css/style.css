@@ -236,6 +236,10 @@ html, body {
 	text-decoration: none;
 	color: #60C5B9;
 }
+.count_p {
+	text-align: right;
+	padding-right: 50px;
+}
 /*node page*/
 .nodelist {
 	font-size: 20px;

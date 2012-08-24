@@ -54,7 +54,7 @@ function Login(){
 			var status = d.msg;
 			if(status == 1) {
 				$("#ajax_loginstatus").html('<a id="temp_st" style="color:green">登入成功，若无反应请刷新。</a>');
-				index_topic();
+				index_topic(1);
 				$("#ajaxwait_user").load('/!!/Userbox',"",function(){setTimeout('$("#dark").slideToggle()',800);regNavitoggle();});
 			}
 			else
@@ -125,62 +125,24 @@ function logout() {
 	});
 }
 $(document).ready(function(){
-
 	$("#index").load('/index_s.html','',function(){
 		document.title = t + '::Topics';
-		index_topic();
+		index_topic(1);
 		$("#ajaxwait_user").load('/!!/Userbox',"",function (){
 			regNavitoggle();
+			setTimeout('getUrlact();',1500)
 		});
 	});
-var url =	window.location.href;
-var sharp1 = $.url(url).fsegment(1);
-var sharp2
-switch (sharp1)
-	 {
-	 case "node":
-		 sharp2 = $.url(url).fsegment(2);
-		 if (sharp2 == undefined) {
-		 
-		 }
-		 else {
-
-		 }
-		 break
-	 case "topic":
-		 sharp2 = $.url(url).fsegment(2);
-		 case "node":
-		 sharp2 = $.url(url).fsegment(2);
-		 if (sharp2 == undefined) {
-		 
-		 }
-		 else {
-
-		 }
-		 break
-	 case "user":
-		 case "node":
-		 sharp2 = $.url(url).fsegment(2);
-		 if (sharp2 == undefined) {
-		 
-		 }
-		 else {
-
-		 }
-		 break
-	 default:
-		 
-}
 });
 function u_act_toggle() {
 	/*$("#l_my_info").css("background","#A0D613");*/
 	$(".user_act").toggle(500);
 }
-function index_topic() {
+function index_topic(page) {
 	$("#ajaxwait_view_topic").hide();
 	$(".topiclist").slideUp(function(){
-		$(".topiclist").load('/!!/GetIndexData/page/1','',function(){
-			$.getScript('/!!/GetIndexData_js/page/1');
+		$(".topiclist").load('/!!/GetIndexData/page/'+page,'',function(){
+			$.getScript('/!!/GetIndexData_js/page/'+page);
 			document.title = t + '::Topics';
 			$(".topiclist").slideDown();
 		});
@@ -197,7 +159,7 @@ function index_node() {
 	});
 }
 function regNavitoggle() {
-			$("#navi_index").click(function(){index_topic();});
+			$("#navi_index").click(function(){index_topic(1);});
 			$("#navi_node").click(function(){index_node();});
 			$('#l_my_info').mouseenter(function(){u_act_toggle();});
 			$('#l_my_info').mouseleave(function(){u_act_toggle();});
@@ -277,4 +239,20 @@ function post_to() {
 			},"json");
 		}
 	});
+}
+function getUrlact() {
+	var url =  window.location.href;
+	var sharp1 = $.url(url).fsegment(1);
+	var sharp2 = $.url(url).fsegment(2);
+	if (sharp1 == "post") {
+		 if (sharp2 != undefined) {
+			 view_topic(sharp2);
+		}
+	}
+	if (sharp1 == "node") {
+
+	}
+	if(sharp1 == "user") {
+
+	}
 }
