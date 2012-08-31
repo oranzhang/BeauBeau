@@ -7,16 +7,9 @@ require 'mongoid'
 require 'json'
 require 'aes'
 require 'base64' 
-
-config_file = "#{File.dirname(__FILE__)}/config/config.json"
-set :views, settings.root + '/ui'
-set :public_folder, File.dirname(__FILE__) + '/ui/assets'
-conf = JSON.parse(File.new(config_file,"r").read)
-aes_key = conf["cookies_key"]
 Mongoid.load!("#{File.dirname(__FILE__)}/config/mongoid.yml")
 Mongoid.logger = Logger.new($stdout)
 Moped.logger = Logger.new($stdout)
-require './MUtils'
 		class User 
 			include Mongoid::Document
 			store_in collection: "users"
@@ -53,6 +46,65 @@ require './MUtils'
 			shard_key :hash, :title, :texts, :user, :time, :node, :type, :status, :mother
 			index({ time: 1 }, { unique: true, name: "time_index" })
 		end
+		class Updatepostcache
+			def initialize
+				@posts = Post.where(type:"reply")
+				@cached_list_all = Array.new
+				@posts.sort(_id: -1).each do |post|
+					if post != nil
+						@cached_list_all << post.mother
+					end
+				end
+				@cached_list_all = @cached_list_all.uniq
+				@cached_list_node = {}
+				Node.each do |n|
+					@cached_list_node[n.name] = Array.new
+					@posts.where(node: n.name).sort(_id: -1).each do |post|
+						if post != nil
+							@cached_list_node[n.name] << post.mother
+						end
+					end
+					@cached_list_node[n.name] = @cached_list_node[n.name].uniq
+				end
+			end
+			def update
+				@posts = Post.where(type:"reply")
+				@cached_list_all = Array.new
+				@posts.sort(_id: -1).each do |post|
+					if post != nil
+						@cached_list_all << post.mother
+					end
+				end
+				@cached_list_all = @cached_list_all.uniq
+				@cached_list_node = {}
+				Node.each do |n|
+					@cached_list_node[n.name] = Array.new
+					@posts.where(node: n.name).sort(_id: -1).each do |post|
+						if post != nil
+							@cached_list_node[n.name] << post.mother
+						end
+					end
+					@cached_list_node[n.name] = @cached_list_node[n.name].uniq
+				end
+			end
+			def getcachedlist(node="")
+				if node == ""
+					@return = @cached_list_all
+				else
+					@return = @cached_list_node[node]
+				end
+				return @return
+			end
+				
+
+		end
+$post_cache = Updatepostcache.new
+config_file = "#{File.dirname(__FILE__)}/config/config.json"
+set :views, settings.root + '/ui'
+set :public_folder, File.dirname(__FILE__) + '/ui/assets'
+conf = JSON.parse(File.new(config_file,"r").read)
+aes_key = conf["cookies_key"]
+require './MUtils'
 get "/" do
 	@name = conf["sitename"]
 	@title = conf["sitetitle"]

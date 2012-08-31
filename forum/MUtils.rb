@@ -36,6 +36,7 @@ helpers do
 			status: istatus, 
 			mother: imother
 			)
+			$post_cache.update
 			@a = Hash["hasH", @hash.to_s, "status",1]
 		else
 			@a = Hash["hasH" , '',"status",0]
@@ -93,27 +94,15 @@ helpers do
 		return [@count_all,@count_topic,@page_topic]
 	end
 	def GetLatestPost(max,page)
-		@data = Array.new
 		@num=0-(max*page)
-		Post.where(type:"reply").sort(_id: -1).limit(@num).each  do |post|
-			if post != nil
-				@data << post.mother
-			end
-		end
-		@data_uniq = @data.uniq
-		@data_opt = @data_uniq[max*(page-1),max]
+		@opt = $post_cache.getcachedlist()
+		@data_opt = @opt[max*(page-1),max]
 		return @data_opt
 	end
 	def GetLatestPostByNode(node,max,page)
-		@data = Array.new
-		@num=0-(max*page)
-		Post.where(node: node,type:"reply").sort(_id: -1).limit(@num).each  do |post|
-			if post != nil
-				@data << post.mother
-			end
-		end
-		@data_uniq = @data.uniq
-		@data_opt = @data_uniq[max*(page-1),max]
+		@num = 0-(max*page)
+		@opt = $post_cache.getcachedlist(node)
+		@data_opt = @opt[max*(page-1),max]
 		return @data_opt
 	end
 	def CheckCookie()
