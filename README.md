@@ -12,7 +12,6 @@ Requirement :
 
 Install
 ======
-- `gem install sinatra sinatra-contrib markdown mongoid json aes`
 - `git clone https://github.com/oranzhang/Mforum.git`
 - `cd Mforum/forum`
 - `cp config/config.eg.json forum/config/config.json`
