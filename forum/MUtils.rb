@@ -102,6 +102,7 @@ helpers do
 	def GetLatestPostByNode(node,max,page)
 		@num = 0-(max*page)
 		@opt = $post_cache.getcachedlist(node)
+		@opt = Array.new if @opt == nil
 		@data_opt = @opt[max*(page-1),max]
 		return @data_opt
 	end

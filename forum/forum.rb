@@ -125,6 +125,21 @@ get "/!!/GetIndexData_js/page/:page" do
 	@data = GetLatestPost(conf["maxitemnumber"],params[:page].to_f)
 	erb :topicbox_js
 end
+get "/!!/GetNodeData/node/:node/page/:page" do
+	@count = GetPostListInfo(conf["maxitemnumber"])
+	@data = GetLatestPostByNode(params[:node],conf["maxitemnumber"],params[:page].to_f)
+	@pg = Array.new
+	m = @count[2]
+	for i in 1..m do
+		@pg << i
+	end
+	erb :topicbox
+end
+get "/!!/GetNodeData_js/node/:node/page/:page" do
+	@count = GetPostListInfo(conf["maxitemnumber"])
+	@data = GetLatestPostByNode(params[:node],conf["maxitemnumber"],params[:page].to_f)
+	erb :topicbox_js
+end
 get "/!!/Posting/^:node" do
 	if Node.where(name: params[:node].to_s).exists?
 		@node_exists = true
