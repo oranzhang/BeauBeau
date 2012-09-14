@@ -148,7 +148,16 @@ function index_topic(page) {
 		});
 	});
 }
-
+function index_href(ref) {
+	$("#ajaxwait_view_topic").hide();
+	show_load();
+	$(".topiclist").slideUp(
+		function(){$(".topiclist").load(ref,function(){
+			$(".topiclist").slideDown();
+			hide_load();
+		});
+	});
+}
 function index_node() {
 	$("#ajaxwait_view_topic").hide();
 	$(".topiclist").slideUp(
@@ -163,6 +172,12 @@ function regNavitoggle() {
 			$("#navi_node").click(function(){index_node();});
 			$('#l_my_info').mouseenter(function(){u_act_toggle();});
 			$('#l_my_info').mouseleave(function(){u_act_toggle();});
+}
+function show_load() {
+	$("#ajax_loading").slideDown();
+}
+function hide_load() {
+	$("#ajax_loading").slideUp();
 }
 function view_topic(hash) {
 	var topic_add = "/!!/viewpost/" + hash;

@@ -1,6 +1,12 @@
+[
 {
 	"sitename":"TestingForum",
 	"sitetitle":"TestingForum",
 	"maxitemnumber":10,
 	"cookies_key":"asddawefasddawefasddawefasddawef"
-}
+},
+[
+{"type":2,"href":"http://hao123.com","name":"Href1"},
+{"type":1,"href":"http://hao123.com","name":"Href2"}
+]
+]

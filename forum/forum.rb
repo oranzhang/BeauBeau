@@ -102,7 +102,9 @@ $post_cache = Updatepostcache.new
 config_file = "#{File.dirname(__FILE__)}/config/config.json"
 set :views, settings.root + '/ui'
 set :public_folder, File.dirname(__FILE__) + '/ui/assets'
-conf = JSON.parse(File.new(config_file,"r").read)
+conf = JSON.parse(File.new(config_file,"r").read)[0]
+$conf = JSON.parse(File.new(config_file,"r").read)[0]
+$navi = JSON.parse(File.new(config_file,"r").read)[1]
 aes_key = conf["cookies_key"]
 require './MUtils'
 get "/" do
@@ -113,11 +115,7 @@ end
 get "/!!/GetIndexData/page/:page" do
 	@count = GetPostListInfo(conf["maxitemnumber"])
 	@data = GetLatestPost(conf["maxitemnumber"],params[:page].to_f)
-	@pg = Array.new
-	m = @count[2]
-	for i in 1..m do
-		@pg << i
-	end
+	@pg = (1..@count[2]).map {|x| p x}
 	erb :topicbox
 end
 get "/!!/GetIndexData_js/page/:page" do
@@ -128,11 +126,7 @@ end
 get "/!!/GetNodeData/node/:node/page/:page" do
 	@count = GetPostListInfo(conf["maxitemnumber"])
 	@data = GetLatestPostByNode(params[:node],conf["maxitemnumber"],params[:page].to_f)
-	@pg = Array.new
-	m = @count[2]
-	for i in 1..m do
-		@pg << i
-	end
+	@pg = (1..@count[2]).map {|x|}
 	erb :topicbox
 end
 get "/!!/GetNodeData_js/node/:node/page/:page" do

@@ -20,12 +20,8 @@
 
 <p class="count_p">There are <%=@count[0]%> post(s)(including replies) and <%=@count[1]%> topic(s)</p>
 <p class="count_p">You are in Page <%=params[:page]%> , These are(is)<%=@count[2]%> pages.</p>
-<p class="count_p">
+<p class="count_p">Jump To 
 <% @pg.each do |p|%>
-	<%if p == '...' %>
-		<a>......</a>
-	<%else %>
-		<a onclick="index_topic(<%=p%>)"></a>
-	<%end%>
+	<a onclick="index_topic(<%=p.to_s %>);">[<%=p.to_s %>] </a>
 <%end%>
 </p>

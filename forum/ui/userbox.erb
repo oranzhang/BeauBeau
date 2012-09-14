@@ -1,9 +1,13 @@
 <% if @msg == 1 %>
 <div class="user_icon">
-  <p class="titletext left">Meence<span>::Forum</span></p>
+  <p class="titletext left"><%=$conf["sitetitle"] %></p>
       <ul class="navi left">
       <li><a id="navi_index" class="backbox">::Topics</a></li>
       <li><a id="navi_node" class="backbox">::Nodes</a></li>
+      <% $navi.each do |x| %>
+
+        <li><a href="<%=x["href"] %>" class="backbox"><%=x["name"] %></a></li>
+      <% end %>
     </ul>
   <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @info["mail"] %>?r=G&amp;s=32">
   <h3 id="l_my_info"><a  href="javascript:;"><%= @info["name"] %></a>
@@ -17,7 +21,7 @@
 <% end %>
 <% if @msg == 0%>
 <div class="user_icon">
-  <p class="titletext left">Meence<span>::Forum</span></p>
+  <p class="titletext left"><%=$conf["sitetitle"] %></p>
       <ul class="navi left">
       <li><a id="navi_index" class="backbox">::Topics</a></li>
       <li><a id="navi_node" class="backbox">::Nodes</a></li>
