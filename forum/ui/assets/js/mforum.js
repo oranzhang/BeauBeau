@@ -29,8 +29,8 @@ function new_ct(node){
 	$("#ajax_loading").show();
 	view.load("/!!/CTbox/" + node,'',function(){
 		post_to();
-		list.hide();
-		view.show();
+		list.slideUp();
+		view.slideDown();
 		$("#ajax_loading").hide();
 	});
 }
@@ -140,30 +140,30 @@ function u_act_toggle() {
 }
 function index_topic(page) {
 	$("#ajaxwait_view_topic").hide();
-	$(".topiclist").hide(function(){
+	$(".topiclist").slideUp(function(){
 		$(".topiclist").load('/!!/GetIndexData/page/'+page,'',function(){
 			$.getScript('/!!/GetIndexData_js/page/'+page);
 			document.title = t + '::Topics';
-			$(".topiclist").show();
+			$(".topiclist").slideDown();
 		});
 	});
 }
 function index_href(ref) {
 	$("#ajaxwait_view_topic").hide();
 	show_load();
-	$(".topiclist").hide(
+	$(".topiclist").slideUp(
 		function(){$(".topiclist").load(ref,function(){
-			$(".topiclist").show();
+			$(".topiclist").slideDown();
 			hide_load();
 		});
 	});
 }
 function index_node() {
 	$("#ajaxwait_view_topic").hide();
-	$(".topiclist").hide(
+	$(".topiclist").slideUp(
 		function(){$(".topiclist").load("/!!/GetNodeList",'',function(){
 			document.title = t + '::Nodes';
-			$(".topiclist").show();
+			$(".topiclist").slideDown();
 		});
 	});
 }
@@ -174,32 +174,32 @@ function regNavitoggle() {
 			$('#l_my_info').mouseleave(function(){u_act_toggle();});
 }
 function show_load() {
-	$("#ajax_loading").show();
+	$("#ajax_loading").slideDown();
 }
 function hide_load() {
-	$("#ajax_loading").hide();
+	$("#ajax_loading").slideUp();
 }
 function view_topic(hash) {
 	var topic_add = "/!!/viewpost/" + hash;
 	var reply_add = "/!!/getreplies/" + hash;
 	var list = $("#ajaxwait_latest_topic");
 	var view = $("#ajaxwait_view_topic");
-	$("#ajax_loading").show();
+	$("#ajax_loading").slideDown();
 	var html = $.post(topic_add,'',function(d){
 		view.html(d);
-		list.hide();
-		view.show();
+		list.slideUp();
+		view.slideDown();
 		$(".replybox").load("/!!/getreplies/" + hash ,'',function(){
 			rep_to(hash);
 		});
-		$("#ajax_loading").hide();
+		$("#ajax_loading").slideUp();
 	},"html");
 }
 function back(){
 	var list = $("#ajaxwait_latest_topic");
 	var view = $("#ajaxwait_view_topic");
-	list.show();
-	view.hide();
+	list.slideDown();
+	view.slideUp();
 }
 function rep_to(hash) {
 	var converter1 = Markdown.getSanitizingConverter();
