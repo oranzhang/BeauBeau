@@ -15,11 +15,11 @@ icon {
 	font-family: "Icon" ;
 }
 * {
-	-webkit-transition-property: color;
+	-webkit-transition-property: background,color,text-shadow,box-shadow;
 	-webkit-transition-duration: 0.5s;
-	-o-transition-property: color;
+	-o-transition-property: background,color,text-shadow,box-shadow;
 	-o-transition-duration: 0.5s;
-	-moz-transition-property: color;
+	-moz-transition-property: background,color,text-shadow,box-shadow;
 	-moz-transition-duration: 0.5s;
 }
 html, body {
