@@ -1,0 +1,32 @@
+<% if @msg == 1 %>
+<div class="user_icon">
+  <p class="titletext left"><%=$conf["sitetitle"] %></p>
+      <ul class="navi left">
+      <li><a id="navi_index" class="backbox">::Topics</a></li>
+      <li><a id="navi_node" class="backbox">::Nodes</a></li>
+      <% $navi.each do |x| %>
+
+        <li><a href="<%=x["href"] %>" class="backbox"><%=x["name"] %></a></li>
+      <% end %>
+    </ul>
+  <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @info["mail"] %>?r=G&amp;s=32">
+  <h3 id="l_my_info"><a  href="javascript:;"><%= @info["name"] %></a>
+    <ul class="user_act" style="display:none;">
+    <li href="javascript:;" onclick="index_node()">发帖</li>
+    <li href="javascript:;" onclick="new_LRbox()">设置</li>
+    <li href="javascript:;" onclick="logout()">退出</li>
+  </ul>
+  </h3>
+</div>
+<% end %>
+<% if @msg == 0%>
+<div class="user_icon">
+  <p class="titletext left"><%=$conf["sitetitle"] %></p>
+      <ul class="navi left">
+      <li><a id="navi_index" class="backbox">::Topics</a></li>
+      <li><a id="navi_node" class="backbox">::Nodes</a></li>
+    </ul>
+  <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&amp;s=32">
+  <h3 style="top: -5px;"><a class="clickable" id="l_loginbox" onclick="new_LRbox();">点击此处登录或注册</a></h3>
+</div>
+<% end %>

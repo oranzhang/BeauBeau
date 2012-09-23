@@ -1,0 +1,27 @@
+<p class="block_title"><icon>j</icon>Latest Topics</p>
+<% @data.each do |y| %>
+<% @post =  Post.where(posthash: y)[0]%>
+<% @username = Post.where(posthash: y)[0].user%>
+<% @user = User.where(name: @username)[0]%>
+<% @num = Post.where(mother: y).count() %>
+<% @numm = @num - 1%>
+<div class="topicbox">
+	<img class="topic_gravatar" src="http://gravatar.com/avatar/<%=Digest::MD5.hexdigest(@user.mail) %>?r=G&amp;s=48">
+	<ul>
+		<li><a class="topic_time"><icon>m</icon><%=@post.node %> <icon>7</icon><%=@post.time %></a></li>
+		<li>
+			<a class="clickable topic_link view-<%=y%>"><span><%=@username %>:</span><%=@post.title %></a>
+			<a  class="clickable topic_reply_unm view-<%=y%>"><%=@numm.to_s %></a>
+		</li>
+	</ul>
+	<div class="clear"></div>
+</div>
+<% end %>
+
+<p class="count_p">There are <%=@count[0]%> post(s)(including replies) and <%=@count[1]%> topic(s)</p>
+<p class="count_p">You are in Page <%=params[:page]%> , These are(is)<%=@count[2]%> pages.</p>
+<p class="count_p">Jump To 
+<% @pg.each do |p|%>
+	<a class="clickable" onclick="index_topic(<%=p.to_s %>);">[<%=p.to_s %>] </a>
+<%end%>
+</p>
