@@ -5,7 +5,6 @@
       <li><a id="navi_index" class="backbox">::Topics</a></li>
       <li><a id="navi_node" class="backbox">::Nodes</a></li>
       <% $navi.each do |x| %>
-
         <li><a href="<%=x["href"] %>" class="backbox"><%=x["name"] %></a></li>
       <% end %>
     </ul>
@@ -25,6 +24,9 @@
       <ul class="navi left">
       <li><a id="navi_index" class="backbox">::Topics</a></li>
       <li><a id="navi_node" class="backbox">::Nodes</a></li>
+      <% $navi.each do |x| %>
+        <li><a href="<%=x["href"] %>" class="backbox"><%=x["name"] %></a></li>
+      <% end %>
     </ul>
   <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&amp;s=32">
   <h3 style="top: -5px;"><a class="clickable" id="l_loginbox" onclick="new_LRbox();">点击此处登录或注册</a></h3>

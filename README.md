@@ -18,4 +18,4 @@ Install
 - `cp config/mongoid.eg.yml forum/config/mongoid.yml`
 -  And then you need to edit `config.json` and `mongoid.yml`.
 - `bundle install`
-- `ruby ./forum.rb` or `rackup`
+- `rackup`
