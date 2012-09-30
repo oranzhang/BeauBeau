@@ -1,5 +1,5 @@
 forum/temp/
 forum/temp/*
 forum/config/config.json
-forum/config/mongoid.json
+forum/config/mongoid.yml
 !.gitignore
