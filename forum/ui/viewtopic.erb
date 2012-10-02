@@ -27,6 +27,13 @@
 		<p class="reply_info">作者 <%=p.user%> 回复于 <%=p.time%></p>
 	</div>
 	<%end%>
+	<%else%>
+	<div class="reply_show" style="*box-shadow: 0 0 5px #CEE7F0 , inset 0 0 300px #BBB;*">
+		<div class="preview">
+			<p>还木有评论呢~来抢沙发吧~</p>
+		</div>
+		<p class="reply_info">作者 ??? 回复于 ???</p>
+	</div>
 	<%end%>
 	<%if Logined? %>
 	<a class="t_span">留下您的看法</a>

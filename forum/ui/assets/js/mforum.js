@@ -135,8 +135,10 @@ $(document).ready(function(){
 	});
 });
 function u_act_toggle() {
-	/*$("#l_my_info").css("background","#A0D613");*/
 	$(".user_act").toggle(500);
+}
+function n_act_toggle() {
+	$(".navi_inner").toggle(500);
 }
 function index_topic(page) {
 	$("#ajaxwait_view_topic").hide();
@@ -172,6 +174,8 @@ function regNavitoggle() {
 			$("#navi_node").click(function(){index_node();});
 			$('#l_my_info').mouseenter(function(){u_act_toggle();});
 			$('#l_my_info').mouseleave(function(){u_act_toggle();});
+			$('.navi').mouseenter(function(){n_act_toggle();});
+			$('.navi').mouseleave(function(){n_act_toggle();});
 }
 function show_load() {
 	$("#ajax_loading").slideDown();

@@ -62,7 +62,6 @@ get "/!!/LRbox" do
 	unless @cookies == ''
 		@ck = JSON.parse(AES.decrypt(@cookies , $aes_key))
 		@my = 1
-
 	end
 	erb :LRbox
 end

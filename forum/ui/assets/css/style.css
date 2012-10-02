@@ -71,28 +71,23 @@ html, body {
 }
 /*Posty*/
 #dark {
-	top:0;
-	height: 100%;
-	width: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	position: fixed;
-	z-index: 500;
+	border-bottom: 8px solid #C8E7EC;
+	box-shadow: 0 0 10px #328BA2;
+	width: 75%;
+	margin: auto auto;
 }
 .CTbox {
-	box-shadow: 0 0 100px white;
-	height: 640px;
-	width: 1024px;
-	position: relative;
-	background: white;
-	margin: auto auto auto auto;
+	margin: auto auto;
+	padding-bottom: 80px;
 }
 #CT_title {
-	padding-left: 30px;
+	text-shadow: 0 0 2px #83A4B1;
+	text-align: center;
 	font-size: 28px;
 	color: black;
 	background: white;
 	margin: 0 0 0 0;
-	width: 994px;
+	width: 100%;
 	height: 48px;
 	border: 1px solid white;
 	padding-top: 0px;
@@ -109,9 +104,9 @@ html, body {
 .CT_btn_helper a {
 	box-shadow: 0 0 7px #04527E;
 	margin-right: 20px;
-	font-size: 28px;
+	font-size: 20px;
 	color: #ECFFFF !important;
-	background: #66ADAD;
+	background: #328BA2;
 	padding: 3px 10px 3px 10px;
 	text-decoration: none;
 }
@@ -127,12 +122,41 @@ html, body {
 	position: relative;
 	list-style: none;
 	font-size: 18px;
-	top: -10px;
-	left: -18px;
+	top: -12px;
+	left: 15px;
 }
-.navi li {
-	margin-right:15px;
-	float:left
+.navi_inner {
+	width: 95px;
+	background: #75CEF3;
+	position: relative;
+	list-style: none;
+	font-size: 15px;
+	top: -8px;
+	padding-bottom: 9px;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0 0 10px #75CEF3;
+}
+.navi_btn {
+	padding: 14px 20px 14px 20px;
+}
+.navi_inner li {
+	width: 89px;
+	padding: 4px 14px 4px 32px;
+	left: -40px;
+	position: relative;
+	margin-bottom: 2px;
+}
+.navi_click {
+	cursor:pointer;
+}
+.navi_click:hover {
+	background: #0050C9;
+}
+.navi_inner > li:first-child {
+	padding-top: 2px;
+}
+.navi_inner li a {
+	color:white;	
 }
 .titletext {
 	position: relative;
@@ -183,6 +207,12 @@ html, body {
 	background: #A0D613;
 	color: #FFF;
 }
+#l_my_info > a:first-child {
+	color: #07113A;
+}
+#l_my_info a {
+	color: white;
+}
 .user_act {
 	box-shadow: 0 0 10px #A0D613;
 	padding-top: 4px;
@@ -213,16 +243,15 @@ html, body {
 }
 /*main*/
 .topiclist {
+	margin: auto auto;
 	padding-top: 20px;
-	position: relative;
-	background: white;
 	min-height: 100px;
-	left: 6%;
-	width: 88%;
-	padding-bottom: 40px;
+	width: 80%;
+	padding-bottom: 5px;
 }
 .topiclist .block_title {
-	color:#4CD0FA
+	color: #43D1E6;
+	text-shadow: 0 0 2px #52DFF3;
 }
 .topicbox {
 	height: 60px;
@@ -284,12 +313,6 @@ html, body {
 	width: 556px;
 	height: 48px;
 }
-.LR_re_login {
-	height: 320px !important;
-}
-.LR_re_reg {
-	height: 442px !important;
-}
 
 /*NODE*/
 .nodebox_list {
@@ -328,12 +351,10 @@ html, body {
 /*viewing*/
 .viewtopic {
 	padding-top: 20px;
-	position: relative;
-	background: white;
 	min-height: 100px;
-	left: 6%;
-	width: 88%;
+	width: 80%;
 	padding-bottom: 40px;
+	margin: auto auto;
 }
 .view_gravatar {
 	float: right;
@@ -417,8 +438,8 @@ html, body {
 	text-decoration: none;
 	padding: 6px;
 	border-radius: 9px;
-	border: 1px solid #54AAA3;
-	box-shadow: 0 0 4px #08705F;
+	border: 1px solid #A2B3B1;
+	box-shadow: 0 0 11px #8B8B8B;
 }
 #reply_to:hover {
 	background: #36BDAD;
