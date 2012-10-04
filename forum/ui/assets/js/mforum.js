@@ -134,12 +134,6 @@ $(document).ready(function(){
 		});
 	});
 });
-function u_act_toggle() {
-	$(".user_act").toggle(500);
-}
-function n_act_toggle() {
-	$(".navi_inner").toggle(500);
-}
 function index_topic(page) {
 	$("#ajaxwait_view_topic").hide();
 	$(".topiclist").slideUp(function(){
@@ -172,10 +166,10 @@ function index_node() {
 function regNavitoggle() {
 			$("#navi_index").click(function(){index_topic(1);});
 			$("#navi_node").click(function(){index_node();});
-			$('#l_my_info').mouseenter(function(){u_act_toggle();});
-			$('#l_my_info').mouseleave(function(){u_act_toggle();});
-			$('.navi').mouseenter(function(){n_act_toggle();});
-			$('.navi').mouseleave(function(){n_act_toggle();});
+			$('#l_my_info').mouseenter(function(){$(".user_act").show(100);});
+			$('#l_my_info').mouseleave(function(){$(".user_act").hide(100);});
+			$('.navi').mouseenter(function(){$(".navi_inner").show(100);});
+			$('.navi').mouseleave(function(){$(".navi_inner").hide(100);});
 }
 function show_load() {
 	$("#ajax_loading").slideDown();

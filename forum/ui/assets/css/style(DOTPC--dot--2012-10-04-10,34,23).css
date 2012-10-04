@@ -23,7 +23,7 @@ icon {
 	-moz-transition-duration: 0.5s;
 }
 html, body {
-	min-width: 480px;
+	min-width: 640px;
 	margin:0;
 	padding:0;
 	font:12px/1.125 "文泉驿正黑","文泉驛正黑","Microsoft YaHei","Simsun";
@@ -51,8 +51,10 @@ html, body {
 	clear:both;
 }
 .block_title {
-	margin: 54px 0 -4px 30px;
 	font-size: 36px;
+	position: relative;
+	left: 46px;
+	top: 15px;
 }
 .userbox {
 	top: 0px;
@@ -71,7 +73,7 @@ html, body {
 #dark {
 	border-bottom: 8px solid #C8E7EC;
 	box-shadow: 0 0 10px #328BA2;
-	width: 90%;
+	width: 75%;
 	margin: auto auto;
 }
 .CTbox {
@@ -252,26 +254,21 @@ html, body {
 .topiclist {
 	min-height: 100px;
 	padding-bottom: 5px;
-	margin-right: 3%;
-	margin-left: 3%;
 }
 .topiclist .block_title {
 	color: #43D1E6;
 	text-shadow: 0 0 2px #52DFF3;
 }
 .topicbox {
-	margin: 0 6px 0 6px;
+	height: 60px;
+	margin: 15px 20px 0 90px;
+	background: white;
 }
 .topicbox ul {
-	float: left;
 	list-style: none;
+	top: -63px;
 	position: relative;
-	padding-right: 33px;
-}
-.topicbox > ul > li:first-child {
-	position: relative;
-	left: 53px;
-	top: 20px;
+	left: 20px;
 }
 .topic_link {
 	text-decoration: none;
@@ -284,7 +281,6 @@ html, body {
 .topic_gravatar {
 	height:48px;
 	width:48px;
-	margin-right: 4px;
 }
 .topic_reply_unm {
 	margin-left: 5px;
@@ -359,7 +355,13 @@ html, body {
 	color: #D7E256; 
 }
 /*viewing*/
-
+.viewtopic {
+	padding-top: 20px;
+	min-height: 100px;
+	width: 80%;
+	padding-bottom: 40px;
+	margin: auto auto;
+}
 .view_gravatar {
 	float: right;
 	height: 64px;
@@ -368,18 +370,17 @@ html, body {
 }
 .v_box {
 	box-shadow: 0 0 10px #88BFF5 , 0 0 2px #5DA7D1 inset;
+	width: 87%;
 	background: #F2FEFF;
 	border-radius: 5px;
 	border: 1px solid white;
 	position: relative;
+	left: 50px;
 	padding: 15px;
 	margin-bottom: 20px;
 }
-.view_texts {
-	margin-top: 22px;
-}
 .view_user_text {
-	word-break: break-all;
+	height: 75px;
 }
 .view_user_text span {
 	color: #1B5B96;
@@ -393,12 +394,8 @@ html, body {
 .view_user_text a {
 	color: #1B5B96;
 }
-.viewtopic {
-	margin-left: 5%;
-	margin-right: 5%;
-}
 .viewtopic .block_title {
-	margin: 54px 0 10px 0;
+	left: 4px;
 }
 .viewtopic .block_title a {
 	color: #2C9FD5;
