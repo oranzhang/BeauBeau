@@ -5,3 +5,4 @@ gem "markdown"
 gem "mongoid"
 gem 'json'
 gem 'aes'
+gem 'memcache-client'
