@@ -7,10 +7,9 @@
 <% @numm = @num - 1%>
 <div class="topicbox">
 	<ul>
-		<li><a class="topic_time"><icon>m</icon><%=@post.node %> <icon>7</icon><%=@post.time %></a></li>
+		<li><a class="clickable topic_reply_unm view-<%=y%>"><%=@numm.to_s %></a><a class="topic_time"><icon>m</icon><%=@post.node %> <icon>7</icon><%=@post.time %></a></li>
 		<li>
 			<a class="clickable topic_link view-<%=y%>"><img class="topic_gravatar" src="http://gravatar.com/avatar/<%=Digest::MD5.hexdigest(@user.mail) %>?r=G&amp;s=48"><span><%=@username %>:</span><%=@post.title %></a>
-			<a  class="clickable topic_reply_unm view-<%=y%>"><%=@numm.to_s %></a>
 		</li>
 	</ul>
 	<div class="clear"></div>

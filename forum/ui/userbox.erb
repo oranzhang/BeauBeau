@@ -1,16 +1,5 @@
 <div class="user_icon">
   <p class="titletext left"><%=$conf["sitename"] %></p>
-    <h2 class="navi left">
-      <a class="navi_btn clickable"><icon>u</icon>Menu</a>
-      <ul class="navi_inner" style="display:none;">
-        <li></li>
-        <li id="navi_index" class="navi_click"><a>Topics</a></li>
-        <li id="navi_node" class="navi_click"><a>Nodes</a></li>
-        <% $navi.each do |x| %>
-          <li onclick='location.href="<%=x["href"] %>"' class="navi_click"><a><%=x["name"] %></a></li>
-        <% end %>
-      </ul>
-    </h2>
   <% if @msg == 1 %>
   <img class="user_gravatar" src="http://gravatar.com/avatar/<%= @info["mail"] %>?r=G&amp;s=32">
   <h3 id="l_my_info"><a  href="#dark"><%= @info["name"] %></a>
@@ -25,4 +14,14 @@
   <img class="user_gravatar" src="http://gravatar.com/avatar/7c2fe4b.png?r=G&amp;s=32">
   <h3 style="top: -5px;"><a class="clickable" id="l_loginbox" onclick="new_LRbox();" href="#dark">点击此处登录或注册</a></h3>
   <% end %>
+</div>
+<div class="navi">
+  <ul class="navi_inner" style="display:none;">
+    <li></li>
+    <li id="navi_index" class="navi_click"><a>Topics</a></li>
+    <li id="navi_node" class="navi_click"><a>Nodes</a></li>
+    <% $navi.each do |x| %>
+      <li onclick='location.href="<%=x["href"] %>"' class="navi_click"><a><%=x["name"] %></a></li>
+    <% end %>
+  </ul>
 </div>

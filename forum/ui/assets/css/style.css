@@ -25,7 +25,7 @@ icon {
 html, body {
 	min-width: 480px;
 	margin:0;
-	padding:0;
+	padding:40px 0 0 0;
 	font:12px/1.125 "文泉驿正黑","文泉驛正黑","Microsoft YaHei","Simsun";
 	color:#333;
 	background:#FFF;
@@ -51,7 +51,7 @@ html, body {
 	clear:both;
 }
 .block_title {
-	margin: 54px 0 -4px 30px;
+	margin: 0 0 -4px 30px;
 	font-size: 36px;
 }
 .userbox {
@@ -63,8 +63,8 @@ html, body {
 	z-index: 555;
 	position: fixed;
 	background: orange;
-	left: auto;
-	right: auto;
+	left: 0;
+	top: 0;
 	margin: auto;
 }
 /*Posty*/
@@ -116,50 +116,40 @@ html, body {
 	color: #005FC5;
 }
 /* 头部 */
-.navi {	
-	padding: 6px 0 13px 0px;
-	position: relative;
-	list-style: none;
-	font-size: 18px;
-	top: -20px;
-	left: 15px;
+.navi {
+	position: fixed;
+	width: 100%;
+	height: 28px;
+	background: #4CBAE6;
+	top: 43px;
 }
 .navi:hover {
 	background: #75CEF3;
 	box-shadow: 0 0 10px #75CEF3;
 }
 .navi_inner {
-	float: left;
-	width: 95px;
-	background: #75CEF3;
-	list-style: none;
-	font-size: 15px;
-	top: 28px;
-	padding-bottom: 9px;
-	border-radius: 0 0 5px 5px;
-	box-shadow: 0 0 10px #75CEF3;
-	left: 186px;
+	margin: 4px 30px 0;
 }
-.navi_btn {
-	padding: 14px 20px 14px 20px;
-}
-
-.navi_inner li {
+.navi_inner li{
+	margin-left: 2em;
+	float: right;
 	list-style: none;
-	font-size: 15px;
-	top: 28px;
-	padding-bottom: 9px;
-	border-radius: 0 0 5px 5px;
+	font-size: 18px;
+}
+.navi_click:hover {
+	text-shadow: 0 0 10px #0050C9;
 }
 .navi_click {
 	cursor:pointer;
 }
 .navi_click:hover {
-	background: #0050C9;
+	text-shadow: 0 0 10px #0050C9;
 }
+/*
 .navi_inner > li:first-child {
 	padding-top: 2px;
 }
+*/
 .navi_inner li a {
 	color:white;	
 }
@@ -259,17 +249,15 @@ html, body {
 	text-shadow: 0 0 2px #52DFF3;
 }
 .topicbox {
-	margin: 0 6px 0 6px;
+	margin: 0px 6px;
 }
 .topicbox ul {
-	float: left;
 	list-style: none;
-	position: relative;
 	padding-right: 33px;
 }
 .topicbox > ul > li:first-child {
 	position: relative;
-	left: 53px;
+	left: 27px;
 	top: 20px;
 }
 .topic_link {
@@ -281,19 +269,28 @@ html, body {
 	color: #777;
 }
 .topic_gravatar {
-	height:48px;
-	width:48px;
+	box-shadow: 0 0 10px #C0EDFF,inset 0 0 10px #0085A7;
+	height: 48px;
+	width: 48px;
 	margin-right: 4px;
+	border-radius: 8px;
+}
+.topic_gravatar:hover {
+	box-shadow: 0 0 10px #0081B3,inset 0 0 10px #0085A7;
 }
 .topic_reply_unm {
 	margin-left: 5px;
 	padding-right: 5px;
 	padding-left: 5px;
-	background: #D1EBEE;
+	background: rgba(107, 130, 165, 0.86);
 	line-height: 0;
 	font-size: 18px;
 	text-decoration: none;
 	color: #60C5B9;
+	position: relative;
+	top: 30px;
+	left: -1px;
+	border-radius: 30px;
 }
 .count_p {
 	text-align: right;
@@ -397,7 +394,7 @@ html, body {
 	margin-right: 5%;
 }
 .viewtopic .block_title {
-	margin: 54px 0 10px 0;
+	margin: 0 0 10px 0;
 }
 .viewtopic .block_title a {
 	color: #2C9FD5;
