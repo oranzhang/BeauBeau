@@ -123,6 +123,24 @@ html, body {
 	background: #4CBAE6;
 	top: 43px;
 }
+@media (max-width: 799px) {
+	.navi {
+		position: fixed;
+		width: 100%;
+		min-height: 15px;
+		background: #4CBAE6;
+		top: 43px;
+	}
+}
+@media (min-width: 800px) {
+	.navi {
+		position: fixed;
+		width: 100%;
+		min-height: 5px;
+		background: #4CBAE6;
+		top: 43px;
+	}
+}
 .navi:hover {
 	background: #75CEF3;
 	box-shadow: 0 0 10px #75CEF3;
@@ -306,6 +324,7 @@ html, body {
 }
  /*LR*/
  .LR_input {
+ 	outline: 0;
 	margin-right: 13px;
 	box-shadow: 0 0 10px #004B03;
 	padding-left: 30px;
