@@ -16,12 +16,12 @@
   <% end %>
 </div>
 <div class="navi">
-  <ul class="navi_inner" style="display:none;">
-    <li></li>
-    <li id="navi_index" class="navi_click"><a>Topics</a></li>
-    <li id="navi_node" class="navi_click"><a>Nodes</a></li>
+  <div class="navi_inner" style="display:none;">
+    <p></p>
+    <p id="navi_index" class="navi_click"><a>Topics</a></p>
+    <p id="navi_node" class="navi_click"><a>Nodes</a></p>
     <% $navi.each do |x| %>
-      <li onclick='location.href="<%=x["href"] %>"' class="navi_click"><a><%=x["name"] %></a></li>
+      <p onclick='location.href="<%=x["href"] %>"' class="navi_click"><a><%=x["name"] %></a></p>
     <% end %>
-  </ul>
+  </div>
 </div>
