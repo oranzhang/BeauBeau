@@ -1,6 +1,6 @@
 get "/install" do
 	if File.exists? config_dir + "/config.json"
-	"Install"
+	"You Have Installed Successfully! \n"
 	else
 	erb :install
 	end
