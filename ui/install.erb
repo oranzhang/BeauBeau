@@ -3,30 +3,65 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Install Mforum Leader</title>
+		<style type="text/css">
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			.a {
+				border-radius: 0 0 10px 10px;
+				margin: -24px auto 10px auto;
+				box-shadow: 0 0 10px #1F3147;
+				width: 900px;
+				padding-bottom: 35px;
+				height: 47px;
+			}
+			.a h1 {
+				line-height: 85px;
+				text-align: center;
+				color: #31729E;
+			}
+			form p {
+				text-align: center;
+			}
+			form input {
+				outline: 0;
+				box-shadow: 0 0 5px #69AAE6,inset 0 0 2px #00D6FF;
+				height: 30px;
+				width: 400px;
+				text-align: center;
+				border-radius: 6px;
+				border: 1px solid #799EE0;
+				background: #F2FAFF;
+			}
+			input:hover {
+				background: #BAF4F7;
+			}
+			input:focus {
+	box-shadow: 0 0 10px yellowGreen;
+	background: #FFFFEF;
+			}
+			#button {
+				width: 80px;
+				height: 35px;
+				font-size: 18px;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Install Mforum V2 (Codename : Leader)</h1>
-		<form id="form1" name="form1" method="post" action="/install">
-			<p>
-				<label for="sitename"></label>
-				Sitename :
-				<input type="text" name="sitename" id="sitename" />
-			</p>
-			<p> Sitename(Will show in the Navi Bar And Title) :
-				<input type="text" name="naviname" id="naviname" />
-			</p>
-			<p> Admin Username :
-				<input type="text" name="adminuser" id="adminuser" />
-			</p>
-			<p> Admin Password :
-				<input type="password" name="adminpass" id="adminpass" />
-			</p>
-			<p>Admin Mail :
-				<input type="text" name="adminmail" id="adminmail" />
-			</p>
-			<p>
-				<input type="submit" name="button" id="button" value="提交" />
-			</p>
-		</form>
+		<div class="a">
+			<h1>Install Mforum V2 (Codename : Leader)</h1>
+			<form id="form1" name="form1" method="post" action="/install">
+				<div id="Install1">
+					<p><input type="text" name="sitename" id="sitename" placeholder="Sitename" /></p>
+					<p><input type="text" name="naviname" id="naviname" placeholder="Sitename(Will show in the Navi Bar And Title)"/></p>
+					<p><input type="text" name="adminuser" id="adminuser" placeholder="Admin Username"/></p>
+					<p><input type="password" name="adminpass" id="adminpass" placeholder="Admin Password"/></p>
+					<p><input type="text" name="adminmail" id="adminmail" placeholder="Admin Mail"/></p>
+					<p><input type="text" name="mongo" id="mongo" placeholder="MongoDB URI"/></p>
+					<p><input type="submit" name="button" id="button" value="Sumbit" /></p>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
