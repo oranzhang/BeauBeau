@@ -3,7 +3,7 @@ Mforum
 A light wight forum applocation . Based on Ruby & Sinatra & MongoDB.
 Lively Development & Support by Meence Team (http://meence.com)  
 
-**The app is on development and not finished , and it can not be for using yet.**
+**This is the old version**
 
 Requirement : 
 - **Unix/Unix-Like OS**(However you can use Mforum in Windows if you can make `eventmachine` gem works in Windows)
