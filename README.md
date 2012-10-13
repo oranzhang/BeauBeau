@@ -1,13 +1,12 @@
-Mforum
+Mforum V2 (Codename : Leader)
 ======
 A light wight forum applocation . Based on Ruby & Sinatra & MongoDB.
-Lively Development & Support by Meence Team (http://meence.com)  
 
-**This is the old version**
+**The app is on development and not finished , and it can not be for using yet.**
 
 Requirement : 
-- **Unix/Unix-Like OS**(However you can use Mforum in Windows if you can make `eventmachine` gem works in Windows)
-- Ruby 1.9+ , MongoDB 1.7+
+- Ruby 1.9+ 
+- MongoDB 1.7+
 
 
 Install

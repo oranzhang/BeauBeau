@@ -1,3 +1,2 @@
-
-#use Rack::Session::EncryptedCookie,
-#  :secret => 
+use Rack::Session::EncryptedCookie,
+	:secret => settings.config["key"]

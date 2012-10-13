@@ -1,14 +1,15 @@
-get "/install" do
-	if File.exists? config_dir + "/config.json"
-	"You Have Installed Successfully! \n"
+get "/" do
+	if File.exists?(settings.config_dir + "/config.json")
+		"<p>You Have Installed Successfully!</p><p>Restart the App to make forum works!</p><p>#{File.read(settings.config_dir + "/config.json")}</p>"
 	else
-	erb :install
+		erb :install
 	end
 end
 post "/install" do
+	Dir.mkdir settings.config_dir if File.exists?(settings.config_dir) == false
 	@data = {:sitename => params[:sitename],:naviname => params[:naviname],:adminuser => params[:adminuser],:adminpass => params[:adminpass], :adminmail => params[:adminmail],:key => OpenSSL::Random.random_bytes(16)}#.inspect}
-	file = File.open(config_dir + "/config.json","w+")
+	file = File.open(settings.config_dir + "/config.json","w+")
 	file.puts @data.to_json + "\n" 
 	file.close
-	"You Have Installed Successfully! \n #{File.read(config_dir + "/config.json")}"
+	"<p>You Have Installed Successfully!</p><p>Restart the App to make forum works!</p><p>#{File.read(settings.config_dir + "/config.json")}</p>"
 end

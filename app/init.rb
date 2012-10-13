@@ -1,4 +1,3 @@
-config_dir = settings.root + "/config"
-set :views, settings.root + '/ui'
-set :public_folder, settings.root + '/assets'
+set :config , JSON.parse(File.open(settings.config_dir + "/config.json").read)
 require settings.root + '/app/modules/cookies'
+
