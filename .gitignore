@@ -1,6 +1,6 @@
-forum/Gemfile.lock
-forum/temp/
-forum/temp/*
-forum/config/config.json
-forum/config/mongoid.yml
+Gemfile.lock
+temp/
+temp/*
+config/config.json
+config/mongoid.yml
 !.gitignore

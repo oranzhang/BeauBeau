@@ -1,8 +1,0 @@
-source :rubygems
-gem 'sinatra'
-gem "sinatra-contrib"
-gem "markdown"
-gem "mongoid"
-gem 'json'
-gem 'aes'
-gem 'memcache-client'
