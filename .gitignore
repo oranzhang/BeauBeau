@@ -1,6 +1,6 @@
-Gemfile.lock
 temp/
 temp/*
 config/config.json
 config/mongoid.yml
 !.gitignore
+manifest.yml

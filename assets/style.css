@@ -1,0 +1,157 @@
+/*
+	99Lime.com HTML KickStart by Joshua Gatcke
+	style.css
+	
+*/
+
+/*---------------------------------
+	IMPORTS
+-----------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Arimo:400,700);
+
+/*---------------------------------
+	OVERRIDES
+-----------------------------------*/
+h1,h2,h3,h4,h5,h6{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+thead th,
+tbody th{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+button,
+a.btn,
+input[type="submit"],
+input[type="reset"],
+input[type="button"]{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+.menu{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+blockquote{
+font-family: "Trebuchet Ms", arial, verdana, sans-serif;
+}
+
+/*---------------------------------
+	LAYOUT
+-----------------------------------*/
+body{
+margin:0;
+padding:0;
+color:#000;
+background:#efefef url(css/img/grid.png) repeat center top;
+font:normal 0.9em/150% 'Arimo', "Trebuchet MS", arial, verdana, sans-serif;
+text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
+}
+
+#wrap{
+	width:960px;/*960*/
+	background: #C7CACE;
+	margin:30px auto 30px auto;
+	padding:0;
+	border:1px solid #ccc;
+	box-shadow: 0 0 10px #BEE5FF,0 0 10px #B4B4B4 inset;
+	border-radius: 8px;
+}
+
+.menu{
+	border-radius: 6px 6px 0 0;
+	margin:-1px -1px 0 -1px;
+}
+.menu li a {
+	border-radius: 6px 6px 0 0;
+}
+.menu ul {
+	border-radius: 0 0 6px 6px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+
+}
+
+#footer{
+	text-align:center;
+	padding:20px;
+	margin:0;
+	background:#efefef;
+	border-top:1px solid #ccc;
+	color:#999;
+	font-size:0.8em;
+	text-shadow:0px 1px 1px #fff;
+	position: relative;
+	top:0;
+	left:0;
+}
+
+#link-top{
+	position: absolute;
+	top:10px;
+	right:10px;
+	*right:25px;/*IE 7 ONLY*/
+	left:auto;
+	color:#666;
+	text-decoration:none;
+	display: inline-block;
+	padding:5px 10px;
+	background:#e5e5e5;
+	line-height:100%;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	}
+.f_right {
+	float: right;
+}
+.blacka , .blacka:hover ,.blacka:visited {
+	color: black;
+	text-decoration: none;
+}
+.left_box {
+	border: 1px solid #B6B6B6;
+	margin-bottom: 14px;
+	padding-top: 1px !important;
+	border-radius: 4px;
+	box-shadow: 0 0 7px #F4FBFF inset,0 0 6px #A3B3BB;
+	outline: none;
+	background: #F4FBFF;
+}
+table td.avatar {
+	width: 48px;
+	height: 48px;
+	padding-right: 0;
+	line-height: 0;
+}
+table td.content div.info {
+	padding-bottom: 10px;
+	line-height: 7px;
+}
+table td.reply-count a {
+	color: white;
+	background-color: #4199C2;
+	padding: 2px 9px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	box-shadow: 0 0 10px #DAF3FF;
+}
+table td.reply-count a:hover {
+	background-color: #257AA2;
+	box-shadow: 0 0 10px #3780A3;
+}
+.listavatar {
+	height: 48px;
+	width: 48px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat no-repeat;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	overflow: hidden;
+}
