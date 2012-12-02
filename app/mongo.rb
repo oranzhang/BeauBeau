@@ -1,6 +1,4 @@
 Mongoid.load!(settings.config_dir + "/mongoid.yml")
-Mongoid.logger = Logger.new($stdout)
-Moped.logger = Logger.new($stdout)
 class User 
 	include Mongoid::Document
 	store_in collection: "users"
