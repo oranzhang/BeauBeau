@@ -1,3 +1,6 @@
+Mongoid.load!(settings.config_dir + "/mongoid.yml")
+Mongoid.logger = Logger.new($stdout)
+Moped.logger = Logger.new($stdout)
 class User 
 	include Mongoid::Document
 	store_in collection: "users"
@@ -13,28 +16,28 @@ class User
 end
 class Topics
 	include Mongoid::Document
-	store_in collection: "plans"
-	field :name, type: String
+	store_in collection: "topics"
+	field :title, type: String
+	field :texts, type: String
 	field :hash, type: String
 	field :time, type: Time
-	field :limted, type: String
-	field :server, type: String
+	field :user, type: String
+end
 class Replies
 	include Mongoid::Document
-	store_in collection: "hosts"
-	field :name, type: String
+	store_in collection: "replies"
 	field :texts, type: String
-	field :start_time, type: Time
-	field :end_time, type: Time
-	field :plan,type: String
+	field :time, type: Time
+	field :user, type: String
+	field :blong_to, type: String
 	shard_key :name, :texts
 end
 class Tags
 	include Mongoid::Document
-	store_in collection: "hosts"
+	store_in collection: "tags"
 	field :name, type: String
-	field :texts, type: String
-	field :start_time, type: Time
+	field :link_to, type: String
+	field :status, type: String
 	field :end_time, type: Time
 	field :plan,type: String
 	shard_key :name, :texts
