@@ -9,12 +9,12 @@ class User
 	field :mail, type: String
 	field :regtime, type: Time
 	field :status # "user" , "admin" , "ban"
+	field :more
 	field :q
 	field :a
-	shard_key :name, :pass, :mail, :regtime, :status, :q, :a
 	index({ regtime: 1 }, { unique: true, name: "regtime_index" })
 end
-class Topics
+class Topic
 	include Mongoid::Document
 	store_in collection: "topics"
 	field :title, type: String
@@ -23,7 +23,7 @@ class Topics
 	field :time, type: Time
 	field :user, type: String
 end
-class Replies
+class Reply
 	include Mongoid::Document
 	store_in collection: "replies"
 	field :texts, type: String
@@ -32,7 +32,7 @@ class Replies
 	field :blong_to, type: String
 	shard_key :name, :texts
 end
-class Tags
+class Tag
 	include Mongoid::Document
 	store_in collection: "tags"
 	field :name, type: String
