@@ -1,12 +1,17 @@
+# -*- coding:utf-8 -*-
 require 'sinatra'
 require "slim"
-require 'encrypted_cookie'
+require 'mongoid'
 require 'digest/sha1'
 require 'digest/md5'
-require 'mongoid'
 require 'json'
 require 'memcache'
+require 'rack-flash'
 
+
+configure do
+    set :template_engine, "slim" # for example
+end
 set :config_dir , settings.root + "/config"
 set :views, settings.root + '/ui'
 set :public_folder, settings.root + '/assets'

@@ -1,3 +1,4 @@
+
 doctype html
 html
   head
@@ -71,7 +72,7 @@ html
           ul.alt
             li
               | 用户： 
-              == User.count.to_s
+              == MongoidUser.count.to_s
               |  个
             li
               | 话题： 
@@ -82,7 +83,7 @@ html
               == Reply.count.to_s
               |  个
         .inner.left_box
-          h4 链接
+          h4 Links
           ul.alt
             li
               a.blacka href="#" Link1

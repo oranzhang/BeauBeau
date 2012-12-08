@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 get "/" do
 	if File.exists?(settings.config_dir + "/config.json")
 		"<p>You Have Installed Successfully!</p><p>Restart the App to make forum works!</p><p>#{File.read(settings.config_dir + "/config.json")}</p><p>#{File.read(settings.config_dir + "/mongoid.yml")}</p>"
