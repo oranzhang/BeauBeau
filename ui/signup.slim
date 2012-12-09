@@ -1,0 +1,25 @@
+javascript:
+	$(document).ready(function(){
+		$(".signup").keyup(function(){CreatUser();});
+	});
+h4 注册
+- if Rack.const_defined?('Flash') && flash[:notice]
+  .notice.success.index_flash
+   span.icon.medium data-icon="C"
+    =flash[:notice]
+    a.icon.close  href="#close" data-icon="x"
+- if Rack.const_defined?('Flash') && flash[:error]
+  span.icon.medium data-icon="!"
+  .notice.warning.index_flash
+    =flash[:error]
+    a.icon.close  href="#close" data-icon="x"
+form.vertical name="register" action="/signup" method="post"
+  lable 用户名： 
+  input.signup#R_user name="user[name]" type="text"  value=(params[:name]) placeholder="请使用中文/英文/数字/横线/下划线" 
+  lable E-mail： 
+  input.signup#R_mail name="user[email]" type="text"  value=(params[:email]) placeholder="请输入你的Email"
+  lable 密码：
+  input.signup#R_pass name="user[password]"  type="password"  placeholder="允许空密码，英文/数字/横线/下划线"
+  lable 重复：
+  input.signup#R_repass name="user[password_confirmation]" type="password" placeholder="请再次输入密码"
+  button.red#R_input type="submit" disabled="" 请先填写上面的表单  

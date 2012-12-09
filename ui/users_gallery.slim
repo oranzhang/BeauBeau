@@ -1,0 +1,6 @@
+- login_required
+h4 谁在这儿？
+.gallery
+  - MongoidUser.each do |x|
+    a.tooltip title=(x.name) href=("/~#{x.name}")
+      img src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest x.email}.png?r=G&s=100") width="100" height="100"
