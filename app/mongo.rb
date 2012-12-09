@@ -16,9 +16,9 @@ class Topic
 	store_in collection: "topics"
 	field :title, type: String
 	field :texts, type: String
-	field :hash, type: String
 	field :time, type: Time
 	field :user, type: String
+	field :last_reply_time, type: Time
 end
 class Reply
 	include Mongoid::Document

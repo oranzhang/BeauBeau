@@ -16,5 +16,6 @@ set :config_dir , settings.root + "/config"
 set :views, settings.root + '/ui'
 set :public_folder, settings.root + '/assets'
 
+
 require settings.root + '/app/modules/install' if File.exist?(settings.config_dir + "/config.json") == false
 require settings.root + '/app/init' if File.exist?(settings.config_dir + "/config.json")

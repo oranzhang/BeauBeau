@@ -242,6 +242,13 @@ jQuery(document).ready(function($){
 			overlayColor: '#000'
 		});
 	});
+	$('.topic_i').each(function(i){
+		$(this).find('a').attr('rel', 'gallery'+i)
+		.fancybox({
+			overlayOpacity: 0.2,
+			overlayColor: '#000'
+		});
+	});
 	
 	// lightbox links
 	$('a.lightbox').fancybox({

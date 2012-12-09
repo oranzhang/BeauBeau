@@ -2,7 +2,7 @@ GIT
   remote: https://github.com/oranzhang/sinatra-authentication.git
   revision: 31d4193a5f700afccd4e900cb542fef87f970c59
   specs:
-    sinatra-authentication-oran (0.0.1)
+    sinatra-authentication-oran (0.0.1.3)
       dm-core
       dm-migrations
       dm-timestamps

@@ -34,39 +34,60 @@ html
             a href="/"
               span.icon.darkgray data-icon="_"
               | 链接点
-          li.f_right
-            a href=""
-              span.icon.darkgray data-icon="u"
-              | Username
-            ul
-              li
-                a href=""
-                  span.icon data-icon="Z"
-                  | 退出
-              li
-                a href=""
-                  span.icon data-icon="k"
-                  | Sub Item
-              li
-                a href=""
-                  span.icon data-icon="J"
-                  | Sub Item
-              li
-                a href=""
-                  span.icon data-icon="="
-                  | Sub Item
           li
-            a href="/"
+            a href="/users_gallery"
               span.icon.medium.darkgray data-icon="U"
               | 谁在这儿？
+          li.f_right
+            a href=""
+              span.icon.medium.darkgray data-icon="R"
+              | 操作
+            ul
+              li
+                a href="#"
+                  span.icon data-icon="A"
+                  | 分享
+              - if logged_in?
+                li
+                  a href="/topic/new"
+                    span.icon data-icon="."
+                    | 发帖
+                li
+                  a href="http://www.gravatar.com"
+                    span.icon data-icon="K"
+                    | 更换头像
+      - if Rack.const_defined?('Flash') && flash[:notice]
+        .notice.success.index_flash
+          span.icon.medium data-icon="C"
+          =flash[:notice]
+          a.icon.close  href="#close" data-icon="x"
+      - if Rack.const_defined?('Flash') && flash[:error]
+        .notice.warning.index_flash
+          span.icon.medium data-icon="!"
+          =flash[:error]
+          a.icon.close  href="#close" data-icon="x"
       .col_3
-        .inner.left_box
-          h4 +您
-          |  请 
-          a.button.blue.small.pop href="/user/login" 登陆 
-          |  或 
-          a.button.green.small.pop href="/user/reg" 注册 
-          |  融入我们的讨论！
+        - if logged_in?
+
+          .inner.left_box
+            img.left_avatar.align-left height="65" width="65" src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest current_user.email}.png?r=G&s=65")
+            h5=current_user.name
+            ul.button-bar
+              li.first 
+                a.tooltip title="设置" href=""
+                  span.icon data-icon="="
+              li.last
+                a.tooltip title="退出" href="/logout" 
+                  span.icon data-icon="Q"
+              p
+        - else
+          .inner.left_box
+            h4 +您
+            |  请 
+            a.button.blue.small.pop href="/login" 登陆 
+            |  或 
+            a.button.green.small.pop href="/signup" 注册 
+            |  融入我们的讨论！
         .inner.left_box
           h4 站点统计
           ul.alt
