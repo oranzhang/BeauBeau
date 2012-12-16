@@ -84,14 +84,6 @@ function CreatUser(){
 		}
 }
 
-function logout() {
-	$.getJSON("/!!/CookieClean",function(a){
-		if (a.logout == true) {
-			location.reload();
-		}
-	});
-}
-
 function index_topic(page) {
 	$("#ajaxwait_view_topic").hide();
 	$(".topiclist").slideUp(function(){
@@ -210,20 +202,4 @@ function post_to() {
 			},"json");
 		}
 	});
-}
-function getUrlact() {
-	var url =  window.location.href;
-	var sharp1 = $.url(url).fsegment(1);
-	var sharp2 = $.url(url).fsegment(2);
-	if (sharp1 == "post") {
-		 if (sharp2 != undefined) {
-			 view_topic(sharp2);
-		}
-	}
-	if (sharp1 == "node") {
-
-	}
-	if(sharp1 == "user") {
-
-	}
 }

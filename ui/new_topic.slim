@@ -1,0 +1,18 @@
+script src="/wmd/Markdown.Converter.js"
+script src="/wmd/Markdown.Editor.js"
+script src="/wmd/Markdown.Sanitizer.js"
+script src="/js/jquery.TagEditor.js"
+script src="/js/editor.js"
+
+- login_required
+h4 请编辑你的话题
+form.vertical name="register" action="/topic/new" method="post"
+  lable 标题 
+  input name="topic[title]" type="text"
+  .wmd-panel
+    #wmd-button-bar
+    textarea.wmd-input#wmd-input  name="topic[texts]"
+    #wmd-preview.wmd-panel.preview
+    input type="text" id="tags1" name="topic[tags]" value="" placeholder="标签"
+
+  button.blue type="submit" 提交

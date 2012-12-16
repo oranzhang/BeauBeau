@@ -1,0 +1,26 @@
+javascript: 
+    jQuery(document).ready(function() {$("time").timeago();});
+h2.darkgray
+  = @topic.title
+  img.align-right.show_avatar src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest get_topic_user(@topic._id).email}.png?r=G&s=64")
+h6.darkgray.view_title
+  .info
+    - @topic.tags.to_a.each do |tag|
+      span.tag
+        a href=("/conn/#{tag}")
+          = tag
+    span.author
+      a.user href=("/~#{@topic.user}")
+        = @topic.user
+    span.time
+      |  创建于 
+      time datetime=(@topic.time)
+      - if @topic.time != @topic.last_reply_time
+        | ,
+        - @l_rep = get_reply_list(@topic._id).desc(:time).first
+        a.user href=("/~#{@l_rep.user}") 
+          = 
+        |  最后回复于 
+        time datetime=(@l_rep.time)
+#text
+  = @topic.texts

@@ -1,6 +1,3 @@
-get "/" do
-	slim :index_list 
-end
 get "/users_gallery" do
 	slim :users_gallery
 end

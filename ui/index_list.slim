@@ -2,24 +2,40 @@
 javascript:
     jQuery(document).ready(function() {$("time").timeago();});
 h4 Latest Topics
-table.tight
-  tbody
-    tr.topic_i
-      td.avatar
-        a href="/~lookhi"
-          div.listavatar style="background:url(http://gravatar.com/avatar/181c463f03d6cab76f888b5497f47fc4.png?r=G&s=48)"
-      td.content
-        h5
-          a.blacka href="/topics/729" Title
-        .info
-          span.author
-            a href="/~lookhi" XXX
-          span.time
-            |  创建于 
-            time datetime="2012-11-13T13:15:24+00:00" title="2012年11月13日 星期二 13:15:24 UTC"
-            | , 
-            a href="/~gonglexin" XXX
-            |  回复于 
-            time data-time-ago="2012-11-24T10:55:39+00:00" datetime="2012-11-24T10:55:39+00:00" title="2012年11月24日 星期六 10:55:39 UTC"
-      td.reply-count
-        a href="/topics/729" 998
+- if Topic.count == 0
+  |There is nothing.
+- else
+  table.tight
+    tbody
+      - @topics.each do |x|
+        tr.topic_i
+          td.avatar
+            a.user href=("/~#{x.user}")
+              div.listavatar style=("background:url(http://gravatar.com/avatar/#{Digest::MD5.hexdigest get_topic_user(x.id).email}.png?r=G&s=48)")
+          td.content
+            h5
+              a.blacka href=("/topic/#{x._id}")
+                = x.title
+            .info
+              - x.tags.to_a.each do |tag|
+                span.tag
+                  a href=("/conn/#{tag}")
+                    = tag
+              span.author
+                a.user href=("/~#{x.user}")
+                  = x.user
+              span.time
+                |  创建于 
+                time datetime=(x.time)
+                - if x.time != x.last_reply_time
+                  | ,
+                  - @l_rep = get_reply_list(x._id).desc(:time).first
+                  a.user href=("/~#{@l_rep.user}") 
+                    = 
+                  |  最后回复于 
+                  time datetime=(@l_rep.time)
+          td.reply-count
+            a href=("/topic/#{x._id}")
+              = Reply.where(blong_to: x._id).count
+
+  = paginate @topics

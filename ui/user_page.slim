@@ -1,3 +1,16 @@
-
-IMG.align-right src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest @user.email}.png?r=G&s=150") width="150" height="150"
-h1=@user.name
+javascript:
+    jQuery(document).ready(function() {$("time").timeago();});
+#show_warp
+  h1
+    IMG.align-right.show_avatar src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest @user.email}.png?r=G&s=150") width="150" height="150"
+    =@user.name
+  p
+    | 注册时间：
+    time datetime=(@user.created_at) 
+  p 
+    | 发帖数：
+    =Topic.where(user: @user.name).count
+    | ，回帖数：
+    =Reply.where(user: @user.name).count
+  blockquote.small
+    p 暂无自我介绍
