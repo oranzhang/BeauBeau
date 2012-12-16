@@ -1,6 +1,6 @@
-Mforum V2 (Codename : Leader)
+Mforum Deux (Codename : Leader)
 ======
-A light wight forum applocation . Based on Ruby & Sinatra & MongoDB.
+A light wight forum applocation . Based on Ruby & Sinatra & MongoDB.Under the MIT license.
 If you have any issues , please go to [Sellmoe Community](http://sellmoe.com)
 
 **The app is on development and not finished , and it can not be for using yet.**
@@ -23,9 +23,9 @@ Coming Soon
 
 
 
-Mforum V2 (开发代号 : Leader)
+Mforum Deux (开发代号 : Leader)
 ======
-一个轻量级论坛 . 基于 Ruby & Sinatra & MongoDB.
+一个轻量级论坛 . 基于 Ruby & Sinatra & MongoDB.在MIT协议下开源.
 
 如若在使用中有任何问题请去 [Sellmoe Community](http://sellmoe.com)反馈.
 
