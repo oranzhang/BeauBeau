@@ -23,4 +23,4 @@ h6.darkgray.view_title
         |  最后回复于 
         time datetime=(@l_rep.time)
 #text
-  = @topic.texts
+  = GitHub::Markdown.render(@topic.texts)

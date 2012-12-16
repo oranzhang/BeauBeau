@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 set :config , JSON.parse(File.open(settings.config_dir + "/config.json").read)
 require settings.root + '/app/modules/rack'
-
+require 'github/markdown'
 require 'kaminari'
 require 'kaminari/sinatra'
 helpers Kaminari::Helpers::SinatraHelpers
