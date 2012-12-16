@@ -23,4 +23,5 @@ h6.darkgray.view_title
         |  最后回复于 
         time datetime=(@l_rep.time)
 #text
-  = GitHub::Markdown.render(@topic.texts)
+  == RDiscount.new(@topic.texts).to_html
+
