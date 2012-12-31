@@ -53,6 +53,7 @@ post "/topic/reply/new" do
 			belong_to: @data[:belong_to])
 		reply.save
 		flash[:notice] = "发表成功！"
+		Topic.where(_id:@data[:belong_to]).update(:last_reply_time => @time)
 		@notice = "true"
 	else
 		@notice = "false"

@@ -36,6 +36,6 @@ h4 Latest Topics
                   time datetime=(@l_rep.time)
           td.reply-count
             a href=("/topic/#{x._id}")
-              = Reply.where(blong_to: x._id).count
+              = Reply.where(belong_to: x._id).count
 
   = paginate @topics
