@@ -23,7 +23,7 @@ class Reply
 	field :user, type: String
 	field :belong_to, type: String
 	shard_key :name, :texts
-	validates_presence_of :texts ,:user ,:blong_to ,:time
+	validates_presence_of :texts ,:user ,:belong_to ,:time
 end
 class Tag
 	include Mongoid::Document

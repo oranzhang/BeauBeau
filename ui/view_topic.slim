@@ -1,5 +1,10 @@
 javascript: 
     jQuery(document).ready(function() {$("time").timeago();});
+
+script type="text/javascript"
+  | var id = "
+  == @topic._id
+  | ";
 h2.darkgray
   = @topic.title
   img.align-right.show_avatar src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest get_topic_user(@topic._id).email}.png?r=G&s=64")
@@ -24,4 +29,34 @@ h6.darkgray.view_title
         time datetime=(@l_rep.time)
 #text
   == RDiscount.new(@topic.texts).to_html
-
+#replies_box
+  - if @replies.count != 0
+    h4 回复
+  - @replies.each do |x|
+    .reply_box
+      .info
+        span.author
+          span.icon data-icon="u"
+          a.user href=("/~#{x.user}")
+            = x.user
+        span.time
+          |  创建于 
+          span.icon data-icon="t"
+          time datetime=(x.time)
+        .reply_avatar
+          img src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest get_topic_user(@topic._id).email}.png?r=G&s=64")
+      #text
+        == RDiscount.new(x.texts).to_html
+  == paginate @replies
+  script src="/wmd/Markdown.Converter.js"
+  script src="/wmd/Markdown.Editor.js"
+  script src="/wmd/Markdown.Sanitizer.js"
+  script src="/js/reply.js"
+  - if logged_in?
+    form.vertical name="reply" action="/topic/reply/new" method="post"
+      .wmd-panel
+        #wmd-button-bar
+        textarea.wmd-input#wmd-input  name="reply[texts]"
+        #wmd-preview.wmd-panel.preview
+      input name="reply[belong_to]" type="hidden" value=(@topic._id)
+      a.button.blue#r_submit 提交

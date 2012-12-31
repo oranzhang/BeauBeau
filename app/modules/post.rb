@@ -43,8 +43,37 @@ post "/topic/new" do
 		slim :new_topic
 	end
 end
+post "/topic/reply/new" do
+	@data = params[:reply]
+	if @data[:texts]!="" && @data[:belong_to] != ""
+		@time = Time.now
+		reply = Reply.new(texts: @data[:texts],
+			time: @time,
+			user: current_user.name,
+			belong_to: @data[:belong_to])
+		reply.save
+		flash[:notice] = "发表成功！"
+		@notice = "true"
+	else
+		@notice = "false"
+	end
+	@notice
+end
 get "/topic/:id" do
-	@topic =  Topic.where(_id: params[:id])[0]
-	@reply_list = get_reply_list params[:id]
-	slim :view_topic, :layout => use_layout?
+	if Topic.where(_id: params[:id]).count == 0
+		redirect 404
+	else
+		@topic =  Topic.where(_id: params[:id])[0]
+		@replies = get_reply_list(params[:id]).page(params[:page]).desc(:time)
+		slim :view_topic, :layout => use_layout?
+	end
+end
+get "/reply/:id" do
+	if Topic.where(_id: params[:id]).count == 0
+		redirect 404
+	else
+		@topic =  Topic.where(_id: params[:id])[0]
+		@replies = get_reply_list(params[:id]).page(params[:page]).desc(:time)
+		slim :view_replies, :layout => use_layout?
+	end
 end
