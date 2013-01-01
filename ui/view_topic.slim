@@ -35,7 +35,7 @@ h6.darkgray.view_title
   - @replies.each do |x|
     #reply_box
       .reply_avatar
-        img src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest get_topic_user(@topic._id).email}.png?r=G&s=64")
+        img src=("http://gravatar.com/avatar/#{Digest::MD5.hexdigest MongoidUser.where(name:x.user)[0].email}.png?r=G&s=64")
       .reply_box
         .info
           span.author
