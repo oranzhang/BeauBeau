@@ -1,7 +1,7 @@
 (function ($) {
     $.fn.tagEditor = function (opts) {
 
-        opts = $.extend({}, { url: '/Tags', param: 'q', method: 'get', suggestChars: 1, suggestDelay: 300, cache: true, ignoreCase: true, maxTags: 5, tagMaxLength: 50 }, opts);
+        opts = $.extend({}, { url: '/Tags', param: 'q', method: 'get', suggestChars: 1, suggestDelay: 300, cache: true, ignoreCase: true, maxTags: 3, tagMaxLength: 20 }, opts);
 
         return this.each(function () {
 
