@@ -204,6 +204,9 @@ table td.reply-count a:hover {
 }
 
 /*wmd*/
+#replies_box form {
+	border-top: 1px solid #DDD;
+}
 .wmd-button-bar {
 	width: 100%;
 	background-color: Silver; 
@@ -363,7 +366,7 @@ pre  code {
 }
 .reply_box {
 	padding: 10px;
-	margin: 0px 84px 15px 4px;
+	margin: 0px 0px 15px 75px;
 	border: 2px #E7E7E7 solid;
 	border-radius: 8px;
 	box-shadow: 0 0 10px #DBDBDB ,0 0 4px #E5F6FF inset;
@@ -379,14 +382,12 @@ pre  code {
 	color: #8F8F8F;
 }
 .reply_avatar {
-	float: right;
-	position: absolute;
-	right: 154px;
+	float: left;
 }
 .reply_avatar img {
-	top: -26px;
+	border: 1px #BBB solid;
 	border-radius: 8px;
-	box-shadow: 0 0 10px #DBDBDB ,0 0 4px #E5F6FF inset;
+	box-shadow: 0 0 10px #ACACAC ,0 0 4px #E5F6FF inset;
 }
 .pagination {
 	text-align: right;
@@ -411,4 +412,10 @@ pre  code {
 .pagination a{
 	text-decoration: none;
 	color: #FFA08E;
+}
+#replies_box {
+	border-top: 1px solid #DDD;
+}
+#replies_box h4:first-child{
+	color: #8A8A8A;
 }

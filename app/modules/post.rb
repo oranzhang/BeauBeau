@@ -69,12 +69,3 @@ get "/topic/:id" do
 		slim :view_topic, :layout => use_layout?
 	end
 end
-get "/reply/:id" do
-	if Topic.where(_id: params[:id]).count == 0
-		redirect 404
-	else
-		@topic =  Topic.where(_id: params[:id])[0]
-		@replies = get_reply_list(params[:id]).page(params[:page]).desc(:time)
-		slim :view_replies, :layout => use_layout?
-	end
-end
