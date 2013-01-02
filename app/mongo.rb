@@ -38,5 +38,6 @@ class Setting
 	store_in collection: "settings"
 	field :title, type: String
 	field :data
-	validates_presence_of :name
+	validates_presence_of :title
+	validates_uniqueness_of :title
 end
