@@ -37,7 +37,7 @@ class Setting
 	include Mongoid::Document
 	store_in collection: "settings"
 	field :title, type: String
-	field :data
+	field :data, type: String
 	validates_presence_of :title
 	validates_uniqueness_of :title
 end

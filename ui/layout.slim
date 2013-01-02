@@ -110,12 +110,10 @@ html
         .inner.left_box
           h4 Links
           ul.alt
-            li
-              a.blacka href="#" Link1
-            li
-              a.blacka href="#" Link2
-            li
-              a.blacka href="#" Link3
+            - JSON.parse(get_db_settings(:links)).each do |x|
+              li
+                a.blacka href=(x["link"])
+                  == x["title"]
       .col_9
         .inner.left_box
           == yield
