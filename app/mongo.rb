@@ -33,3 +33,10 @@ class Tag
 	shard_key :name, :texts
 	validates_presence_of :name
 end
+class Setting
+	include Mongoid::Document
+	store_in collection: "settings"
+	field :title, type: String
+	field :data
+	validates_presence_of :name
+end

@@ -23,7 +23,7 @@ post "/install" do
 			"use_utc" => true,
 		}
 	}
-	@data = {:sitename => params[:sitename],:naviname => params[:naviname],:adminuser => params[:adminuser],:adminpass => params[:adminpass], :adminmail => params[:adminmail],:key => OpenSSL::Random.random_bytes(16)}#.inspect}
+	@data = {:adminmail => params[:adminmail].split(","),:key => OpenSSL::Random.random_bytes(16).inspect}
 	file = File.open(settings.config_dir + "/config.json","w+")
 	file.puts @data.to_json + "\n" 
 	file.close

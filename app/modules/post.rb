@@ -1,14 +1,16 @@
 # -*- coding:utf-8 -*-
 #modules/post
-helpers Mforum::Helpers::Post
 get "/" do
+	@title = "首页"
 	@topics = Topic.page(params[:page]).desc(:last_reply_time)
 	slim :index_list 
 end
 get "/topic/new" do
+	@title = "新话题"
 	slim :new_topic
 end
 post "/topic/new" do
+	@title = "新话题"
 	@data = params[:topic]
 	if @data[:title]!="" && @data[:texts]!="" && @data[:tags] != ""
 		@tags = @data[:tags].split(%r{,\s*})
@@ -65,6 +67,7 @@ get "/topic/:id" do
 		redirect 404
 	else
 		@topic =  Topic.where(_id: params[:id])[0]
+		@title = @topic.title
 		@replies = get_reply_list(params[:id]).page(params[:page]).desc(:time)
 		slim :view_topic, :layout => use_layout?
 	end
