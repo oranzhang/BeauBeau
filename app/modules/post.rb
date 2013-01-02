@@ -29,7 +29,7 @@ post "/topic/new" do
 			end
 		end
 		@tags_u = @tags_s.uniq
-		@time = Time.now
+		@time = Time.now.utc
 		post = Topic.new(title: @data[:title] ,
 				tags: @tags_u,
 				texts: @data[:texts] ,
@@ -48,7 +48,7 @@ end
 post "/topic/reply/new" do
 	@data = params[:reply]
 	if @data[:texts]!="" && @data[:belong_to] != ""
-		@time = Time.now
+		@time = Time.now.utc
 		reply = Reply.new(texts: @data[:texts],
 			time: @time,
 			user: current_user.name,
