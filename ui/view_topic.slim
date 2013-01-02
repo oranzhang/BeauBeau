@@ -19,14 +19,14 @@ h6.darkgray.view_title
         = @topic.user
     span.time
       |  创建于 
-      time datetime=(@topic.time)
+      time datetime=(@topic.time.iso8601)
       - if @topic.time != @topic.last_reply_time
         | ,
         - @l_rep = get_reply_list(@topic._id).desc(:time).first
         a.user href=("/~#{@l_rep.user}") 
           = 
         |  最后回复于 
-        time datetime=(@l_rep.time)
+        time datetime=(@l_rep.time.iso8601)
 #text
   == RDiscount.new(@topic.texts).to_html
 #replies_box
@@ -45,7 +45,7 @@ h6.darkgray.view_title
           span.time
             |  创建于 
             span.icon data-icon="t"
-            time datetime=(x.time)
+            time datetime=(x.time.iso8601)
         #text
           == RDiscount.new(x.texts).to_html
   == paginate @replies

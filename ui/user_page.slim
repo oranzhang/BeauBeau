@@ -6,7 +6,7 @@ javascript:
     =@user.name
   p
     | 注册时间：
-    time datetime=(@user.created_at) 
+    time datetime=(@user.created_at.iso8601) 
   p 
     | 发帖数：
     =Topic.where(user: @user.name).count

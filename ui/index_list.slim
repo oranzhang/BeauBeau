@@ -26,14 +26,14 @@ h4 Latest Topics
                   = x.user
               span.time
                 |  创建于 
-                time datetime=(x.time)
+                time datetime=(x.time.iso8601)
                 - if x.time != x.last_reply_time
                   | ,
                   - @l_rep = get_reply_list(x._id).desc(:time).first
                   a.user href=("/~#{@l_rep.user}") 
                     = 
                   |  最后回复于 
-                  time datetime=(@l_rep.time)
+                  time datetime=(@l_rep.time.iso8601)
           td.reply-count
             a href=("/topic/#{x._id}")
               = Reply.where(belong_to: x._id).count
