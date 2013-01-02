@@ -3,16 +3,7 @@ javascript:
 		$(".signup").keyup(function(){CreatUser();});
 	});
 h4 注册
-- if Rack.const_defined?('Flash') && flash[:notice]
-  .notice.success.index_flash
-   span.icon.medium data-icon="C"
-    =flash[:notice]
-    a.icon.close  href="#close" data-icon="x"
-- if Rack.const_defined?('Flash') && flash[:error]
-  span.icon.medium data-icon="!"
-  .notice.warning.index_flash
-    =flash[:error]
-    a.icon.close  href="#close" data-icon="x"
+
 form.vertical name="register" action="/signup" method="post"
   lable 用户名： 
   input.signup#R_user name="user[name]" type="text"  value=(params[:name]) placeholder="请使用中文/英文/数字/横线/下划线" 

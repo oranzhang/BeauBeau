@@ -3,8 +3,10 @@ doctype html
 html
   head
     title
-      == @title
-      |  - 
+      - @title = "" if @title == nil
+      - if @title != ""
+        == @title
+        |  - 
       =get_db_settings "site_title"
     meta charset="UTF-8"
       meta content="" name="description"
@@ -78,7 +80,7 @@ html
             h5=current_user.name
             ul.button-bar
               li.first 
-                a.tooltip title="设置" href=""
+                a.tooltip title="设置" href="/me"
                   span.icon data-icon="="
               li.last
                 a.tooltip title="退出" href="/logout" 
