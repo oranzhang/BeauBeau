@@ -1,6 +1,6 @@
 if Setting.count == 0
 	Setting.create!(title: "site_title",data: "Mforum")
-	Setting.create!(title: "links",data: ""[ { \"title\":\"Oran's Blog\", \"link\": \"http://oranoran.info\" }, { \"title\":\"Mforum on Github\", \"link\": \"https://github.com/oranzhang/Mforum\" } ]"")
+	Setting.create!(title: "links",data: "[ { \"title\":\"Oran's Blog\", \"link\": \"http://oranoran.info\" }, { \"title\":\"Mforum Github\", \"link\": \"https://github.com/oranzhang/Mforum\" } ]")
 end
 get "/+/admin/home" do
 	admin_zone
