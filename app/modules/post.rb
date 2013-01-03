@@ -72,3 +72,39 @@ get "/topic/:id" do
 		slim :view_topic, :layout => use_layout?
 	end
 end
+get "/conn/:name" do
+	@t = Tag.where(name: params[:name])
+	if @t.exists?
+		if @t[0].link_to == ""
+			@tag = @t[0].name
+		else
+			@tag = @t[0].link_to
+		end
+		@pt = params[:name]
+		@title = "Tagged as " + @tag
+		@topics = Topic.where(:tags => @tag).page(params[:page]).desc(:last_reply_time)
+		slim :conn_list
+	else
+		flash[:notice] = "还没有贴子被标记为 " + params[:name]
+		redirect "/"
+	end
+end
+get "/conn" do 
+	slim :view_conn
+end
+post "/conn" do
+	@p = "/conn" + params[:page]
+	@o = params[:old_tag]
+	@n = params[:new_tag]
+	if @o == @n 
+		flash[:error] = "Not the SAME!"
+	else
+		if Tag.where(name: @o).count != 0
+			Tag.where(name: @o).update(link_to: @n)
+			flash[:notice] = "Tag " + @o + " has been tagged to \"" + @n + "\""
+		else
+			flash[:error] = "Invaild old tag!"
+		end
+	end
+	redirect @p
+end

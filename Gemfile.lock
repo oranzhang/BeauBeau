@@ -98,9 +98,11 @@ GEM
     tzinfo (0.3.35)
     url_mount (0.2.1)
       rack
+    yajl-ruby (1.1.0)
     yajl-ruby (1.1.0-x86-mingw32)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES

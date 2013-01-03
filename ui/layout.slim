@@ -1,4 +1,3 @@
-
 doctype html
 html
   head
@@ -37,7 +36,7 @@ html
               span.icon.medium.darkgray data-icon="I"
               = get_db_settings "site_title"
           li
-            a href="/"
+            a href="/conn"
               span.icon.darkgray data-icon="_"
               | 链接点
           li
@@ -108,6 +107,10 @@ html
             li
               | 回复： 
               == Reply.count.to_s
+              |  个
+            li
+              | 有效标签： 
+              == Tag.where(link_to: "").count.to_s
               |  个
         .inner.left_box
           h4 Links
