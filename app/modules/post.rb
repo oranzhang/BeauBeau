@@ -81,8 +81,10 @@ get "/conn/:name" do
 			@tag = @t[0].link_to
 		end
 		@pt = params[:name]
+		@query = [@tag]
+		Tag.where(link_to: @tag).each {|x|@query<<x.name}
 		@title = "Tagged as " + @tag
-		@topics = Topic.where(:tags => @tag).page(params[:page]).desc(:last_reply_time)
+		@topics = Topic.any_in(:tags => @query).page(params[:page]).desc(:last_reply_time)
 		slim :conn_list
 	else
 		flash[:notice] = "还没有贴子被标记为 " + params[:name]
@@ -99,8 +101,10 @@ post "/conn" do
 	if @o == @n 
 		flash[:error] = "Not the SAME!"
 	else
-		if Tag.where(name: @o).count != 0
+		if Tag.where(name: @o).exists?
+			Tag.create!(name:@n,link_to: "") if Tag.where(name: @n).count == 0
 			Tag.where(name: @o).update(link_to: @n)
+
 			flash[:notice] = "Tag " + @o + " has been tagged to \"" + @n + "\""
 		else
 			flash[:error] = "Invaild old tag!"
