@@ -4,3 +4,4 @@ config/config.json
 config/mongoid.yml
 !.gitignore
 manifest.yml
+Gemfile.lock

@@ -3,7 +3,6 @@ Mforum Deux (Codename : Leader)
 A light wight forum applocation . Based on Ruby & Sinatra & MongoDB.Under the MIT license.
 If you have any issues , please go to [Sellmoe Community](http://sellmoe.com)
 
-**The app is on development and not finished , and it can not be for using yet.**
 
 Requirement : 
 - Ruby 1.9+ 
@@ -17,6 +16,11 @@ Install
 -  Open the forum in your Browser and finish the install wizard
 -  Restart your forum to make your forum work
 
+TO-DO
+======
+- i18n
+- Connection with [VousLinker](https://github.com/oranzhang/VousLinker)
+
 Development
 ======
 Coming Soon
@@ -28,8 +32,6 @@ Mforum Deux (开发代号 : Leader)
 一个轻量级论坛 . 基于 Ruby & Sinatra & MongoDB.在MIT协议下开源.
 
 如若在使用中有任何问题请去 [Sellmoe Community](http://sellmoe.com)反馈.
-
-**此程序还没完成，并不能投入生产环境.**
 
 运行环境 : 
 - Ruby 1.9+ 
