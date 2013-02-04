@@ -4,20 +4,20 @@ if Setting.count == 0
 end
 get "/+/admin/home" do
 	admin_zone
-	@title = "Administartion"
+	@title = i18n.titles.admin
 	slim :admin_home
 end
 post "/+/admin/apply" do
 	if admin?
 		@titles = params[:titles].split(",")
 		@page = "/+/admin/" + params[:page]
-		@titles.each do |t|
-			if get_db_settings(t) == false
-				Setting.create!(title: t,data: params[t])
+		@titles.each do |ti|
+			if get_db_settings(ti) == false
+				Setting.create!(title: ti,data: params[ti])
 			else
-				Setting.where(title: t).update(data: params[t])
+				Setting.where(title: ti).update(data: params[ti])
 			end
-			flash[:notice] = "Administartion: #{t} has been modified!"
+			flash[:notice] = i18n.titles.admin_su(t)
 		end
 		redirect @page
 	end

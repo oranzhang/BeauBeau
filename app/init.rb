@@ -2,6 +2,12 @@
 set :config , JSON.parse(File.open(settings.config_dir + "/config.json").read)
 $admins = settings.config["adminmail"]
 require settings.root + '/app/modules/rack'
+require 'sinatra/r18n'
+R18n::I18n.default = 'en'
+R18n.default_places { "#{settings.root}/i18n/" }
+before do
+  session[:locale] = params[:locale] if params[:locale]
+end
 require 'rdiscount'
 require 'kaminari'
 require 'kaminari/sinatra'

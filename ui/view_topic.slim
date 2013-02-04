@@ -18,20 +18,20 @@ h6.darkgray.view_title
       a.user href=("/~#{@topic.user}")
         = @topic.user
     span.time
-      |  创建于 
+      =i18n.post.create_at
       time datetime=(@topic.time.iso8601)
       - if @topic.time != @topic.last_reply_time
         | ,
         - @l_rep = get_reply_list(@topic._id).desc(:time).first
         a.user href=("/~#{@l_rep.user}") 
           = 
-        |  最后回复于 
+        =i18n.post.last_reply_at
         time datetime=(@l_rep.time.iso8601)
 #text
   == RDiscount.new(@topic.texts).to_html
 #replies_box
   - if @replies.count != 0
-    h4 回复
+    h4=i18n.user.show.reply(@replies.count) 
   - @replies.each do |x|
     #reply_box
       .reply_avatar
@@ -43,7 +43,6 @@ h6.darkgray.view_title
             a.user href=("/~#{x.user}")
               = x.user
           span.time
-            |  创建于 
             span.icon data-icon="t"
             time datetime=(x.time.iso8601)
         #text
@@ -60,4 +59,4 @@ h6.darkgray.view_title
         textarea.wmd-input#wmd-input  name="reply[texts]"
         #wmd-preview.wmd-panel.preview
       input name="reply[belong_to]" type="hidden" value=(@topic._id)
-      a.button.blue#r_submit 提交
+      a.button.blue#r_submit =i18n.post.submit

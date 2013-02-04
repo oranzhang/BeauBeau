@@ -4,14 +4,15 @@ script src="/wmd/Markdown.Sanitizer.js"
 script src="/js/jquery.TagEditor.js"
 script src="/js/editor.js"
 - login_required
-h4 请编辑你的话题
+h4=i18n.post.edit.edit
 form.vertical name="register" action="/topic/new" method="post"
-  lable 标题 
+  lable=i18n.post.edit.title
   input name="topic[title]" type="text"
   .wmd-panel
     #wmd-button-bar
     textarea.wmd-input#wmd-input  name="topic[texts]"
     #wmd-preview.wmd-panel.preview
-    input type="text" id="tags1" name="topic[tags]" value="" placeholder="标签"
+    input type="text" id="tags1" name="topic[tags]" value="" placeholder=(i18n.post.edit.tags)
 
-  button.blue type="submit" 提交
+  button.blue type="submit"
+    =i18n.post.edit.submit

@@ -2,15 +2,16 @@ javascript:
 	$(document).ready(function(){
 		$(".signup").keyup(function(){CreatUser();});
 	});
-h4 注册
+h4=i18n.user.form.signup
 
 form.vertical name="register" action="/signup" method="post"
-  lable 用户名： 
-  input.signup#R_user name="user[name]" type="text"  value=(params[:name]) placeholder="请使用中文/英文/数字/横线/下划线" 
-  lable E-mail： 
-  input.signup#R_mail name="user[email]" type="text"  value=(params[:email]) placeholder="请输入你的Email"
-  lable 密码：
-  input.signup#R_pass name="user[password]"  type="password"  placeholder="允许空密码，英文/数字/横线/下划线"
-  lable 重复：
-  input.signup#R_repass name="user[password_confirmation]" type="password" placeholder="请再次输入密码"
-  button.red#R_input type="submit" disabled="" 请先填写上面的表单  
+  lable=i18n.user.form.username 
+  input.signup#R_user name="user[name]" type="text"  value=(params[:name]) placeholder=(i18n.user.form.username_l) 
+  lable=i18n.user.form.email
+  input.signup#R_mail name="user[email]" type="text"  value=(params[:email]) placeholder=(i18n.user.form.email_l) 
+  lable=i18n.user.form.password
+  input.signup#R_pass name="user[password]"  type="password"  placeholder=(i18n.user.form.password_l)
+  lable=i18n.user.form.password_r
+  input.signup#R_repass name="user[password_confirmation]" type="password"
+  button.red#R_input type="submit" disabled="" 
+    =i18n.user.form.btn

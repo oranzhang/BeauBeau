@@ -1,16 +1,16 @@
 # -*- coding:utf-8 -*-
 #modules/post
 get "/" do
-	@title = "首页"
+	@title = i18n.titles.home
 	@topics = Topic.page(params[:page]).desc(:last_reply_time)
 	slim :index_list 
 end
 get "/topic/new" do
-	@title = "新话题"
+	@title = i18n.titles.newp
 	slim :new_topic
 end
 post "/topic/new" do
-	@title = "新话题"
+	@title = i18n.titles.newp
 	@data = params[:topic]
 	if @data[:title]!="" && @data[:texts]!="" && @data[:tags] != ""
 		@tags = @data[:tags].split(%r{,\s*})
@@ -38,10 +38,10 @@ post "/topic/new" do
 				status: "topic",
 				time: @time)
 		post.save
-		flash[:notice] = "发表成功！"
+		flash[:notice] = i18n.titles.new_su
 		redirect "/topic/#{post[:_id]}"
 	else
-		flash[:error] = "请不要留空哟！"
+		flash[:error] = i18n.titles.new_em
 		slim :new_topic
 	end
 end
@@ -54,7 +54,7 @@ post "/topic/reply/new" do
 			user: current_user.name,
 			belong_to: @data[:belong_to])
 		reply.save
-		flash[:notice] = "发表成功！"
+		flash[:notice] = i18n.titles.new_su
 		Topic.where(_id:@data[:belong_to]).update(:last_reply_time => @time)
 		@notice = "true"
 	else
@@ -87,7 +87,7 @@ get "/conn/:name" do
 		@topics = Topic.any_in(:tags => @query).page(params[:page]).desc(:last_reply_time)
 		slim :conn_list
 	else
-		flash[:notice] = "还没有贴子被标记为 " + params[:name]
+		flash[:notice] = i18n.titles.not_tag(params[:name])
 		redirect "/"
 	end
 end
@@ -99,15 +99,15 @@ post "/conn" do
 	@o = params[:old_tag]
 	@n = params[:new_tag]
 	if @o == @n 
-		flash[:error] = "Not the SAME!"
+		flash[:error] = i18n.titles.l_same
 	else
 		if Tag.where(name: @o).exists?
 			Tag.create!(name:@n,link_to: "") if Tag.where(name: @n).count == 0
 			Tag.where(name: @o).update(link_to: @n)
 
-			flash[:notice] = "Tag " + @o + " has been tagged to \"" + @n + "\""
+			flash[:notice] = i18n.titles.l_su
 		else
-			flash[:error] = "Invaild old tag!"
+			flash[:error] = i18n.titles.l_inv
 		end
 	end
 	redirect @p

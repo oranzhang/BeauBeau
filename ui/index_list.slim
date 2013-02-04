@@ -24,14 +24,14 @@ h4 Latest Topics
                 a.user href=("/~#{x.user}")
                   = x.user
               span.time
-                |  创建于 
+                =i18n.post.create_at
                 time datetime=(x.time.iso8601)
                 - if x.time != x.last_reply_time
                   | ,
                   - @l_rep = get_reply_list(x._id).desc(:time).first
                   a.user href=("/~#{@l_rep.user}") 
                     = 
-                  |  最后回复于 
+                  =i18n.post.last_reply_at 
                   time datetime=(@l_rep.time.iso8601)
           td.reply-count
             a href=("/topic/#{x._id}")

@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
-get "/" do
+get "*" do
 	if File.exists?(settings.config_dir + "/config.json")
-		"<p>You Have Installed Successfully!</p><p>Restart the App to make forum works!</p><p>#{File.read(settings.config_dir + "/config.json")}</p><p>#{File.read(settings.config_dir + "/mongoid.yml")}</p>"
+		"Restart me to have fun!"
 	else
 		erb :install
 	end
 end
-post "/install" do
+post "*" do
 	Dir.mkdir settings.config_dir if File.exists?(settings.config_dir) == false
 	@mongo = {
 		"development" => {"sessions" => {"default" => {"uri" => params[:mongo]}}},
@@ -30,5 +30,5 @@ post "/install" do
 	file = File.open(settings.config_dir + "/mongoid.yml","w+")
 	file.puts @mongo.to_yaml 
 	file.close
-	"<p>You Have Installed Successfully!</p><p>Restart the App to make forum works!</p><p>#{File.read(settings.config_dir + "/config.json")}</p><p>#{File.read(settings.config_dir + "/mongoid.yml")}</p>"
+	"Restart me to have fun!"
 end

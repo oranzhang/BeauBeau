@@ -2,20 +2,11 @@ javascript:
   $(document).ready(function(){
     $(".signup").keyup(function(){Login();});
   });
-h4 登录
-- if Rack.const_defined?('Flash') && flash[:notice]
-  .notice.success.index_flash
-   span.icon.medium data-icon="C"
-    =flash[:notice]
-    a.icon.close  href="#close" data-icon="x"
-- if Rack.const_defined?('Flash') && flash[:error]
-  .notice.warning.index_flash
-    span.icon.medium data-icon="!"
-    =flash[:error]
-    a.icon.close  href="#close" data-icon="x"
+h4=i18n.user.form.login
 form.vertical name="register" action="/login" method="post"
-  lable 用户名： 
-  input.signup#L_user name="name" type="text" placeholder="请使用中文/英文/数字/横线/下划线" 
-  lable 密码：
-  input.signup#L_pass name="password" type="password" placeholder="允许空密码，英文/数字/横线/下划线"
-  button.red#L_input type="submit" disabled="" 请先填写上面的表单  
+  lable=i18n.user.form.username 
+  input.signup#L_user name="name" type="text" value=(params[:name]) placeholder=(i18n.user.form.username_l) 
+  lable=i18n.user.form.password
+  input.signup#L_pass name="password"  type="password"  placeholder=(i18n.user.form.password_l)
+  button.red#L_input type="submit" disabled="" 
+    =i18n.user.form.btn

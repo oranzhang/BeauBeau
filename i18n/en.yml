@@ -1,0 +1,99 @@
+titles:
+  su: All done!
+  ug: Who's there?
+  me: Me 
+  home: Home 
+  newp: New Topic 
+  admin: Admin Zone
+  admin_su: "Administartion: %1 has been modified!"
+  new_su: Posted 
+  new_em: Don't leave it empty!
+  not_tag: There is no topic named %1 
+  l_same: Source tag can't be same with the new tag.
+  l_inv: Source tag is invaild.
+  l_su: Linked!
+notice:
+  changed: Edited successfully.
+js:
+  timeago: "timeago.en.js"
+  mforum: "mforum.en.js"
+navi:
+  conn: Tags and Connections
+  user_gallery: Who's there?
+  actions: Actions
+  share: Share This Page
+  new_post: New a Topic
+  change_avatar: Change My Avatar
+left:
+  my_set: My Profile
+  signout: Sign out
+  welcome: Welcome!
+  welcome_sign: !!html 
+    '<p>Not a member? <a class="button blue small pop" href="/login">Login </a> or <a class="button green small pop" href="/signup">Sign up! </a></p>'
+  statistics: Site Statistics 
+  c_user: "Users : %1"
+  c_topic: "Topics : %1"
+  c_reply: "Replies : %1"
+  c_vaild_tag: "Vaild Tags : %1"
+  links: Links
+user:
+  form:
+    login: Login
+    signup: Sign up
+    username: 'Username : '
+    username_l: 'Hanzi, Latin, sums, the "-" and the "_" are agreed.'
+    password: 'Password : '
+    password_r: 'Password again : '
+    password_l: 'Use Latin, sums, the "-" and the "_", or leave it empty.'
+    email: 'E-mail : '
+    email_l: Your E-mail Please.
+    btn: Finish the form first please.
+    submit: Submit
+    change_pass: Change password
+    new_pass: 'New Pass : '
+  show:
+    reply: !!pl
+      0: ""
+      1: "Reply(1)"
+      n: "Replies(%1)"
+    sign_up_at: 'Signed up at '
+    c_topic: !!pl
+      0: 'No posted topic yet, '
+      1: 'Posted 1 topic, '
+      n: 'Posted %1 topics, '
+    c_reply: !!pl
+      0: 'no posted reply yet.'
+      1: 'posted 1 reply.'
+      n: 'posted %1 replies.'
+post:
+  create_at: ' created at ' 
+  reply_at: ' replied at ' 
+  last_reply_at: ' last replied at ' 
+  submit: Submit
+  edit:
+    edit: Edit your post
+    title: Title
+    tags: Tags...
+    submit: Submit
+admin:
+  title: Administration - %1
+  home: Home
+  user: Users
+  post: Posts
+  g:
+    sitename: Site Name
+    links: Links
+    submit: Submit
+  t:
+    t_show:
+      t_as: "Tagged as "
+      t_inc: "This tag has included "
+      l_to: "Link to!"
+      l_ot: "Source tag"
+      l_nt: "will be linked to (if empty, source tag will be a vaild tag; if same, operation will not be taken)"
+tag:
+  show:
+    title: !!pl
+      0: Tags and Connections
+      1: Tags and Connections (1 vaild tag)
+      n: Tags and Connections (%1 vaild tags)

@@ -2,29 +2,30 @@
 javascript:
     jQuery(document).ready(function() {$("time").timeago();});
 h4 
-  |Tagged as 
+  =i18n.admin.t.t_show.t_as
   == @tag
 - if Tag.where(link_to: @tag).exists?
   h5
-    |This tag has included 
+    =i18n.admin.t.t_show.t_inc
     - Tag.where(link_to:@tag).each do |t|
       span.tag_c
         == t.name 
 - if admin?
   .col_6
-    h4 Link to!
+    h4=i18n.admin.t.t_show.l_to
     form.vertical action="/conn" method="post"
       input id="page" name="page" value=('/' + @pt) type="hidden"
       .field
         .label
-          label Old Tag
+          label=i18n.admin.t.t_show.l_ot
         input id="old_tag_shown" name="old_tag_shown" value=(@pt) disabled="disabled"
         input id="old_tag" name="old_tag" value=(@pt) type="hidden"
       .field
         .label 
-          label for="user_password_confirmation" Link to
-        input id="new_tag" name="new_tag" size="30" placeholder=":empty => vaild tag ,  :text => change , :same => not allowed"
-      button.blue#r_submit 提交 
+          label for="user_password_confirmation"
+            =i18n.admin.t.t_show.l_nt
+        input id="new_tag" name="new_tag" size="30"
+      button.blue#r_submit=i18n.admin.g.submit
 - if Topic.count == 0
   |There is nothing.
 - else
@@ -48,14 +49,14 @@ h4
                 a.user href=("/~#{x.user}")
                   = x.user
               span.time
-                |  创建于 
+                =i18n.post.create_at
                 time datetime=(x.time.iso8601)
                 - if x.time != x.last_reply_time
                   | ,
                   - @l_rep = get_reply_list(x._id).desc(:time).first
                   a.user href=("/~#{@l_rep.user}") 
                     = 
-                  |  最后回复于 
+                  =i18n.post.last_reply_at 
                   time datetime=(@l_rep.time.iso8601)
           td.reply-count
             a href=("/topic/#{x._id}")

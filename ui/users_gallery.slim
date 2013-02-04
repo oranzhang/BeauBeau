@@ -1,5 +1,5 @@
 - login_required
-h4 谁在这儿？
+h4=i18n.navi.user_gallery
 .gallery
   - MongoidUser.each do |x|
     a.tooltip title=(x.name) href=("/~#{x.name}")
