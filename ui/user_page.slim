@@ -6,23 +6,24 @@ javascript:
     =@user.name
   p
     = i18n.user.show.sign_up_at
-    time datetime=(current_user.created_at.iso8601) 
+    time datetime=(@user.created_at.iso8601) 
   p 
-    = i18n.user.show.c_topic(Topic.where(user: current_user.name).count)
-    = i18n.user.show.c_reply(Reply.where(user: current_user.name).count)
+    = i18n.user.show.c_topic(Topic.where(user: @user.name).count)
+    = i18n.user.show.c_reply(Reply.where(user: @user.name).count)
   blockquote.small
     p Currently doesn't support short introduce.
-  h4=i18n.user.form.change_pass
-  form.vertical action="/pass" method="post"
-    .field
-      .label
-        label for="user_password"
-          =i18n.user.form.new_pass
-      input name="id" type="hidden" value=(current_user.id)
-      input  id="user_password" name="user[password]" size="30" type="password" placeholder=(i18n.user.form.password_l)
-    .field
-      .label 
-        label for="user_password_confirmation"
-          =i18n.user.form.password_r
-      input  id="user_password_confirmation" name="user[password_confirmation]" size="30"type="password"
-    button.blue#r_submit=i18n.user.form.submit
+  - if admin?
+    h4=i18n.user.form.change_pass
+    form.vertical action="/pass" method="post"
+      .field
+        .label
+          label for="user_password"
+            =i18n.user.form.new_pass
+        input name="id" type="hidden" value=(@user.id)
+        input  id="user_password" name="user[password]" size="30" type="password" placeholder=(i18n.user.form.password_l)
+      .field
+        .label 
+          label for="user_password_confirmation"
+            =i18n.user.form.password_r
+        input  id="user_password_confirmation" name="user[password_confirmation]" size="30"type="password"
+      button.blue#r_submit=i18n.user.form.submit
