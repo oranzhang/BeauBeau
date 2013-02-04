@@ -28,7 +28,7 @@ h6.darkgray.view_title
         =i18n.post.last_reply_at
         time datetime=(@l_rep.time.iso8601)
 #text
-  == RDiscount.new(@topic.texts).to_html
+  == Maruku.new(@topic.texts).to_html
 #replies_box
   - if @replies.count != 0
     h4=i18n.user.show.reply(@replies.count) 
@@ -46,7 +46,7 @@ h6.darkgray.view_title
             span.icon data-icon="t"
             time datetime=(x.time.iso8601)
         #text
-          == RDiscount.new(x.texts).to_html
+          == Maruku.new(x.texts).to_html
   == paginate @replies
   script src="/wmd/Markdown.Converter.js"
   script src="/wmd/Markdown.Editor.js"

@@ -8,7 +8,7 @@ R18n.default_places { "#{settings.root}/i18n/" }
 before do
   session[:locale] = params[:locale] if params[:locale]
 end
-require 'rdiscount'
+require 'maruku'
 require 'kaminari'
 require 'kaminari/sinatra'
 helpers Kaminari::Helpers::SinatraHelpers

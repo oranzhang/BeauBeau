@@ -7,5 +7,5 @@ gem "slim"
 gem "sinatra-authentication-oran",">=0.0.1.3"
 gem 'kaminari', :require => 'kaminari/sinatra'
 gem 'padrino-helpers'
-gem "rdiscount"
+gem "maruku"
 
