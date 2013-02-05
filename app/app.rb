@@ -3,7 +3,7 @@ require "rubygems"
 require "bundler/setup"
 require 'sinatra'
 require "sinatra_more/markup_plugin"
-require "sinatra_more/render_Plugin"
+require "sinatra_more/render_plugin"
 require "sinatra_more/routing_plugin"
 require "slim"
 require "coffee-script"
