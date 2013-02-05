@@ -1,1 +1,12 @@
 h4=i18n.tag.show.title(Tag.where(link_to: "").count)
+- Tag.where(link_to: "").each do |x|
+  .c-tag
+    p
+      a.v-tag href=("/conn/#{x.name}")
+        =x.name
+    - if Tag.where(link_to: x.name).count != 0
+      p.i-tag-c
+         - Tag.where(link_to: x.name).each do |y|
+           a.tag_c.i-tag href=("/conn/#{y.name}" )
+            =y.name
+

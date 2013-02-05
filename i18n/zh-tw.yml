@@ -1,0 +1,99 @@
+titles:
+  su: 完成！
+  ug: 這兒有誰？
+  me: 我
+  home: 首頁
+  newp: 新話題
+  admin: 管理區域
+  admin_su: "管理: %1 被更改！"
+  new_su: 已發布！
+  new_em: 請勿留空！
+  not_tag: 沒有標簽為 %1 的話題！
+  l_same: 源標簽不可與新標簽相同！
+  l_inv: 無效的源標簽
+  l_su: 鏈接完成
+notice:
+  changed: 成功修改
+js:
+  timeago: locale/timeago.zh-cn
+  mforum: locale/mforum.zh-cn
+navi:
+  conn: 標簽與鏈接點
+  user_gallery: 這兒有誰？
+  actions: 操作
+  share: 分享這個頁面
+  new_post: 新建話題
+  change_avatar: 修改頭像
+left:
+  my_set: 我的資料
+  signout: 退出
+  welcome: 歡迎
+  welcome_sign: !!html
+    '<p>已經入夥？趕快點這裏<a class="button blue small pop" href="/login">登陸</a>木有賬號？這裏 <a class="button green small pop" href="/signup">註冊</a>吧！</p>'
+  statistics: 站點統計
+  c_user: 用戶：%1 個
+  c_topic: 話題：%1 個
+  c_reply: 回復：%1 個
+  c_vaild_tag: 有效標簽：%1 個
+  links: 鏈接
+user:
+  form:
+    login: 登錄
+    signup: 註冊
+    username: 用戶名：
+    username_l: 可使用字母、數字、下劃線及短橫線
+    password: 密碼：
+    password_r: 再次輸入：
+    password_l: 允許留空，可使用字母、數字、下劃線及短橫線
+    email: E-mail：
+    email_l: 請輸入您的E-mail
+    btn: 請先填寫上面的表單
+    submit: 提交
+    change_pass: 修改密碼
+    new_pass: 新密碼：
+  show:
+    reply: !!pl
+      0: 
+      1: 回復(1)
+      n: 回復(%1)
+    sign_up_at: 註冊於
+    c_topic: !!pl
+      0: 暫時還未發表過話題，
+      1: 發表過壹個話題，
+      n: 發表過 %1 個話題，
+    c_reply: !!pl
+      0: 暫時還未發表過回復
+      1: 發表過壹個回復，
+      n: 發表過 %1 個回復，
+post:
+  create_at: 發表於
+  reply_at: 回復於
+  last_reply_at: 最後回復於
+  submit: 提交
+  edit:
+    edit: 編輯您的話題
+    title: 標題
+    tags: 標簽
+    submit: 提交
+admin:
+  title: 管理區 - %1
+  home: 主頁
+  user: 用戶
+  post: 帖子
+  g:
+    sitename: 站點名稱
+    links: 鏈接
+    submit: 提交
+  t:
+    t_show:
+      t_as: 標記為 
+      t_inc: 這些標簽被連接到此標簽： 
+      l_to: 標簽鏈接
+      l_ot: 源標簽
+      l_nt: 新標簽 (若留空，源標簽將成為有效標簽，源標簽不可與新標簽相同)
+tag:
+  show:
+    title: !!pl
+      0: 標簽與鏈接點 (暫無標簽)
+      1: 標簽與鏈接點 (壹個有效標簽)
+      n: 標簽與鏈接點 (%1個有效標簽)

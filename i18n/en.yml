@@ -8,15 +8,15 @@ titles:
   admin_su: "Administartion: %1 has been modified!"
   new_su: Posted 
   new_em: Don't leave it empty!
-  not_tag: There is no topic named %1 
+  not_tag: There is no topic tagged as %1
   l_same: Source tag can't be same with the new tag.
   l_inv: Source tag is invaild.
   l_su: Linked!
 notice:
   changed: Edited successfully.
 js:
-  timeago: "timeago.en.js"
-  mforum: "mforum.en.js"
+  timeago: "locale/timeago.en"
+  mforum: "locale/mforum.en"
 navi:
   conn: Tags and Connections
   user_gallery: Who's there?

@@ -1,6 +1,12 @@
 # -*- coding:utf-8 -*-
+require "rubygems"
+require "bundler/setup"
 require 'sinatra'
+require "sinatra_more/markup_plugin"
+require "sinatra_more/render_Plugin"
+require "sinatra_more/routing_plugin"
 require "slim"
+require "coffee-script"
 require 'digest/sha1'
 require 'digest/md5'
 require 'json'

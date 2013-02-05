@@ -44,7 +44,7 @@ body{
 margin:0;
 padding:0;
 color:#000;
-background:#efefef url(css/img/grid.png) repeat center top;
+background: rgb(136, 166, 172);
 font:normal 0.9em/150% 'Arimo', "Trebuchet MS", arial, verdana, sans-serif;
 text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 }
@@ -52,7 +52,7 @@ text-shadow: 0px 0px 1px transparent; /* google font pixelation fix */
 #wrap{
 	max-width: 1024px;
 	min-width: 875px;
-	background: #C7CACE;
+    background: rgb(201, 207, 211);
 	margin: 15px auto 30px auto;
 	padding: 0;
 	border: 1px solid #CCC;
@@ -247,9 +247,7 @@ table td.reply-count a:hover {
 }
 
 .wmd-button > span {
-    background-image: url(/wmd/wmd-buttons.png);
-    background-repeat: no-repeat;
-    background-position: 0px 0px;
+    background: url(/wmd/wmd-buttons.png) no-repeat 0px 0px;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -364,6 +362,7 @@ pre  code {
 	color: #518BAB;
 }
 .reply_box {
+    min-height: 60px;
 	padding: 10px;
 	margin: 0px 0px 15px 75px;
 	border: 2px #E7E7E7 solid;
@@ -429,4 +428,17 @@ pre  code {
 	font-weight: bold;
 	text-decoration: none;
 	box-shadow: 0 0 10px #DAF3FF;
+}
+.c-tag {
+    padding: 3px 13px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #DDD;
+}
+.v-tag {
+    text-shadow: -1px 0px 25px rgb(38, 136, 115);
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
+.i-tag-c {
+    padding-left: 11px;
 }

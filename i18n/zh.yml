@@ -1,0 +1,99 @@
+titles:
+  su: 完成！
+  ug: 这儿有谁？
+  me: 我
+  home: 首页
+  newp: 新话题
+  admin: 管理区域
+  admin_su: "管理: %1 被更改！"
+  new_su: 已发布！
+  new_em: 请勿留空！
+  not_tag: 没有标签为 %1 的话题！
+  l_same: 源标签不可与新标签相同！
+  l_inv: 无效的源标签
+  l_su: 链接完成
+notice:
+  changed: 成功修改
+js:
+  timeago: locale/timeago.zh-cn
+  mforum: locale/mforum.zh-cn
+navi:
+  conn: 标签与链接点
+  user_gallery: 这儿有谁？
+  actions: 操作
+  share: 分享这个页面
+  new_post: 新建话题
+  change_avatar: 修改头像
+left:
+  my_set: 我的资料
+  signout: 退出
+  welcome: 欢迎
+  welcome_sign: !!html
+    '<p>已经入伙？赶快点这里<a class="button blue small pop" href="/login">登陆</a>木有账号？这里 <a class="button green small pop" href="/signup">注册</a>吧！</p>'
+  statistics: 站点统计
+  c_user: 用户：%1 个
+  c_topic: 话题：%1 个
+  c_reply: 回复：%1 个
+  c_vaild_tag: 有效标签：%1 个
+  links: 链接
+user:
+  form:
+    login: 登录
+    signup: 注册
+    username: 用户名：
+    username_l: 可使用字母、数字、下划线及短横线
+    password: 密码：
+    password_r: 再次输入：
+    password_l: 允许留空，可使用字母、数字、下划线及短横线
+    email: E-mail：
+    email_l: 请输入您的E-mail
+    btn: 请先填写上面的表单
+    submit: 提交
+    change_pass: 修改密码
+    new_pass: 新密码：
+  show:
+    reply: !!pl
+      0: 
+      1: 回复(1)
+      n: 回复(%1)
+    sign_up_at: 注册于
+    c_topic: !!pl
+      0: 暂时还未发表过话题，
+      1: 发表过一个话题，
+      n: 发表过 %1 个话题，
+    c_reply: !!pl
+      0: 暂时还未发表过回复
+      1: 发表过一个回复，
+      n: 发表过 %1 个回复，
+post:
+  create_at: 发表于
+  reply_at: 回复于
+  last_reply_at: 最后回复于
+  submit: 提交
+  edit:
+    edit: 编辑您的话题
+    title: 标题
+    tags: 标签
+    submit: 提交
+admin:
+  title: 管理区 - %1
+  home: 主页
+  user: 用户
+  post: 帖子
+  g:
+    sitename: 站点名称
+    links: 链接
+    submit: 提交
+  t:
+    t_show:
+      t_as: 标记为 
+      t_inc: 这些标签被连接到此标签： 
+      l_to: 标签链接
+      l_ot: 源标签
+      l_nt: 新标签 (若留空，源标签将成为有效标签，源标签不可与新标签相同)
+tag:
+  show:
+    title: !!pl
+      0: 标签与链接点 (暂无标签)
+      1: 标签与链接点 (一个有效标签)
+      n: 标签与链接点 (%1个有效标签)

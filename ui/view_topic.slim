@@ -48,10 +48,7 @@ h6.darkgray.view_title
         #text
           == Maruku.new(x.texts).to_html
   == paginate @replies
-  script src="/wmd/Markdown.Converter.js"
-  script src="/wmd/Markdown.Editor.js"
-  script src="/wmd/Markdown.Sanitizer.js"
-  script src="/js/reply.js"
+  ==javascript_include_tag "Markdown.Converter" , "Markdown.Editor" , "Markdown.Sanitizer","reply"
   - if logged_in?
     form.vertical name="reply" action="/topic/reply/new" method="post"
       .wmd-panel
