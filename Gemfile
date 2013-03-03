@@ -1,4 +1,5 @@
 source :rubygems
+gem 'rack',"=1.4.1"
 gem 'sinatra'
 gem "sinatra_more"
 gem "r18n-core", :git => "https://github.com/oranzhang/r18n-core.git"
